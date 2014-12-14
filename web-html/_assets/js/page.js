@@ -1,5 +1,6 @@
 /** MODULE (Page)
 * final page rendering
+version 0.0.1
 **/
 (function (root, factory) {
     var olli = olli_namespace(root),
