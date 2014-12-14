@@ -21,7 +21,8 @@
     lib.ver = '0.0.1';
     lib.vars = lib.vars||{};
     //PRIVAT
-    var header = null;
+    var header = null,
+        footer = null;
 
     lib.init = function()
     {
@@ -29,8 +30,8 @@
     }
     function onReady()
     {
-        header = new olli.page.header();
-        header.init();
+        header = olli.page.header().init();
+        footer = olli.page.footer().init();
         resize();
         WebFont.load({
             custom: {
@@ -53,10 +54,12 @@
     {
         var opt = $.extend({},{bFont:true,width:olli._curWidth,height:olli._curHeight,owidth:olli._oldWidth,oheight:olli._oldHeight},options);
         header.resize(opt);
+        footer.resize(opt);
+
         //resize content
-        var content = $('main').innerHeight(),
-        page = olli._curHeight - $('header').outerHeight() - $('footer').outerHeight();
-        $('#content').css({'minHeight':page});
+        page = olli._curHeight - header.getHeight() - footer.getHeight();
+
+        $('#content').css({'minHeight':page,"maxWidth":olli.clientWidth(true)});
 
     }
 

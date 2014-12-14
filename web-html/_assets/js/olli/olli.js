@@ -324,7 +324,7 @@ lib.getScrollbarVisible = function()
         }
     };
 };
-  lib.clientWidth = function()
+  lib.clientWidth = function(sbAlways)
   {
     var v=0,d=document,w=window,sz = lib.getScrollbarSize();
     if((!d.compatMode || d.compatMode == 'CSS1Compat') && !w.opera && d.documentElement && d.documentElement.clientWidth)
@@ -336,11 +336,41 @@ lib.getScrollbarVisible = function()
         v=w.innerWidth;
         if(d.height>w.innerHeight) v-=sz.v;
     }
-    var s = lib.getScrollbarVisible();
-    if (!s.v)
-        v -= sz.v;
+    if (sbAlways === true)
+    {
+        var s = lib.getScrollbarVisible();
+        if (!s.v)
+            v -= sz.v;
+    }
     return v;
   };
+  lib.clientHeight = function(sbAlways)
+{
+  var v=0,d=document,w=window,sz = lib.getScrollbarSize();
+  if((!d.compatMode || d.compatMode == 'CSS1Compat') /* && !w.opera */ && d.documentElement && d.documentElement.clientHeight)
+    {v=d.documentElement.clientHeight;}
+  else if(d.body && d.body.clientHeight)
+    {v=d.body.clientHeight;}
+  else if(xDef(w.innerWidth,w.innerHeight,d.width)) {
+    v=w.innerHeight;
+    if(d.width>w.innerWidth) v-=sz.h;
+  }
+    if (sbAlways === true)
+    {
+        var s = lib.getScrollbarVisible();
+        if (!s.h)
+            v -= sz.h;
+    }
+  return v;
+}
+
+
+
+
+
+
+
+
   lib.initThumbs_old=function(selector)
   {
     $(selector).find("img").each(function()
@@ -399,16 +429,17 @@ lib.getScrollbarVisible = function()
   }
 /* resize fix */
 	    var $window = $(window);
-	    lib._curWidth = $window.width();
-	    lib._curHeight = $window.height();
+	    lib._curWidth = lib.clientWidth();//$window.width();
+	    lib._curHeight = lib.clientHeight();//$window.height();
 	    lib._oldWidth = lib._curWidth;
 	    lib._oldHeight = lib._curHeight;
-    $window.off('resize.olli');
-	$window.on('resize.olli',
+
+        $window.off('resize.olli');
+	    $window.on('resize.olli',
 		function( e )
 		{
-			var _nWidth = $window.width(),
-				_nHeight= $window.height();
+			var _nWidth = lib.clientWidth();//$window.width(),
+				_nHeight= lib.clientHeight();//$window.height();
 
 			if ( lib._curWidth == _nWidth && lib._curHeight == _nHeight )
 			{

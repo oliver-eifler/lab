@@ -498,7 +498,7 @@ background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
 */
 /* line 31, ../../../web-html/_assets/sass/page/_base.scss */
 body {
-  background: #444;
+  background: #fff;
   font-size: 100%;
   line-height: 1em;
   width: 100%;
@@ -1345,7 +1345,7 @@ a.header-logo em {
 * @license http://www.opensource.org/licenses/mit-license.php MIT License
 **/
 /* line 15, ../../../web-html/_assets/sass/page/_footer.scss */
-footer, body {
+footer, .no-js body {
   background: #34495E;
 }
 

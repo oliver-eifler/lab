@@ -12,7 +12,7 @@
 $footer-background: #34495E;
 $footer-color: mix(#FFFFFF,$footer-background,50%);
 $footer-color: text-contrast($footer-background);
-footer, body {
+footer,.no-js body {
   background:$footer-background;
 }
 

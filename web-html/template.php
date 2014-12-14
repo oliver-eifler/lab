@@ -158,6 +158,7 @@ function tools()
 <script src="_assets/js/components/velocity.js"></script>
 <script src="_assets/js/olli/olli.js"></script>
 <script src="_assets/js/page/header.js"></script>
+<script src="_assets/js/page/footer.js"></script>
 <script src="_assets/js/page.js"></script>
 <script>
   if (checkBrowser())

@@ -35,16 +35,26 @@
             _oldzoom = 1.0,
             $header = null,
             $x=$a=$b=$c0=$c1=$d0=$d1=null,
-            xw=aw=bw=c0w=c1w=d0w=d1w=0;
+            xw=aw=bw=c0w=c1w=d0w=d1w=0,
+            headerWidth = 0,headerHeight = 0,
+            minWidth = 0;
 
-        function cacheWidth()
+        function cacheData()
         {
             xw = rwidth($x[0]),
             aw = rwidth($a[0]),
             bw = rwidth($b[0]),
             c0w = rwidth($c0[0]);c1w = rwidth($c1[0]);
             d0w = rwidth($d0[0]);d1w = rwidth($d1[0]);
+            headerHeight = $header.outerHeight();
+            if (minWidth == 0)
+                minWidth = xw+aw+xw+c1w+d1w;
+
         }
+
+        plugin.getWidth = function() {return headerWidth;}
+        plugin.getHeight = function() {return headerHeight;}
+
         plugin.init = function()
         {
             $header = $('header');
@@ -59,45 +69,51 @@
                 if (id !== undefined)
                 $(id).toggleClass("hidden");
                 });
+            return plugin;
+
         }
         plugin.resize = function(data)
         {
                 var $c = $c0,$d=$d0;
                 //Reset
-                var zoom=1.0
-                    ,width = rwidth($header[0],true);
-                if (width < 440)
-                    zoom = Math.round(width/440*100)/100;
+                var zoom=1.0, width = data.width;
+                if (width < minWidth)
+                    zoom = Math.round(width/minWidth*100)/100;
                 if (_oldzoom != zoom)
                 {
                     _oldzoom = zoom;
                     $header.css({fontSize:""+zoom+"em"});
-                    width = rwidth($header[0],true);
                     data.bFont = true;
+                    //width = rwidth($header[0],true);
                 }
+                headerWidth = width;
+
                 if (!(data.bFont || data.width != data.owidth))
-                    return;
+                    return plugin;
                 if (data.bFont == true)
-                    cacheWidth();
+                    cacheData();
+
+
 
                 var cw = c0w,dw=d0w,
-                    space = xw;
+                space = xw,left = 0;
 
-                //Logo Left
-                $x.css({'left:':0});
-                $a.css({'left':xw});
-
-                if (xw + aw + bw + c0w + d0w <= width)
+                if (aw + bw + c0w + d0w <= width)
                 {
                   $x.addClass("hidden");
-                  $b.removeClass("hidden").css({'left':xw+aw});
+                  $b.removeClass("hidden").css({'left':aw});
                 }
                 else
                 {
                   $x.removeClass("hidden");
                   $b.addClass("hidden").css({'left':0});
+                  left = xw;
                 }
-                if (xw+aw+c0w+d0w <=width)
+                //Logo Left
+                $x.css({'left:':0});
+                $a.css({'left':left});
+
+             if (left+aw+c0w+d0w <=width)
                 {
                   $d1.addClass("hidden").css({'right':0});
                   $d0.removeClass("hidden").css({'right':0});
@@ -111,7 +127,7 @@
                   $d =$d1;
                   dw = d1w;
                 }
-                if (xw+aw+c0w+dw <=width)
+                if (left+aw+c0w+dw <=width)
                 {
                   $c1.addClass("hidden").css({'right':0});
                   $c0.removeClass("hidden").css({'right':dw});
@@ -127,6 +143,7 @@
                   cw = c1w;
                 }
 
+                return plugin;
             }
             function rwidth(e,down)
             {
