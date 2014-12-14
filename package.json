@@ -1,0 +1,38 @@
+{
+  "name": "ollilab",
+  "version": "0.0.1",
+  "description": "Oliver Jean Eifler Lab Page",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oliver Jean Eifler",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.0.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compass": "^0.7.2",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-mincss": "~0.3.2",
+    "grunt-contrib-nodeunit": "~0.2.2",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-csso": "^0.6.5",
+    "grunt-modernizr": "~0.3.1",
+    "grunt-preprocess": "~3.0.1",
+    "grunt-sass": "^0.14.1",
+    "grunt-svg2png": "^0.2.5",
+    "grunt-svgstore": "^0.3.3",
+    "grunt-webfont": "^0.4.8"
+  }
+}

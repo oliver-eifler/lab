@@ -1,0 +1,67 @@
+/**
+* fonts.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+*
+* Inline WOFF and TTF
+*
+**/
+
+/* OLI-ICON FONT */
+@font-face {
+	font-family: 'ollicon';
+    $file: "ollicon";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+	font-weight: normal;
+	font-style: normal;
+}
+/* SANS SERIF HEADER/MENU*/
+@font-face {
+    font-family: 'roboto_condensed';
+    $file: "robotocondensed-webfont";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* SERIF */
+@font-face {
+    font-family: 'droid_serif'; //'droid_serifregular'
+    $file: "DroidSerif-webfont";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_serif';//'droid_serifbold'
+    $file: "DroidSerif-Bold-webfont";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+    font-weight: bold;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_serif';//'droid_serifitalic'
+    $file: "DroidSerif-Italic-webfont";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+    font-weight: normal;
+    font-style: italic;
+
+}
+@font-face {
+    font-family: 'droid_serif'; //'droid_serifbold_italic'
+    $file: "DroidSerif-BoldItalic-webfont";
+    src: inline-font-files('#{$file}.woff',woff,'#{$file}.ttf',truetype);
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+
+

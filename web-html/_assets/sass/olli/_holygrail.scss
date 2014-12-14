@@ -1,0 +1,24 @@
+/**
+ * page/_holygrail.scss
+ * This file is part of the Olli Lab Page
+ * Copyright (c) 2014 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://lab.oliver-eifler.me/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.flexboxtweener, .flexboxtweener .page {
+  height: 100%;
+}
+.page-row {
+  flex:0 0 auto;
+}
+.page-row-expanded {
+  flex:1 1 auto;
+}

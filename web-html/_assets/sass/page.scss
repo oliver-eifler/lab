@@ -1,0 +1,60 @@
+/**
+ * page.scss
+ * This file is part of the Olli Lab Page
+ * Copyright (c) 2014 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://lab.oliver-eifler.me/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+
+ /* Compass & mixin & config*/
+@import "compass";
+$legacy-support-for-ie8 : true;
+$inline-block-alignment : none;
+$legacy-support-for-mozilla : false;
+
+//@import "compass/reset";
+@import 'olli/functions';
+@import 'olli/breakpoints';
+
+/*config*/
+$zindex: (
+  menu      : 9000,
+  overlay   : 8000,
+  dropdown  : 7000,
+  header    : 6000,
+  footer    : 5000
+);
+$rebeccapurple: #663399;
+
+/*
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
+$header-font-family: 'roboto_condensed',sans-serif;
+$menu-font-family: 'roboto_condensed',sans-serif;
+$text-font-family: 'droid_serif',serif;
+$icon-font-family: 'ollicon',sans-seric;
+
+$header-height: 64 !default; //Hamburger & Logo
+$header-item-size: 48 !default;
+$header-search-size: 48 !default;
+$header-search-font: 24 !default;
+
+$header-background: #0099cc;
+$header-color: text-contrast($header-background);
+
+
+
+@import 'page/normalize';
+//@import 'olli/holygrail';
+/* Base Layout */
+@import 'page/base';
+@import 'page/icons';
+@import 'page/fonts';
+@import 'page/header';
+@import 'page/footer';
+

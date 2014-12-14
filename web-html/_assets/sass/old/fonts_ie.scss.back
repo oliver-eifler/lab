@@ -1,0 +1,70 @@
+/**
+* fonts_ie.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+
+* IE Only EOT
+**/
+
+/* OLI-ICON FONT */
+@font-face {
+	font-family: 'ollicon';
+	src:url('../fonts/ollicon.eot?m790wm');
+	src:url('../fonts/ollicon.eot?#iefixm790wm') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* SANS SERIF HEADER/MENU*/
+@font-face {
+    font-family: 'roboto_condensed';
+    src: url('../fonts/robotocondensed-webfont.eot');
+    src: url('../fonts/robotocondensed-webfont.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+/* SERIF */
+@font-face {
+    font-family: 'droid_serif'; //'droid_serifregular'
+    src: url('../fonts/DroidSerif-webfont.eot');
+    src: url('../fonts/DroidSerif-webfont.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_serif';//'droid_serifbold'
+    src: url('../fonts/DroidSerif-Bold-webfont.eot');
+    src: url('../fonts/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype');
+    font-weight: bold;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_serif';//'droid_serifitalic'
+    src: url('../fonts/DroidSerif-Italic-webfont.eot');
+    src: url('../fonts/DroidSerif-Italic-webfont.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: italic;
+
+}
+@font-face {
+    font-family: 'droid_serif'; //'droid_serifbold_italic'
+    src: url('../fonts/DroidSerif-BoldItalic-webfont.eot');
+    src: url('../fonts/DroidSerif-BoldItalic-webfont.eot?#iefix') format('embedded-opentype');
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+
+

@@ -1,0 +1,24 @@
+{
+  "name": "ollis lab",
+  "version": "0.0.1",
+  "authors": [
+    "Oliver Jean Eifler <olli.eifler@gmail.com>"
+  ],
+  "description": "Ollis Homepage Template",
+  "license": "MIT",
+  "homepage": "www.oliver-eifler.info",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5shiv": "~3.7.2",
+    "webfontloader": "~1.5.8",
+    "velocity": "~1.1.0",
+    "normalize.css": "~3.0.2"
+  }
+}

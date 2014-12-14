@@ -1,0 +1,55 @@
+/**
+ * olli/_reset.scss
+ * This file is part of the Olli Lab Page
+ * Copyright (c) 2014 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://lab.oliver-eifler.me/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+
+/** BASIS LAYOUT FOR HTML ELEMENTS **/
+*, *:before, *:after {  box-sizing: border-box;
+}
+button,input {
+   -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+button {
+  width:auto;
+  background-image:none;
+  background-color: transparent;
+  font: inherit;
+  text-align:left;
+  cursor: pointer;
+  margin:0;
+  border: 0;
+  box-shadow: none;
+  text-shadow:none;
+  border-radius:0;
+  overflow:visible; //ie6 & 7 padding fix
+}
+/* same layout for link and button */
+button, a:link { color: #0000EE; }
+button.visited, a:visited { color: #551A8B; }
+button, button.visited, a:link, a:visited { text-decoration: underline; }
+button:active,a:active {color:#EE0000;}
+/*CLEARFIX*/
+.cf {
+    *zoom: 1;
+    &:before,.&:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+    &:after {
+        clear: both;
+    }
+}
+

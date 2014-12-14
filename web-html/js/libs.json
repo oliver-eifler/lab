@@ -1,0 +1,29 @@
+{
+  "kickstart": [
+    "kickstart\/html5shiv.js",
+    "olli\/browser-update.js",
+    "kickstart\/LAB.src.js",
+    "kickstart\/loader.js"],
+  "kickstart-dev": [
+    "kickstart\/html5shiv.js",
+    "olli\/browser-update.js",
+    "kickstart\/LAB.src.js",
+    "kickstart\/loader.dev.js"],
+  "esential": [
+    "esential\/modernizr-custom.js",
+    "esential\/modernizr.olli.js",
+    "esential\/svgfix.js"],
+  "jquery":[
+    "jquery\/jquery-1.11.1.js",
+    "jquery\/jquery.velocity.js",
+    "jquery\/jquery.mousewheel.js",
+    "jquery\/jquery.disablescroll.js",
+    "jquery\/jquery.onfontresize.js"],
+  "olli":[
+    "olli\/olli.js",
+    "olli\/olli.move.js",
+    "olli\/olli.overlay.js",
+    "olli\/olli.scroller.js",
+    "olli\/olli.panelmenu.js",
+    "layout.js"]
+}

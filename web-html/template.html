@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html land='de' class='no-js'>
+<head>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta charset='utf-8'/>
+  <meta content='content-type' content='text/html; charset=utf-8'/>
+  <meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+  <meta name='viewport' content='target-densitydpi=device-dpi, width=device-width,initial-scale=1.0,user-scalable=yes'/>
+  <meta name='format-detection' content='telephone=no'/>
+
+  <title>Olli's Lab</title>
+  <link rel="stylesheet" type="text/css" href="css/page.css">
+  <style type="text/css">
+  <!--
+  .content {
+    background:#440;
+    max-width: 80em;
+    min-width:400px;
+    margin:0 auto;
+  }
+  .test {
+    font-size:2em;
+  }
+
+  .test:hover {
+    color:#f00;
+  }
+
+  -->
+  </style>
+</head>
+
+<body>
+<div id='wrapper' class='HolyGrail' onclick="">
+<!-- *** Main Menu *** -->
+        <nav class='mainmenu menu' aria-hidden="false">
+            <ul><!--
+             --><li style='z-index:100'><a href='#'>Link1</a></li><!--
+             --><li style='z-index:99' class="hassub"><a href='template2.html'>Link2</a><b aria-haspopup='true'  aria-controls='m1' ></b>
+                    <ul id='m1'>
+                    <li><a href='#'>Sub1</a></li>
+                    <li><a href='#'>Sub2</a></li>
+                    <li><a href='#'>Sub3 ganz furchtbar lang</a></li>
+                    </ul>
+                </li><!--
+             --><li style='z-index:98' class="hassub"><a href='template3.html'>Link3</a><b aria-haspopup='true'  aria-controls='m2' ></b>
+                    <ul id='m2'>
+                    <li><a href='#'>Sub1</a></li>
+                    <li><a href='#'>Sub2</a></li>
+                    <li><a href='#'>Sub3</a></li>
+                    <li><a href='#'>Sub4</a></li>
+                    <li><a href='#'>Sub5</a></li>
+                    </ul>
+                </li><!--
+             --><li style='z-index:97'><a href='#'>Link4</a></li><!--
+             --><li style='z-index:96'><a href='#'>Link5</a></li>
+            </ul>
+        </nav>
+<!-- *** Main Menu *** -->
+<header class='header'>
+        <button class='header-hamburger' aria-hidden='false'>
+            <svg class='symbol' role="img"><use xlink:href="img/svg/icons.svg#icon-menu"></use></svg><em>Show Menu</em>
+        </button>
+        <a class='header-logo' href='#' title="Ollis LAB">
+           <svg class="logo-lab"><use xlink:href="img/svg/icons.svg#icon-lab"></use></svg>
+           <svg class="logo-text" role="img"><use xlink:href="img/svg/icons.svg#icon-labtext"></use></svg>
+           <em>Olli's LAB</em>
+        </a>
+        <ul class='header-tools'><!--
+          --><li><a href='#' class='tool'><svg class="symbol"><use xlink:href="img/svg/icons.svg#icon-mail"></use></svg><em>send me a mail</em></a></li><!--
+          --><li><a href='#' class='tool'><svg class="symbol"><use xlink:href="img/svg/icons.svg#icon-github"></use></svg><em>follow me on google github</em></a></li><!--
+          --><li><a href='#' class='tool'><svg class="symbol"><use xlink:href="img/svg/icons.svg#icon-googleplus"></use></svg><em>follow me on google plus</em></a></li><!--
+          --><li><a href='#' class='tool'><svg class="symbol"><use xlink:href="img/svg/icons.svg#icon-facebook"></use></svg><em>follow me on facebook</em></a></li><!--
+          --><li><a href='#' class='tool'><svg class="symbol"><use xlink:href="img/svg/icons.svg#icon-twitter"></use></svg><em>follow me on twitter</em></a></li><!--
+          --><li class='header-tools-search'>
+	            <form class='searchbox' expand="true" action="search.php" onsubmit="alert('Searching');return false;" method="post" name="SearchBoxForm">
+		            <input class='searchbox-query' type="text" name="Search" placeholder="Suchen..."><!--
+                    --><button class='tool searchbox-submit' type="submit">
+                        <svg class='symbol' role="img"><use xlink:href="img/svg/icons.svg#icon-search"></use></svg><em>Suchen</em>
+                       </button>
+	            </form>
+            </li><!--
+          --><li class='header-tools-search'>
+	            <form class='searchbox' action="search.php" onsubmit="alert('Searching');return false;" method="post" name="SearchBoxForm">
+		            <input class='searchbox-query' type="text" name="Search" placeholder="Suchen..."><!--
+                    --><button class='tool searchbox-submit' type="submit">
+                        <svg class='symbol' role="img"><use xlink:href="img/svg/icons.svg#icon-search"></use></svg><em>Suchen</em>
+                       </button>
+	            </form>
+            </li>
+        </ul>
+</header>
+<div class='HolyGrail-body'>
+    <article class='HolyGrail-content content'>
+    <h1>Ollis Seite</h1>
+   <svg style="fill:#fff;height:3em;width:10em" role="img"><use xlink:href="img/svg/icons.svg#icon-labtext"></use></svg>
+    <p>some text</p>
+    <span class='test'>Hover Span</span>
+    <p style='margin-top:12px;'>some text</p>
+    </article>
+</div>
+<footer>&copy; 2014 by Oliver Jean Eifler</footer>
+</div>
+</body>
+</html>

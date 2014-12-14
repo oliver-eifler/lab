@@ -1,0 +1,1356 @@
+/**
+ * page.scss
+ * This file is part of the Olli Lab Page
+ * Copyright (c) 2014 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://lab.oliver-eifler.me/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* Compass & mixin & config*/
+/*Olli mixins'*/
+/* Color Contrast
+.my-element {
+    background: $backgroud-color;
+    color: text-contrast($backgroud-color);
+  }
+.my-element {
+    background: $backgroud-color;
+    color: text-contrast($backgroud-color, DarkSalmon);
+  } */
+/*config*/
+/*
+.header {
+  z-index: map-get($zindex, header);
+}
+*/
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, ../../../web-html/_assets/sass/page/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, ../../../web-html/_assets/sass/page/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, ../../../web-html/_assets/sass/page/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, ../../../web-html/_assets/sass/page/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, ../../../web-html/_assets/sass/page/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, ../../../web-html/_assets/sass/page/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, ../../../web-html/_assets/sass/page/_normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, ../../../web-html/_assets/sass/page/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 109, ../../../web-html/_assets/sass/page/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, ../../../web-html/_assets/sass/page/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 126, ../../../web-html/_assets/sass/page/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 135, ../../../web-html/_assets/sass/page/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 144, ../../../web-html/_assets/sass/page/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 153, ../../../web-html/_assets/sass/page/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 161, ../../../web-html/_assets/sass/page/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 169, ../../../web-html/_assets/sass/page/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 173, ../../../web-html/_assets/sass/page/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 184, ../../../web-html/_assets/sass/page/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 192, ../../../web-html/_assets/sass/page/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 203, ../../../web-html/_assets/sass/page/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 211, ../../../web-html/_assets/sass/page/_normalize.scss */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, ../../../web-html/_assets/sass/page/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, ../../../web-html/_assets/sass/page/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, ../../../web-html/_assets/sass/page/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, ../../../web-html/_assets/sass/page/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, ../../../web-html/_assets/sass/page/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, ../../../web-html/_assets/sass/page/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, ../../../web-html/_assets/sass/page/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, ../../../web-html/_assets/sass/page/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, ../../../web-html/_assets/sass/page/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, ../../../web-html/_assets/sass/page/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, ../../../web-html/_assets/sass/page/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 357, ../../../web-html/_assets/sass/page/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 370, ../../../web-html/_assets/sass/page/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 379, ../../../web-html/_assets/sass/page/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 390, ../../../web-html/_assets/sass/page/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 399, ../../../web-html/_assets/sass/page/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 408, ../../../web-html/_assets/sass/page/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 419, ../../../web-html/_assets/sass/page/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 424, ../../../web-html/_assets/sass/page/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* Base Layout */
+/**
+ * page/_base.scss
+ * This file is part of the Olli Lab Page
+ * Copyright (c) 2014 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://lab.oliver-eifler.me/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 11, ../../../web-html/_assets/sass/page/_base.scss */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* line 13, ../../../web-html/_assets/sass/page/_base.scss */
+html, body {
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/*
+html {
+background-color:#269;
+background-image: linear-gradient(white 2px, transparent 2px),
+linear-gradient(90deg, white 2px, transparent 2px),
+linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+*/
+/* line 31, ../../../web-html/_assets/sass/page/_base.scss */
+body {
+  background: #444;
+  font-size: 100%;
+  line-height: 1em;
+  width: 100%;
+  min-width: 320px;
+  position: relative;
+}
+
+/*CLEARFIX*/
+/* line 41, ../../../web-html/_assets/sass/page/_base.scss */
+.cf {
+  *zoom: 1;
+}
+/* line 43, ../../../web-html/_assets/sass/page/_base.scss */
+.cf:before, .cf:after {
+  content: " ";
+  /* 1 */
+  display: table
+  /* 2 */
+}
+/* line 47, ../../../web-html/_assets/sass/page/_base.scss */
+.cf:after {
+  clear: both;
+}
+
+/** BASIS LAYOUT FOR HTML ELEMENTS **/
+/* line 56, ../../../web-html/_assets/sass/page/_base.scss */
+button, input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+/* line 62, ../../../web-html/_assets/sass/page/_base.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* line 67, ../../../web-html/_assets/sass/page/_base.scss */
+button {
+  -webkit-tap-highlight-color: transparent;
+  width: auto;
+  background-image: none;
+  background-color: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* same layout for link and button
+:link, :visited, :hover, :focus, :active*/
+/* line 85, ../../../web-html/_assets/sass/page/_base.scss */
+button, a:link {
+  color: #0000EE;
+}
+
+/* line 86, ../../../web-html/_assets/sass/page/_base.scss */
+button.visited, a:visited {
+  color: #551A8B;
+}
+
+/* line 87, ../../../web-html/_assets/sass/page/_base.scss */
+button.visited, a:link, a:visited {
+  text-decoration: underline;
+}
+
+/* line 88, ../../../web-html/_assets/sass/page/_base.scss */
+button:active, a:active {
+  color: #EE0000;
+}
+
+/* line 90, ../../../web-html/_assets/sass/page/_base.scss */
+a:focus, a:visited:focus, button:focus, input:focus {
+  outline: none;
+}
+
+/* inline symbole (svg,img) */
+/* line 95, ../../../web-html/_assets/sass/page/_base.scss */
+.symbol {
+  display: inline-block;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* line 102, ../../../web-html/_assets/sass/page/_base.scss */
+.text-left {
+  text-align: left;
+}
+
+/* line 105, ../../../web-html/_assets/sass/page/_base.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 108, ../../../web-html/_assets/sass/page/_base.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 111, ../../../web-html/_assets/sass/page/_base.scss */
+.text-justify {
+  text-align: justify;
+}
+
+@font-face {
+  font-family: 'ollicon';
+  src: url("../fonts/ollicon.eot?a0006");
+  src: url("../fonts/ollicon.eot?#iefixa0006") format("embedded-opentype"), url("../fonts/ollicon.woff?a0006") format("woff"), url("../fonts/ollicon.ttf?a0006") format("truetype"), url("../fonts/ollicon.svg?a0006#ollicon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 11, ../../../web-html/_assets/sass/page/_icons.scss */
+i, .icon {
+  font-family: 'ollicon';
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 24, ../../../web-html/_assets/sass/page/_icons.scss */
+.silent {
+  speak: none;
+}
+
+/* line 27, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-small {
+  font-size: .75em;
+}
+
+/* line 31, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-menu:before {
+  content: "\e600";
+}
+
+/* line 34, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-invader:before {
+  content: "\e601";
+}
+
+/* line 37, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-cool:before {
+  content: "\e602";
+}
+
+/* line 40, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-grid:before {
+  content: "\e603";
+}
+
+/* line 43, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-share:before {
+  content: "\e604";
+}
+
+/* line 46, ../../../web-html/_assets/sass/page/_icons.scss */
+.icon-contact:before {
+  content: "\e605";
+}
+
+/**
+* page/_fonts.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/* SANS SERIF HEADER/MENU*/
+@font-face {
+  font-family: 'roboto_condensed';
+  src: url("../fonts/robotocondensed-webfont.woff") format("woff"), url("../fonts/robotocondensed-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* SERIF */
+@font-face {
+  font-family: 'droid_serif';
+  src: url("../fonts/DroidSerif-webfont.eot");
+  src: url("../fonts/DroidSerif-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/DroidSerif-webfont.woff") format("woff"), url("../fonts/DroidSerif-webfont.ttf") format("truetype"), url("../fonts/DroidSerif-webfont.svg#droid_serifregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'droid_serif';
+  src: url("../fonts/DroidSerif-Bold-webfont.eot");
+  src: url("../fonts/DroidSerif-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/DroidSerif-Bold-webfont.woff") format("woff"), url("../fonts/DroidSerif-Bold-webfont.ttf") format("truetype"), url("../fonts/DroidSerif-Bold-webfont.svg#droid_serifbold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'droid_serif';
+  src: url("../fonts/DroidSerif-Italic-webfont.eot");
+  src: url("../fonts/DroidSerif-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/DroidSerif-Italic-webfont.woff") format("woff"), url("../fonts/DroidSerif-Italic-webfont.ttf") format("truetype"), url("../fonts/DroidSerif-Italic-webfont.svg#droid_serifitalic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'droid_serif';
+  src: url("../fonts/DroidSerif-BoldItalic-webfont.eot");
+  src: url("../fonts/DroidSerif-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/DroidSerif-BoldItalic-webfont.woff") format("woff"), url("../fonts/DroidSerif-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/DroidSerif-BoldItalic-webfont.svg#droid_serifbold_italic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+/**
+* page/_header.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/** CONFIG **/
+/** DDMENU */
+/* The wrapper div should be wrapped around the page content and be at least 100% page height for the iPade, iPhone and iPod Touch */
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/cssplay-touch-multi-level-two.html
+Copyright (c) Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+/* line 32, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu {
+  position: relative;
+  z-index: 100;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  font-family: "roboto_condensed", sans-serif;
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+/* line 46, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /*white-space:nowrap;*/
+  text-align: center;
+}
+
+/* line 47, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu ul {
+  display: inline-block;
+}
+
+/* line 49, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* line 50, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu ul ul {
+  position: absolute;
+  border-radius: 0.16667em;
+  margin-top: -0.16667em;
+  padding: 0.16667em 0 0.16667em 0;
+  z-index: 0;
+  text-align: left;
+}
+
+/* line 53, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu > ul {
+  margin: 0;
+  *zoom: 1;
+}
+
+/* line 54, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu > ul > li {
+  display: inline-block;
+  *float: left;
+  position: relative;
+  margin: 0 0.16667em;
+}
+
+/* line 58, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu ul ul {
+  background: #002633;
+  min-width: 100%;
+}
+
+/* line 60, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu ul ul {
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* line 64, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em 0.5em;
+  position: relative;
+  z-index: 10;
+}
+
+/* line 65, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu > ul > li > b {
+  /*display:block; position:relative; width:100%; margin-top:-2em; height:2em; background: url(img/trans.gif); z-index:100;*/
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: url(../img/trans.gif);
+  z-index: 100;
+  -webkit-transition: 0.75s;
+          transition: 0.75s;
+}
+
+/* line 71, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li:hover > b {
+  width: 0;
+}
+
+/* line 72, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li > a {
+  border-radius: 0.16667em;
+  color: #002633;
+}
+/* line 75, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li > a:link, .menu li > a:visited, .menu li > a:active {
+  color: #002633;
+}
+/* line 76, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li > a:hover, .menu li > a:focus {
+  color: #FFF;
+  background: #002633;
+}
+
+/* line 81, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu li:hover > a, .menu li:focus > a {
+  color: #FFF;
+  background: #002633;
+}
+
+/* line 85, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub > a {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* line 90, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub li > a {
+  color: #0099cc;
+}
+/* line 92, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub li > a:link, .menu .hassub li > a:visited, .menu .hassub li > a:active, .menu .hassub li > a:focus {
+  color: #0099cc;
+}
+/* line 93, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub li > a:hover, .menu .hassub li > a:focus {
+  color: #FFF;
+}
+
+/* line 97, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub li:hover > a {
+  color: #FFF;
+  background: none;
+}
+
+/* line 103, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu > ul {
+  *display: inline;
+}
+
+/* line 105, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub > ul {
+  display: none;
+}
+
+/* line 107, ../../../web-html/_assets/sass/page/_ddmenu.scss */
+.menu .hassub:hover > ul {
+  display: block;
+}
+
+/*
+.menu .hassub > a {
+  padding-right:$_s+$_p+2*px2em($menu-arrow,$menu-font);
+}
+
+.menu .hassub > a:after {
+        position:absolute;bottom:px2em(($menu-height - $menu-arrow)/2,$menu-font);right:$_p;text-align:center;
+        content:"";
+      	border-top: px2em($menu-arrow,$menu-font) solid ;
+	    border-right: px2em($menu-arrow,$menu-font) solid transparent;
+	    border-left:px2em($menu-arrow,$menu-font) solid transparent;
+        }
+*/
+/*
+.menu .down {
+  display:none;
+}
+
+.ie-old .menu .down,
+.no-generatedcontent .menu .down {
+  display:inline;
+  padding-right: .25em;
+}
+.ie-old .menu .hassub > a ,
+.no-generatedcontent .menu .hassub > a  {
+  padding-right: $_p;
+}
+*/
+/* line 43, ../../../web-html/_assets/sass/page/_header.scss */
+.header {
+  background: #0099cc;
+  color: #002633;
+}
+
+/* line 47, ../../../web-html/_assets/sass/page/_header.scss */
+.header {
+  font-size: 1em;
+  font-family: "roboto_condensed", sans-serif;
+  display: block;
+  min-height: 4em;
+}
+/* line 52, ../../../web-html/_assets/sass/page/_header.scss */
+.header ul {
+  list-style: none;
+}
+
+/* line 58, ../../../web-html/_assets/sass/page/_header.scss */
+.header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+/* line 65, ../../../web-html/_assets/sass/page/_header.scss */
+.header a, .header button {
+  color: #002633;
+  text-decoration: none;
+}
+/* line 68, ../../../web-html/_assets/sass/page/_header.scss */
+.header a:link, .header a:visited, .header a:active, .header button:link, .header button:visited, .header button:active {
+  color: #002633;
+  text-decoration: none;
+}
+/* line 69, ../../../web-html/_assets/sass/page/_header.scss */
+.header a:hover, .header a:focus, .header button:hover, .header button:focus {
+  color: #FFF;
+  text-decoration: none;
+}
+
+/* line 72, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* line 78, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell.hidden {
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+}
+
+/* line 79, ../../../web-html/_assets/sass/page/_header.scss */
+.noflow .header-cell {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+/* line 80, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell.space {
+  padding: 0.25em;
+}
+
+/* line 83, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  top: -1px;
+  bottom: -1px;
+  z-index: 100;
+  color: #002633;
+  background: #0099cc;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 0;
+}
+
+/* line 98, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar.hidden {
+  display: none;
+}
+
+/*.header*/
+/* line 100, ../../../web-html/_assets/sass/page/_header.scss */
+.logo-hamburger[aria-hidden=true] {
+  display: none;
+}
+
+/* HEADR LOGO */
+/*.header*/
+/* line 103, ../../../web-html/_assets/sass/page/_header.scss */
+a.header-logo {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  font-size: 3.5em;
+  padding: 0.07143em 0.14286em;
+  border-radius: 0.14286em;
+  color: #ffff00;
+  text-shadow: 0.07143em 0.07143em 0.07143em rgba(0, 0, 0, 0.4);
+}
+/* line 113, ../../../web-html/_assets/sass/page/_header.scss */
+a.header-logo:link, a.header-logo:visited, a.header-logo:active {
+  color: #ffff00;
+}
+/* line 114, ../../../web-html/_assets/sass/page/_header.scss */
+a.header-logo:hover, a.header-logo:focus {
+  color: #FFF;
+  background: #002633;
+}
+/* line 115, ../../../web-html/_assets/sass/page/_header.scss */
+a.header-logo .logo-lab,
+a.header-logo .logo-text {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+}
+/* line 123, ../../../web-html/_assets/sass/page/_header.scss */
+a.header-logo em {
+  position: absolute;
+  left: -9999px;
+}
+
+/*.header*/
+/* line 129, ../../../web-html/_assets/sass/page/_header.scss */
+.header-tools {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+/* line 134, ../../../web-html/_assets/sass/page/_header.scss */
+.header-tools li {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  padding: 0;
+  margin: 0.25em;
+  overflow: visible;
+}
+/* line 140, ../../../web-html/_assets/sass/page/_header.scss */
+.header-tools li[aria-hidden=true] {
+  display: none;
+}
+
+/* HEADER SEARCH MODULE*/
+/* line 143, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search {
+  padding: 0.25em;
+}
+/* line 145, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search .tool-search {
+  color: #000;
+  border-radius: 0;
+}
+/* line 148, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search .tool-search:link, .header-cell-search .tool-search:visited, .header-cell-search .tool-search:active {
+  color: #000;
+}
+/* line 150, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search form, .header-cell-search input {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  background: #ffffff;
+  color: #000;
+}
+/* line 156, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search form {
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+/* line 160, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input {
+  font-family: "roboto_condensed", sans-serif;
+  font-size: 1.5em;
+  width: 9.33333em;
+  padding: 0.16667em 0.33333em;
+  border: none;
+}
+/* line 167, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input::-webkit-input-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 168, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input::-moz-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 169, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:-moz-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 170, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:-ms-input-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 172, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:focus {
+  background: none;
+}
+/* line 174, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+/* line 175, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:focus::-moz-placeholder {
+  opacity: 0;
+}
+/* line 176, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:focus:-moz-placeholder {
+  opacity: 0;
+}
+/* line 177, ../../../web-html/_assets/sass/page/_header.scss */
+.header-cell-search input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+/* line 183, ../../../web-html/_assets/sass/page/_header.scss */
+.tool {
+  font-size: 2em;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  border: none;
+  border-radius: 0.125em;
+  padding: 0.25em 0.25em;
+  margin: 0;
+  color: #002633;
+}
+/* line 192, ../../../web-html/_assets/sass/page/_header.scss */
+.tool:hover, .tool:focus {
+  background: #002633;
+}
+/* line 193, ../../../web-html/_assets/sass/page/_header.scss */
+.tool em {
+  position: absolute;
+  left: -9999px;
+}
+
+/* line 206, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact {
+  background: #ff7400;
+  color: #331700;
+}
+/* line 209, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact .header-tools {
+  padding: 0 0 0 1em;
+  width: 100%;
+  text-align: right;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+/* line 216, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact .tool {
+  color: #331700;
+}
+/* line 218, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact .tool:link, .header-bar-contact .tool:visited, .header-bar-contact .tool:active {
+  color: #331700;
+}
+/* line 219, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact .tool:hover, .header-bar-contact .tool:focus {
+  color: #FFF;
+  background: #331700;
+}
+
+/* line 227, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search {
+  background: #ffffff;
+  color: #000;
+}
+/* line 230, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search .tool {
+  color: #000;
+}
+/* line 232, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search .tool:link, .header-bar-search .tool:visited, .header-bar-search .tool:active {
+  color: #000;
+}
+/* line 233, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search .tool:hover, .header-bar-search .tool:focus {
+  color: #FFF;
+  background: #000;
+}
+/* line 235, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search form {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding: 0 0.25em 0 1.25em;
+  background: #ffffff;
+  color: #000;
+}
+/* line 244, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  font-family: "roboto_condensed", sans-serif;
+  font-size: 1.5em;
+  padding: 0.16667em 0.16667em;
+  border: none;
+  background: #ffffff;
+  color: #000;
+}
+/* line 253, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input::-webkit-input-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 254, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input::-moz-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 255, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:-moz-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 256, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:-ms-input-placeholder {
+  color: #7f7f7f;
+  opacity: 1;
+}
+/* line 259, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+/* line 260, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:focus::-moz-placeholder {
+  opacity: 0;
+}
+/* line 261, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:focus:-moz-placeholder {
+  opacity: 0;
+}
+/* line 262, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+/* line 264, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search button {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+/**
+* page/_footer.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/* line 15, ../../../web-html/_assets/sass/page/_footer.scss */
+footer, body {
+  background: #34495E;
+}
+
+/* line 19, ../../../web-html/_assets/sass/page/_footer.scss */
+footer {
+  color: #b9c8d8;
+  padding: 4px;
+}

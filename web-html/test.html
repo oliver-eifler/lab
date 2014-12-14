@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html land='de' class='no-js'>
+<head>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta charset='utf-8'/>
+  <meta content='content-type' content='text/html; charset=utf-8'/>
+  <meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+  <meta name='viewport' content='target-densitydpi=device-dpi, width=device-width,initial-scale=1.0,user-scalable=yes'/>
+  <meta name='format-detection' content='telephone=no'/>
+
+  <title>Olli-Lab Template</title>
+  <script src="_assets/js/esential/es5-shim.js"></script>
+  <script src="_assets/js/esential/modernizr-custom-old.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/page.css">
+  <style type="text/css">
+  <!--
+  footer {
+    background:#000;
+    color:#ff0;
+    padding:4px;
+  }
+  .content {
+    background:#440;
+    max-width: 80em;
+    min-width:400px;
+    margin:0 auto;
+  }
+
+  .hamburger {
+    font-size:2em;
+    font-weight:bold;
+    line-height:.25em;
+    padding-bottom:0.25em;
+  }
+
+  -->
+  </style>
+  <link rel="stylesheet" type="text/css" href="css/android2.css">
+</head>
+
+<body>
+<div id='wrapper' class='HolyGrail' onclick="">
+<header class='header'>
+<div class='header-content'>
+<div class='header-button'>
+<button class='hamburger' aria-hidden="true">--<br>--<br>--</button>
+</div>
+<div class='header-logo'>
+<a class='logo' href="#">Lab@Olli</a>
+</div>
+<div class='header-nav'>
+    <nav class='header-mainnav menu'aria-hidden="false">
+        <ul>
+            <li style='z-index:100'><a href='#'>Link1</a></li>
+            <li style='z-index:99' class="hassub"><a href='template2.html'>Link2</a><b aria-haspopup='true'  aria-controls='m1' ></b>
+                <ul id='m1'>
+                <li><a href='#'>Sub1</a></li>
+                <li><a href='#'>Sub2</a></li>
+                <li><a href='#'>Sub3 ganz furchtbar lang</a></li>
+                </ul>
+            </li>
+            <li style='z-index:98' class="hassub"><a href='template3.html'>Link3</a><b aria-haspopup='true'  aria-controls='m2' ></b>
+                <ul id='m2'>
+                <li><a href='#'>Sub1</a></li>
+                <li><a href='#'>Sub2</a></li>
+                <li><a href='#'>Sub3</a></li>
+                <li><a href='#'>Sub4</a></li>
+                <li><a href='#'>Sub5</a></li>
+                </ul>
+            </li>
+            <li style='z-index:97'><a href='#'>Link4</a></li>
+            <li style='z-index:96'><a href='#'>Link5</a></li>
+        </ul>
+    </nav>
+    <nav class='header-subnav'>
+        <ul>
+            <li><a href='#'>A</a></li>
+            <li><a href='#'>B</a></li>
+            <li><a href='#'>C</a></li>
+        </ul>
+    </nav>
+</div>
+</div>
+</header>
+<div class='HolyGrail-body'>
+    <article class='HolyGrail-content content'>
+    <h1>Ollis Seite</h1>
+    <p>some text</p>
+    <p style='margin-top:12px;'>some text</p>
+   		<svg style='height:2em;width:2em;'>
+			<use id='svgtest' xlink:href="img/svg/icons.svg#icon-close"></use>
+		</svg>
+    </article>
+</div>
+<footer>&copy; 2014 by Oliver Jean Eifler</footer>
+</div>
+<script>
+var LTEIE8 =                !Modernizr.inlinesvg;
+var old = !(Modernizr.csstransforms && Modernizr.csstransforms3d && Modernizr.generatedcontent);
+Modernizr.addTest('iequirk',function() {
+    var rc= false;
+    if (document.compatMode)
+        rc = (document.compatMode!="CSS1Compat");
+    else
+        rc = (!window.addEventListener&&document.documentMode&&document.documentMode===7);
+return rc;
+});
+  Modernizr.addTest('boxsizing', Modernizr.testAllProps('boxSizing', 'border-box', true) && (document.documentMode === undefined || document.documentMode > 7));
+Modernizr.addTest('olli-swipe',function() {
+//    if (php_mobile==0 && Modernizr["csstransforms"]==true && Modernizr["csstransitions"]==true)
+    return (Modernizr["generatedcontent"] && Modernizr["cssanimations"] && Modernizr["csstransforms"] && Modernizr["csstransitions"]);
+});
+Modernizr.addTest('minmax',function() {
+    return Modernizr.testProp("minHeight") && Modernizr.testProp("maxHeight");
+});
+Modernizr.addTest('olli', function(){
+    return true;
+});
+
+alert("Javascript: anything ok...");
+</script>
+</body>
+</html>
