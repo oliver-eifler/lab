@@ -54,6 +54,7 @@
            footerWidth = width;
            if (data.bFont == true)
                cacheData();
+
             return plugin;
         }
         function rwidth(e,down)

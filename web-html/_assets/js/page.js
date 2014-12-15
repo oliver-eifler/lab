@@ -59,15 +59,16 @@
             opt.xwidth = 320;
 
         }
-        $('.width-wrapper').css({"maxWidth":opt.xwidth});
-        $('.width-wrapper2').css({"paddingRight":opt.width-opt.xwidth});
+        $('body').css({'width':opt.xwidth});
+
+
         header.resize(opt);
         footer.resize(opt);
 
         //resize content
-        page = olli._curHeight - header.getHeight() - footer.getHeight();
+        page = olli.clientHeight() - header.getHeight() - footer.getHeight();
 
-        $('#content').css({'minHeight':page,"maxWidth":opt.xwidth});
+        $('#content').css({'minHeight':page});
 
     }
 

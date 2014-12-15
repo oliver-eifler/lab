@@ -478,7 +478,7 @@ th {
 
 /* line 13, ../../../web-html/_assets/sass/page/_base.scss */
 html, body {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   border: 0;
   height: 100%;
@@ -502,32 +502,29 @@ body {
   line-height: 1em;
   width: 100%;
   position: relative;
-}
-
-/* line 37, ../../../web-html/_assets/sass/page/_base.scss */
-header, footer, .content, .width-wrapper {
+  max-width: 120em;
   min-width: 320px;
 }
 
 /*CLEARFIX*/
-/* line 42, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 40, ../../../web-html/_assets/sass/page/_base.scss */
 .cf {
   *zoom: 1;
 }
-/* line 44, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 42, ../../../web-html/_assets/sass/page/_base.scss */
 .cf:before, .cf:after {
   content: " ";
   /* 1 */
   display: table
   /* 2 */
 }
-/* line 48, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 46, ../../../web-html/_assets/sass/page/_base.scss */
 .cf:after {
   clear: both;
 }
 
 /** BASIS LAYOUT FOR HTML ELEMENTS **/
-/* line 57, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 55, ../../../web-html/_assets/sass/page/_base.scss */
 button, input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -535,14 +532,14 @@ button, input {
   box-sizing: border-box;
 }
 
-/* line 63, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_base.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 68, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 66, ../../../web-html/_assets/sass/page/_base.scss */
 button {
   -webkit-tap-highlight-color: transparent;
   width: auto;
@@ -561,33 +558,33 @@ button {
 
 /* same layout for link and button
 :link, :visited, :hover, :focus, :active*/
-/* line 86, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 84, ../../../web-html/_assets/sass/page/_base.scss */
 button, a:link {
   color: #0000EE;
 }
 
-/* line 87, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 85, ../../../web-html/_assets/sass/page/_base.scss */
 button.visited, a:visited {
   color: #551A8B;
 }
 
-/* line 88, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 86, ../../../web-html/_assets/sass/page/_base.scss */
 button.visited, a:link, a:visited {
   text-decoration: underline;
 }
 
-/* line 89, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 87, ../../../web-html/_assets/sass/page/_base.scss */
 button:active, a:active {
   color: #EE0000;
 }
 
-/* line 91, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 89, ../../../web-html/_assets/sass/page/_base.scss */
 a:focus, a:visited:focus, button:focus, input:focus {
   outline: none;
 }
 
 /* inline symbole (svg,img) */
-/* line 96, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 94, ../../../web-html/_assets/sass/page/_base.scss */
 .symbol {
   display: inline-block;
   *vertical-align: auto;
@@ -598,24 +595,42 @@ a:focus, a:visited:focus, button:focus, input:focus {
   fill: currentColor;
 }
 
-/* line 103, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 101, ../../../web-html/_assets/sass/page/_base.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 106, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 104, ../../../web-html/_assets/sass/page/_base.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 109, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 107, ../../../web-html/_assets/sass/page/_base.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 112, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 110, ../../../web-html/_assets/sass/page/_base.scss */
 .text-justify {
   text-align: justify;
+}
+
+/* FULL WIDTH BAR */
+/* line 115, ../../../web-html/_assets/sass/page/_base.scss */
+[fbw] {
+  position: relative;
+}
+/* line 117, ../../../web-html/_assets/sass/page/_base.scss */
+[fbw]:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -9999px;
+  right: 0;
+  color: blue;
+  border-left: 9999px solid;
+  box-shadow: 9999px 0 0;
 }
 
 @font-face {
@@ -948,31 +963,33 @@ way to fit your requirements.
   padding: 0;
   border: 0;
   position: relative;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
 }
-/* line 56, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 54, ../../../web-html/_assets/sass/page/_header.scss */
 .header a, .header button {
   color: #002633;
   text-decoration: none;
 }
-/* line 59, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 57, ../../../web-html/_assets/sass/page/_header.scss */
 .header a:link, .header a:visited, .header a:active, .header button:link, .header button:visited, .header button:active {
   color: #002633;
   text-decoration: none;
 }
-/* line 60, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 58, ../../../web-html/_assets/sass/page/_header.scss */
 .header a:hover, .header a:focus, .header button:hover, .header button:focus {
   color: #FFF;
   text-decoration: none;
 }
-/* line 62, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 60, ../../../web-html/_assets/sass/page/_header.scss */
 .header ul {
   list-style: none;
 }
-/* line 65, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 63, ../../../web-html/_assets/sass/page/_header.scss */
 .header .width-wrapper {
   position: relative;
+}
+/* line 66, ../../../web-html/_assets/sass/page/_header.scss */
+.header[fbw]:before {
+  color: #0099cc;
 }
 
 /* line 70, ../../../web-html/_assets/sass/page/_header.scss */
@@ -1007,16 +1024,14 @@ way to fit your requirements.
 .noflow .width-wrapper {
   position: absolute;
   width: 100%;
-  top: -1px;
-  bottom: -1px;
 }
 
-/* line 85, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 83, ../../../web-html/_assets/sass/page/_header.scss */
 .header-cell.space {
   padding: 0.25em;
 }
 
-/* line 88, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 86, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1028,14 +1043,17 @@ way to fit your requirements.
           align-items: center;
   position: absolute;
   width: 100%;
-  top: -1px;
-  bottom: -1px;
+  top: 0px;
+  bottom: 0px;
   z-index: 100;
   color: #002633;
   background: #0099cc;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
   padding: 0;
+}
+/* line 98, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar[fbw]:before {
+  z-index: -1;
+  color: #0099cc;
 }
 
 /* line 103, ../../../web-html/_assets/sass/page/_header.scss */
@@ -1224,6 +1242,10 @@ a.header-logo em {
   color: #331700;
 }
 /* line 214, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-contact[fbw]:before {
+  color: #ff7400;
+}
+/* line 217, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-contact .header-tools {
   padding: 0 0 0 1em;
   width: 100%;
@@ -1233,39 +1255,43 @@ a.header-logo em {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
 }
-/* line 221, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 224, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-contact .tool {
   color: #331700;
 }
-/* line 223, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 226, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-contact .tool:link, .header-bar-contact .tool:visited, .header-bar-contact .tool:active {
   color: #331700;
 }
-/* line 224, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 227, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-contact .tool:hover, .header-bar-contact .tool:focus {
   color: #FFF;
   background: #331700;
 }
 
-/* line 232, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 235, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search {
   background: #ffffff;
   color: #000;
 }
-/* line 235, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 238, ../../../web-html/_assets/sass/page/_header.scss */
+.header-bar-search[fbw]:before {
+  color: #ffffff;
+}
+/* line 241, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search .tool {
   color: #000;
 }
-/* line 237, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 243, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search .tool:link, .header-bar-search .tool:visited, .header-bar-search .tool:active {
   color: #000;
 }
-/* line 238, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 244, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search .tool:hover, .header-bar-search .tool:focus {
   color: #FFF;
   background: #000;
 }
-/* line 240, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 246, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search form {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
@@ -1284,7 +1310,7 @@ a.header-logo em {
   background: #ffffff;
   color: #000;
 }
-/* line 249, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 255, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
@@ -1297,43 +1323,43 @@ a.header-logo em {
   background: #ffffff;
   color: #000;
 }
-/* line 258, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 264, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input::-webkit-input-placeholder {
   color: #7f7f7f;
   opacity: 1;
 }
-/* line 259, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 265, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input::-moz-placeholder {
   color: #7f7f7f;
   opacity: 1;
 }
-/* line 260, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 266, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:-moz-placeholder {
   color: #7f7f7f;
   opacity: 1;
 }
-/* line 261, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 267, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:-ms-input-placeholder {
   color: #7f7f7f;
   opacity: 1;
 }
-/* line 264, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 270, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:focus::-webkit-input-placeholder {
   opacity: 0;
 }
-/* line 265, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 271, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:focus::-moz-placeholder {
   opacity: 0;
 }
-/* line 266, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 272, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:focus:-moz-placeholder {
   opacity: 0;
 }
-/* line 267, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 273, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-/* line 269, ../../../web-html/_assets/sass/page/_header.scss */
+/* line 275, ../../../web-html/_assets/sass/page/_header.scss */
 .header-bar-search button {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
@@ -1352,7 +1378,7 @@ a.header-logo em {
 * @license http://www.opensource.org/licenses/mit-license.php MIT License
 **/
 /* line 15, ../../../web-html/_assets/sass/page/_footer.scss */
-footer, .no-js body {
+footer, body {
   background: #34495E;
 }
 
@@ -1360,4 +1386,41 @@ footer, .no-js body {
 footer {
   color: #b9c8d8;
   padding: 4px;
+}
+/* line 22, ../../../web-html/_assets/sass/page/_footer.scss */
+footer[fbw]:before {
+  color: #34495E;
+}
+
+/**
+* page/_content.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/* line 14, ../../../web-html/_assets/sass/page/_content.scss */
+.content {
+  color: #000;
+  background: #FFF;
+  padding: 1.5em 0.5em;
+}
+/* line 18, ../../../web-html/_assets/sass/page/_content.scss */
+.content[fbw]:before {
+  color: #FFF;
+}
+
+/* line 22, ../../../web-html/_assets/sass/page/_content.scss */
+.content article {
+  width: 100%;
+  max-width: 41em;
+  margin: 0 auto;
+}
+
+/* line 28, ../../../web-html/_assets/sass/page/_content.scss */
+.content section + section {
+  margin-top: 0;
 }

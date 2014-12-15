@@ -429,8 +429,8 @@ lib.getScrollbarVisible = function()
   }
 /* resize fix */
 	    var $window = $(window);
-	    lib._curWidth = lib.clientWidth();//$window.width();
-	    lib._curHeight = lib.clientHeight();//$window.height();
+	    lib._curWidth = $window.width();
+	    lib._curHeight = $window.height();
 	    lib._oldWidth = lib._curWidth;
 	    lib._oldHeight = lib._curHeight;
 
@@ -438,8 +438,8 @@ lib.getScrollbarVisible = function()
 	    $window.on('resize.olli',
 		function( e )
 		{
-			var _nWidth = lib.clientWidth();//$window.width(),
-				_nHeight= lib.clientHeight();//$window.height();
+			var _nWidth = $window.width(),
+				_nHeight= $window.height();
 
 			if ( lib._curWidth == _nWidth && lib._curHeight == _nHeight )
 			{

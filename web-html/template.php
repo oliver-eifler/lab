@@ -1,12 +1,13 @@
-﻿<?php
+<?php
+
 require_once '/php/faker/autoload.php';
 $faker = Faker\Factory::create('olli');
 $faker->realTextInit('_assets/text/anhalter.txt');
+
 function pageheader()
 {
   $html = "";
-  $html.= "<header class='header page-row text-center'>";
-  $html.=  "<div class='width-wrapper'>";
+  $html.= "<header class='header page-row text-center' fbw='true'>";
   $html.=   "<div id='hcx' class='header-cell hidden'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
   $html.=   "<div id='hc1' class='header-cell'>".menu()."</div>";
@@ -14,11 +15,10 @@ function pageheader()
   $html.=   "<div id='hc3' class='header-cell header-cell-search'>".searchbar()."</div>";
   $html.=   "<div id='contact' class='header-cell space hidden'><button toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
   $html.=   "<div id='search'  class='header-cell space hidden'><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
-  $html.=  "</div>";
-  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden width-wrapper2'>";
+  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden' fbw='true'>";
   $html.=      "<button toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
   $html.=   "</div>";
-  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden width-wrapper2'>";
+  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden' fbw='true'>";
   $html.=      "<button toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
   $html.=   "</div>";
   $html.= "</header>";
@@ -113,41 +113,22 @@ function tools()
   <link rel="stylesheet" type="text/css" href="css/page.css">
   <style type="text/css">
   <!--
-  .content {
-    background:#FFF;
-    padding: 1.5em 0.5em;
-  }
-  .content article
-  {
-    width:100%;
-    max-width:41em;
-    margin: 0 auto;
-  }
-  .content section + section
-  {
-    margin-top: 0;
+  body {
+    background:#f00;
   }
 
-  .test {
-    font-size:2em;
-  }
-
-  .test:hover {
-    color:#f00;
-  }
-  .header {
-  }
   -->
   </style>
 </head>
 
 <body class='page'>
 <?php echo pageheader();?>
-    <div id='content' role="main" class='page-row page-row-expanded content'>
+    <div id='content' role="main" class='fbw page-row page-row-expanded content' fbw='true'>
     <article>
         <h1>Ollis Seite</h1>
+        <h2>for internal use only...</h2>
 <?php
-        for ($i=0;$i<1/*$faker->numberBetween(2,5)*/;$i++)
+        for ($i=0;$i<1;$i++)
         {
             echo "<h2>".$faker->catchPhrase."</h2>";
             for ($j=0;$j<$faker->numberBetween(1,5);$j++)
@@ -158,7 +139,7 @@ function tools()
     </article>
     </div>
 
-<footer class='footer page-row'><ul><li>Made with care by Olli</li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<footer class='footer page-row' fbw='true'><ul><li>Made with care by Olli</li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
 <script src="_assets/js/jquery/jquery-1.11.1.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
 <script src="_assets/js/components/velocity.js"></script>

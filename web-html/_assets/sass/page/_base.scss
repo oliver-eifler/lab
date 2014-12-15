@@ -11,7 +11,7 @@
 *, *:before, *:after {  box-sizing: border-box;}
 
 html,body {
-  margin:0 auto;
+  margin:0;
   padding:0;
   border:0;
   height:100%;
@@ -33,11 +33,9 @@ body {
   line-height:1em;
   width:100%;
   position:relative;
+  max-width: px2em(1920);
+  min-width: 320px;
 }
-header,footer,.content,.width-wrapper {
-  min-width:320px;
-}
-
 /*CLEARFIX*/
 .cf {
     *zoom: 1;
@@ -113,3 +111,18 @@ a:focus,a:visited:focus,button:focus,input:focus {
   text-align:justify;
 }
 
+/* FULL WIDTH BAR */
+[fbw] {
+  position:relative;
+  &:before {
+  	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -9999px;
+	right: 0;
+    color: blue;
+	border-left: 9999px solid;
+	box-shadow: 9999px 0 0;
+  }
+}

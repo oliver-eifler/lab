@@ -81,7 +81,7 @@
         {
                 var $c = $c0,$d=$d0;
                 //Reset
-                var zoom=1.0, width = data.width;
+                var zoom=1.0, width = rwidth($header[0],true);
                 if (width < minWidth)
                     zoom = Math.round(width/minWidth*100)/100;
                 if (_oldzoom != zoom)
@@ -97,8 +97,6 @@
                     return plugin;
                 if (data.bFont == true)
                     cacheData();
-                width = data.xwidth;
-
 
                 var cw = c0w,dw=d0w,
                 space = xw,left = 0;

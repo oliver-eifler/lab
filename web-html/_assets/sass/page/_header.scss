@@ -51,8 +51,6 @@ $menu-hover: $header-link-hover !default;
   padding:0;
   border:0;
   position:relative;
-  border-top:1px solid;
-  border-bottom:1px solid;
   a,button {
     color: $header-link;
     text-decoration:none;
@@ -65,7 +63,9 @@ $menu-hover: $header-link-hover !default;
   .width-wrapper {
     position: relative;
   }
-
+  &[fbw]:before {
+  color: $header-background;
+  }
 }
 .header-cell {
   @include inline-block(middle,center);
@@ -78,8 +78,6 @@ $menu-hover: $header-link-hover !default;
 .noflow .width-wrapper {
   position:absolute;
   width:100%;
-  top:-1px;
-  bottom:-1px;
 }
 
 .header-cell.space {
@@ -91,14 +89,16 @@ $menu-hover: $header-link-hover !default;
   position:absolute;
   width:100%;
   //height:100%;//px2em($header-height);
-  top:-1px;
-  bottom:-1px;
+  top:0px;
+  bottom:0px;
   z-index:100;
   color:$header-color;
   background:$header-background;
-  border-top:1px solid;
-  border-bottom:1px solid;
   padding:0;
+  &[fbw]:before {
+  z-index:-1;
+  color: $header-background;
+  }
 }
 .header-bar.hidden {display:none;}
 
@@ -211,6 +211,9 @@ $bar-link-hover: #FFF;
 .header-bar-contact {
   background: $bar-background;
   color: $bar-color;
+  &[fbw]:before {
+    color: $bar-background;
+  }
   .header-tools {
     padding:0 0 0 px2em(4*$header-item-space);
     width:100%;
@@ -232,6 +235,9 @@ $bar-link-hover: #FFF;
 .header-bar-search {
   background: $bar-background;
   color: $bar-color;
+  &[fbw]:before {
+    color: $bar-background;
+  }
   .tool {
     color: $bar-link;
     &:link,&:visited,&:active  {color: $bar-link;}
