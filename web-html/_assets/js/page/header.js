@@ -67,7 +67,12 @@
             $header.on('click.toggle','button[toggle]',function(e) {
                 var $this = $(this),id = $this.attr('toggle');
                 if (id !== undefined)
-                $(id).toggleClass("hidden");
+                {
+                    var $id = $(id);
+                    $id.toggleClass("hidden");
+                    if (!$id.hasClass("hidden"))
+                        $id.find('input:first').focus();
+                }
                 });
             return plugin;
 
@@ -92,7 +97,7 @@
                     return plugin;
                 if (data.bFont == true)
                     cacheData();
-
+                width = data.xwidth;
 
 
                 var cw = c0w,dw=d0w,

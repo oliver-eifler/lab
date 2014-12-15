@@ -43,19 +43,10 @@ $menu-hover: $header-link-hover !default;
 .header {
   background:$header-background;
   color: $header-color;
-}
-.header {
   font-size: px2em($header-font);
   font-family:$header-font-family;
   display:block;
   min-height:px2em($header-height);
-  ul {
-    list-style: none;
-  }
-
-}
-
-.header {
   margin:0;
   padding:0;
   border:0;
@@ -68,6 +59,13 @@ $menu-hover: $header-link-hover !default;
     &:link,&:visited,&:active  {color: $header-link;text-decoration:none}
     &:hover,&:focus {color:$header-link-hover;text-decoration:none}
   }
+  ul {
+    list-style: none;
+  }
+  .width-wrapper {
+    position: relative;
+  }
+
 }
 .header-cell {
   @include inline-block(middle,center);
@@ -77,6 +75,13 @@ $menu-hover: $header-link-hover !default;
 }
 .header-cell.hidden {position:absolute;z-index:-1;visibility:hidden;}
 .noflow .header-cell {position:absolute;top:50%;transform:translateY(-50%);}
+.noflow .width-wrapper {
+  position:absolute;
+  width:100%;
+  top:-1px;
+  bottom:-1px;
+}
+
 .header-cell.space {
       padding:px2em($header-item-space);
 }

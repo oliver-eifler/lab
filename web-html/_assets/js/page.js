@@ -52,14 +52,22 @@
     }
     function resize(options)
     {
-        var opt = $.extend({},{bFont:true,width:olli._curWidth,height:olli._curHeight,owidth:olli._oldWidth,oheight:olli._oldHeight},options);
+        var opt = $.extend({},{bFont:true,width:olli._curWidth,height:olli._curHeight,owidth:olli._oldWidth,oheight:olli._oldHeight,xwidth:olli.clientWidth(true)},options);
+        if (opt.width < 320)
+        {
+            opt.width = 320;
+            opt.xwidth = 320;
+
+        }
+        $('.width-wrapper').css({"maxWidth":opt.xwidth});
+        $('.width-wrapper2').css({"paddingRight":opt.width-opt.xwidth});
         header.resize(opt);
         footer.resize(opt);
 
         //resize content
         page = olli._curHeight - header.getHeight() - footer.getHeight();
 
-        $('#content').css({'minHeight':page,"maxWidth":olli.clientWidth(true)});
+        $('#content').css({'minHeight':page,"maxWidth":opt.xwidth});
 
     }
 

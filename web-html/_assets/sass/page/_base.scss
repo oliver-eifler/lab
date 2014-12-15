@@ -15,7 +15,6 @@ html,body {
   padding:0;
   border:0;
   height:100%;
-  overflow-x: hidden;
 }
 /*
 html {
@@ -33,10 +32,12 @@ body {
   font-size:100%;
   line-height:1em;
   width:100%;
-  min-width:320px;
-  //max-width:px2em(1920);
   position:relative;
 }
+header,footer,.content,.width-wrapper {
+  min-width:320px;
+}
+
 /*CLEARFIX*/
 .cf {
     *zoom: 1;

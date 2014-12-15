@@ -6,6 +6,7 @@ function pageheader()
 {
   $html = "";
   $html.= "<header class='header page-row text-center'>";
+  $html.=  "<div class='width-wrapper'>";
   $html.=   "<div id='hcx' class='header-cell hidden'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
   $html.=   "<div id='hc1' class='header-cell'>".menu()."</div>";
@@ -13,8 +14,13 @@ function pageheader()
   $html.=   "<div id='hc3' class='header-cell header-cell-search'>".searchbar()."</div>";
   $html.=   "<div id='contact' class='header-cell space hidden'><button toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
   $html.=   "<div id='search'  class='header-cell space hidden'><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
-  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden'><button toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools()."</div>";
-  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden'><button toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar()."</div>";
+  $html.=  "</div>";
+  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden width-wrapper2'>";
+  $html.=      "<button toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
+  $html.=   "</div>";
+  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden width-wrapper2'>";
+  $html.=      "<button toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
+  $html.=   "</div>";
   $html.= "</header>";
   return $html;
 }
@@ -109,12 +115,12 @@ function tools()
   <!--
   .content {
     background:#FFF;
-    padding: 1.5em 0;
+    padding: 1.5em 0.5em;
   }
   .content article
   {
     width:100%;
-    max-width:40em;
+    max-width:41em;
     margin: 0 auto;
   }
   .content section + section
