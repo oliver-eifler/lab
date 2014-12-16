@@ -15,11 +15,14 @@ $footer-color: text-contrast($footer-background);
 footer,body {
   background:$footer-background;
 }
+.header {
+  border-bottom: 1px solid $footer-background;
+}
 
 footer {
   color:$footer-color;
   padding:4px;
-  &[fbw]:before {
+  &[fwb]:before {
   color: $footer-background;
   }
 }

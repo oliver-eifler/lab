@@ -112,7 +112,7 @@ a:focus,a:visited:focus,button:focus,input:focus {
 }
 
 /* FULL WIDTH BAR */
-[fbw] {
+[fwb] {
   position:relative;
   &:before {
   	content: "";
@@ -121,8 +121,8 @@ a:focus,a:visited:focus,button:focus,input:focus {
 	bottom: 0;
 	left: -9999px;
 	right: 0;
-    color: blue;
-	border-left: 9999px solid;
+    color: red;
+	//border-left: 9999px solid;
 	box-shadow: 9999px 0 0;
   }
 }

@@ -64,6 +64,7 @@
             $c0 = $('#hc2');$c1 = $('#contact');
             $d0 = $('#hc3');$d1 = $('#search');
             $header.removeClass('text-center').addClass("noflow");
+            /*
             $header.on('click.toggle','button[toggle]',function(e) {
                 var $this = $(this),id = $this.attr('toggle');
                 if (id !== undefined)
@@ -74,6 +75,7 @@
                         $id.find('input:first').focus();
                 }
                 });
+            */
             return plugin;
 
         }

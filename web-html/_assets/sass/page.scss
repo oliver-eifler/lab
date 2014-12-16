@@ -36,6 +36,7 @@ $rebeccapurple: #663399;
 */
 $header-font-family: 'roboto_condensed',sans-serif;
 $menu-font-family: 'roboto_condensed',sans-serif;
+$sidemenu-font-family: 'roboto_condensed',sans-serif;
 $text-font-family: 'droid_serif',serif;
 $icon-font-family: 'ollicon',sans-seric;
 
@@ -57,5 +58,6 @@ $header-color: text-contrast($header-background);
 @import 'page/fonts';
 @import 'page/header';
 @import 'page/footer';
+@import 'page/sidemenu';
 @import 'page/content';
 

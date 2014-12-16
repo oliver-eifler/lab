@@ -49,8 +49,9 @@ $menu-hover: $header-link-hover !default;
   min-height:px2em($header-height);
   margin:0;
   padding:0;
-  border:0;
   position:relative;
+  z-index:100;
+
   a,button {
     color: $header-link;
     text-decoration:none;
@@ -60,10 +61,7 @@ $menu-hover: $header-link-hover !default;
   ul {
     list-style: none;
   }
-  .width-wrapper {
-    position: relative;
-  }
-  &[fbw]:before {
+  &[fwb]:before {
   color: $header-background;
   }
 }
@@ -95,7 +93,7 @@ $menu-hover: $header-link-hover !default;
   color:$header-color;
   background:$header-background;
   padding:0;
-  &[fbw]:before {
+  &[fwb]:before {
   z-index:-1;
   color: $header-background;
   }
@@ -211,7 +209,7 @@ $bar-link-hover: #FFF;
 .header-bar-contact {
   background: $bar-background;
   color: $bar-color;
-  &[fbw]:before {
+  &[fwb]:before {
     color: $bar-background;
   }
   .header-tools {
@@ -235,7 +233,7 @@ $bar-link-hover: #FFF;
 .header-bar-search {
   background: $bar-background;
   color: $bar-color;
-  &[fbw]:before {
+  &[fwb]:before {
     color: $bar-background;
   }
   .tool {

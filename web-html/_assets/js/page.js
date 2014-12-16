@@ -22,7 +22,8 @@
     lib.vars = lib.vars||{};
     //PRIVAT
     var header = null,
-        footer = null;
+        footer = null,
+        sidemenu = null;;
 
     lib.init = function()
     {
@@ -30,8 +31,29 @@
     }
     function onReady()
     {
+        //INIT Toggle Buttons (show/hide)
+        $('body').on('click.toggle','button[toggle]',function(e) {
+           var $this = $(this),id = $this.attr('toggle');
+           $this.blur();
+           if (id !== undefined)
+           {
+              var $id = $(id),el = $id[0];
+              if (el.olliHook !== undefined && typeof el.olliHook.toggle === 'function')
+              {
+                el.olliHook.toggle();
+              }
+              else
+              {
+                $id.toggleClass("hidden");
+                if (!$id.hasClass("hidden"))
+                  $id.find('input:first').focus();
+              }
+            }
+           });
+
         header = olli.page.header().init();
         footer = olli.page.footer().init();
+        sidemenu = olli.page.sidemenu().init();
         resize();
         WebFont.load({
             custom: {

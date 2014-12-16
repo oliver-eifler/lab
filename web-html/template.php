@@ -1,13 +1,13 @@
 <?php
-
-require_once '/php/faker/autoload.php';
+header("Content-Type: text/html; charset=utf-8");
+require_once 'php/faker/autoload.php';
 $faker = Faker\Factory::create('olli');
 $faker->realTextInit('_assets/text/anhalter.txt');
-
+/*Ü*/
 function pageheader()
 {
   $html = "";
-  $html.= "<header class='header page-row text-center' fbw='true'>";
+  $html.= "<header class='header page-row text-center' fwb='true'>";
   $html.=   "<div id='hcx' class='header-cell hidden'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
   $html.=   "<div id='hc1' class='header-cell'>".menu()."</div>";
@@ -15,10 +15,10 @@ function pageheader()
   $html.=   "<div id='hc3' class='header-cell header-cell-search'>".searchbar()."</div>";
   $html.=   "<div id='contact' class='header-cell space hidden'><button toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
   $html.=   "<div id='search'  class='header-cell space hidden'><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
-  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden' fbw='true'>";
+  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden' fwb='true'>";
   $html.=      "<button toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
   $html.=   "</div>";
-  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden' fbw='true'>";
+  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden' fwb='true'>";
   $html.=      "<button toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
   $html.=   "</div>";
   $html.= "</header>";
@@ -52,6 +52,36 @@ function menu()
   $html.=  "</nav>";
   return $html;
 }
+function sidemenu()
+{
+  $html = "";
+  $html.=  "<aside id='sidemenu' class='sidemenu hidden'>";
+  $html.=    "<ul>";
+  $html.=      "<li><a href='#'>Link1</a></li>";
+  $html.=      "<li><button menu-open='m1'>Submenu1</button>";
+  $html.=        "<ul id='m1'>";
+  $html.=          "<li><button  menu-close='m1'>Back</button></li>";
+  $html.=          "<li><a href='#'>Sub1</a></li>";
+  $html.=          "<li><a href='#'>Sub2</a></li>";
+  $html.=          "<li><a href='#'>Sub3 ganz furchtbar lang</a></li>";
+  $html.=        "</ul>";
+  $html.=      "</li>";
+  $html.=      "<li><button  menu-open='m2'>Submenu2</button>";
+  $html.=        "<ul id='m2'>";
+  $html.=          "<li><button menu-close='m2'>Back</button></li>";
+  $html.=          "<li><a href='#'>Sub1</a></li>";
+  $html.=          "<li><a href='#'>Sub2</a></li>";
+  $html.=          "<li><a href='#'>Sub3</a></li>";
+  $html.=          "<li><a href='#'>Sub4</a></li>";
+  $html.=          "<li><a href='#'>Sub5</a></li>";
+  $html.=        "</ul>";
+  $html.=      "</li>";
+  $html.=      "<li><a href='#'>Link4</a></li>";
+  $html.=      "<li><a href='#'>Link5</a></li>";
+  $html.=    "</ul>";
+  $html.=  "</aside>";
+  return $html;
+}
 function logo()
 {
   $html = "";
@@ -63,9 +93,9 @@ function logo()
 function hamburger()
 {
   $html = "";
-  $html.= "<a href='#' class='tool tool-hamburger'>";
+  $html.= "<button class='tool tool-hamburger' toggle='#sidemenu'>";
   $html.= "<i>menU</i>";
-  $html.= "</a>";
+  $html.= "</button>";
   return $html;
 }
 function searchbar()
@@ -81,6 +111,8 @@ function tools()
 {
   $html = "";
   $html.= "<ul class='header-tools'>";
+  $html.= "<li>".hamburger()."</li>";
+  $html.= "<li><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></li>";
   $html.= "<li><a href='#' class='tool'><i>eMail</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>gitHub</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>Googleplus</i></a></li>";
@@ -91,21 +123,21 @@ function tools()
   $html.= "</ul>";
   return $html;
 }
+header("Content-Type: text/html; charset=utf-8");
 ?>
 <!DOCTYPE HTML>
 <!--[if lte IE 7]><html lang='de' class="no-js ie ie-old"> <![endif]-->
-<!--[if gte IE 8]><html lang='de' class="no-js ie ie-legacy"> <![endif]-->
-<!--[if !IE]-->
+<!--[if IE 8]><html lang='de' class="no-js ie ie-8"> <![endif]-->
+<!--[if IE 9]><html lang='de' class="no-js ie ie-9"> <![endif]-->
+<!--[if !IE]>-->
 <html  lang='de' class="no-js no-ie">
-<!--[endif]-->
+<!--<![endif]-->
 <head>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
   <meta charset='utf-8'/>
-  <meta content='content-type' content='text/html; charset=utf-8'/>
-  <meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=yes'>
   <meta name='format-detection' content='telephone=no'/>
-
   <title>Olli's Lab</title>
   <script src="_assets/js/kickstart/html5shiv.js"></script>
   <script src="_assets/js/esential/webfontloader.js"></script>
@@ -113,17 +145,13 @@ function tools()
   <link rel="stylesheet" type="text/css" href="css/page.css">
   <style type="text/css">
   <!--
-  body {
-    background:#f00;
-  }
-
   -->
   </style>
 </head>
 
 <body class='page'>
 <?php echo pageheader();?>
-    <div id='content' role="main" class='fbw page-row page-row-expanded content' fbw='true'>
+    <div id='content' role="main" class='page-row page-row-expanded content' fwb='true'>
     <article>
         <h1>Ollis Seite</h1>
         <h2>for internal use only...</h2>
@@ -139,13 +167,15 @@ function tools()
     </article>
     </div>
 
-<footer class='footer page-row' fbw='true'><ul><li>Made with care by Olli</li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<footer class='footer page-row' fbw='fwb'><ul><li>Made with care by Olli</li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<?php echo sidemenu();?>
 <script src="_assets/js/jquery/jquery-1.11.1.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
 <script src="_assets/js/components/velocity.js"></script>
 <script src="_assets/js/olli/olli.js"></script>
 <script src="_assets/js/page/header.js"></script>
 <script src="_assets/js/page/footer.js"></script>
+<script src="_assets/js/page/sidemenu.js"></script>
 <script src="_assets/js/page.js"></script>
 <script>
   if (checkBrowser())
