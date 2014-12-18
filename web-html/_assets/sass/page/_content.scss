@@ -22,6 +22,7 @@ $content-color: #000;//text-contrast($footer-background);
   color:$content-color;
   background: $content-background;
   padding: 1.5em 0.5em;
+  position:relative;
   &[fwb]:before {
   color: $content-background;
   }

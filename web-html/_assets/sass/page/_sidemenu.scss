@@ -26,20 +26,33 @@ $sidemenu-height: 48 !default;
 $sidemenu-space: 4 !default; //.25em
 $sidemenu-font: $sidemenu-height/2 !default;
 $sidemenu-font-family: sans-serif !default; //1em
-
+//sidemenu overlay
 .sidemenu {
-  display: inline-block;
-  z-index:1000;
-  position:absolute;
+  display:block; //always hidden
+  position:fixed;
   top:0;
   left:0;
+  width:100%;
   height:100%;
+  overflow:auto;
+  z-index:1000;
+  background:rgba(0,0,0,.5);
+  &.hidden {
+    z-index:-1;
+    display:none;
+  }
+}
+
+
+
+.sidemenu-content {
+  display: inline-block;
+  position:relative;
   color:$sidemenu-color;
   background: $sidemenu-background;
+  min-height:100%;
+  max-width:75%;
   transform: translateX(0%);
-  &.hidden {
-    transform: translateX(-100%);
-  }
 
   a,button {
 

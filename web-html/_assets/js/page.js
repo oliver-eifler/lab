@@ -31,8 +31,10 @@
     }
     function onReady()
     {
-        //INIT Toggle Buttons (show/hide)
-        $('body').on('click.toggle','button[toggle]',function(e) {
+        /*indicate that anything is now under control of olli */
+        $('body').addClass('olli').attr('olli','true').
+        /*INIT Toggle Buttons (show/hide)*/
+        on('click.toggle','*[toggle]',function(e) {
            var $this = $(this),id = $this.attr('toggle');
            $this.blur();
            if (id !== undefined)
@@ -81,15 +83,14 @@
             opt.xwidth = 320;
 
         }
-        $('body').css({'width':opt.xwidth});
+        $('body,header').css({'width':opt.xwidth});
 
 
         header.resize(opt);
         footer.resize(opt);
-
+        $('body').css({'paddingTop':header.getHeight()});
         //resize content
-        page = olli.clientHeight() - header.getHeight() - footer.getHeight();
-
+        page = olli.clientHeight() -  header.getHeight() - footer.getHeight();
         $('#content').css({'minHeight':page});
 
     }

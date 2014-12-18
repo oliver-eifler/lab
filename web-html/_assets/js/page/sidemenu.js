@@ -42,16 +42,32 @@
 
         plugin.getWidth = function() {return elementWidth;}
         plugin.getHeight = function() {return elementHeight;}
-
+        var bodypos,htmlpos;
         plugin.init = function()
         {
             $element = $('#sidemenu');
+            $element.attr('olli','true');
             $element[0].olliHook = plugin;
             return plugin;
         }
         plugin.toggle = function()
         {
             $element.toggleClass('hidden');
+            if ($element.hasClass('hidden'))
+            {
+               $element.scrollTop(0);
+               var scrollTop = parseInt($('#content').css('marginTop'));
+               $('#content').css({'marginTop':0});
+               $('html,body').css({'overflow-y':''});
+               $('html,body').scrollTop(-scrollTop);
+           }
+            else
+            {
+               $element.scrollTop(0);
+               var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
+               $('html,body').css({'overflow-y':'hidden'});
+               $('#content').css({'marginTop':-scrollTop});
+            }
         }
         plugin.resize = function(data)
         {

@@ -19,6 +19,8 @@
     "html5shiv": "~3.7.2",
     "webfontloader": "~1.5.8",
     "velocity": "~1.1.0",
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.2",
+    "jquery1.x": "jquery#1",
+    "jquery": "jquery#latest"
   }
 }

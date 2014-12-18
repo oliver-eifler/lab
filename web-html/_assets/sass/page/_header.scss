@@ -46,11 +46,17 @@ $menu-hover: $header-link-hover !default;
   font-size: px2em($header-font);
   font-family:$header-font-family;
   display:block;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:100;
   min-height:px2em($header-height);
   margin:0;
   padding:0;
-  position:relative;
-  z-index:100;
+
+  width:100%;
+  max-width: px2em(1920);
+  min-width: 320px;
 
   a,button {
     color: $header-link;

@@ -35,6 +35,10 @@ body {
   position:relative;
   max-width: px2em(1920);
   min-width: 320px;
+  &.nsc {
+    overflow:hidden;
+  }
+
 }
 /*CLEARFIX*/
 .cf {

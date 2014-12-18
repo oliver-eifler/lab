@@ -20,9 +20,22 @@ footer,body {
 }
 
 footer {
+  position:relative;
   color:$footer-color;
-  padding:4px;
   &[fwb]:before {
   color: $footer-background;
   }
+  ul {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  li {
+    flex: 0 1 auto;
+  }
+
 }

@@ -55,7 +55,8 @@ function menu()
 function sidemenu()
 {
   $html = "";
-  $html.=  "<aside id='sidemenu' class='sidemenu hidden'>";
+  $html.=  "<div id='sidemenu' class='sidemenu hidden' toggle='#sidemenu'>";
+  $html.=  "<div class='sidemenu-content'>";
   $html.=    "<ul>";
   $html.=      "<li><a href='#'>Link1</a></li>";
   $html.=      "<li><button menu-open='m1'>Submenu1</button>";
@@ -78,8 +79,24 @@ function sidemenu()
   $html.=      "</li>";
   $html.=      "<li><a href='#'>Link4</a></li>";
   $html.=      "<li><a href='#'>Link5</a></li>";
+  $html.=      "<li><button  menu-open='m3'>Extra...</button>";
+  $html.=        "<ul id='m3'>";
+  $html.=          "<li><button menu-close='m3'>Back</button></li>";
+  $html.=          "<li><a href='#'>Sub1</a></li>";
+  $html.=          "<li><a href='#'>Sub2</a></li>";
+  $html.=          "<li><a href='#'>Sub3</a></li>";
+  $html.=          "<li><a href='#'>Sub4</a></li>";
+  $html.=          "<li><a href='#'>Sub5</a></li>";
+  $html.=          "<li><a href='#'>xSub1</a></li>";
+  $html.=          "<li><a href='#'>xSub2</a></li>";
+  $html.=          "<li><a href='#'>xSub3</a></li>";
+  $html.=          "<li><a href='#'>xSub4</a></li>";
+  $html.=          "<li><a href='#'>xSub5</a></li>";
+  $html.=        "</ul>";
+  $html.=      "</li>";
   $html.=    "</ul>";
-  $html.=  "</aside>";
+  $html.=  "</div>";
+  $html.=  "</div>";
   return $html;
 }
 function logo()
@@ -140,7 +157,7 @@ header("Content-Type: text/html; charset=utf-8");
   <meta name='format-detection' content='telephone=no'/>
   <title>Olli's Lab</title>
   <script src="_assets/js/kickstart/html5shiv.js"></script>
-  <script src="_assets/js/esential/webfontloader.js"></script>
+  <script src="_assets/js/components/webfontloader.1.5.10.js"></script>
   <script src="_assets/js/esential/modernizr-custom.js"></script>
   <link rel="stylesheet" type="text/css" href="css/page.css">
   <style type="text/css">
@@ -151,6 +168,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
+    <div id='spacer'></div>
     <div id='content' role="main" class='page-row page-row-expanded content' fwb='true'>
     <article>
         <h1>Ollis Seite</h1>
@@ -167,11 +185,11 @@ header("Content-Type: text/html; charset=utf-8");
     </article>
     </div>
 
-<footer class='footer page-row' fbw='fwb'><ul><li>Made with care by Olli</li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<footer class='footer page-row' fbw='fwb'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli</li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
 <?php echo sidemenu();?>
-<script src="_assets/js/jquery/jquery-1.11.1.js"></script>
+<script src="_assets/js/components/jquery.2.1.3.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
-<script src="_assets/js/components/velocity.js"></script>
+<script src="_assets/js/components/velocity.1.1.0.js"></script>
 <script src="_assets/js/olli/olli.js"></script>
 <script src="_assets/js/page/header.js"></script>
 <script src="_assets/js/page/footer.js"></script>
