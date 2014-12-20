@@ -19,59 +19,66 @@
     }
 }(this, function (lib,olli,$) {
 
-    lib.sidemenu = function()
+    lib.sidemenu = function($element)
     {
         //options.dummy = true;
-        if (lib.sidemenu.obj === null)
-            lib.sidemenu.obj = new sidemenu();
-        return lib.sidemenu.obj;
+        if ($element[0].olliHook === undefined)
+            new sidemenu($element[0]);
+        return $element[0].olliHook;
     };
-    lib.sidemenu.obj = null;
     lib.sidemenu.ver="0.0.1";
     /* sidemenu STUFF */
-    var sidemenu = function()
+    var sidemenu = function(el)
     {
         var plugin = this,
-            $element = null,
+            $menu = null,
+            $overlay = null,
             elementWidth = 0,elementHeight = 0;
 
         function cacheData()
         {
-            elementHeight = $element.outerHeight();
+            elementHeight = $menu.outerHeight();
         }
 
         plugin.getWidth = function() {return elementWidth;}
         plugin.getHeight = function() {return elementHeight;}
         var bodypos,htmlpos;
-        plugin.init = function()
+        function init(element)
         {
-            $element = $('#sidemenu');
-            $element.attr('olli','true');
-            $element[0].olliHook = plugin;
+            $menu = $(element);
+            $overlay = $menu.parent();
+            $menu.attr('olli','true');
+            $menu[0].olliHook = plugin;
+            $overlay.attr('olli','true');
             return plugin;
         }
         plugin.toggle = function()
         {
-            $element.toggleClass('hidden');
-            if ($element.hasClass('hidden'))
+           var v_options,v_anim,visible = !$overlay.hasClass('hidden');
+
+            if (visible)
             {
-               $element.scrollTop(0);
-               var scrollTop = parseInt($('#content').css('marginTop'));
-               $('#content').css({'marginTop':0});
-               $('html,body').css({'overflow-y':''});
-               $('html,body').scrollTop(-scrollTop);
+                v_options = {
+                  duration:250,
+                  easing: "linear",
+                  complete:function(){$menu.scrollTop(0);$overlay.addClass('hidden');lib.enableScroll();}
+                };
+                v_anim = {translateX: ["-100%","0%"]};
            }
             else
             {
-               $element.scrollTop(0);
-               var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
-               $('html,body').css({'overflow-y':'hidden'});
-               $('#content').css({'marginTop':-scrollTop});
+                v_options = {
+                  duration:250,
+                  easing: "linear",
+                  begin:function(){lib.disableScroll();$menu.scrollTop(0);$overlay.removeClass('hidden');}
+                };
+                v_anim = {translateX: ["0%","-100%"]};
             }
+            $menu.velocity(v_anim,v_options);
         }
         plugin.resize = function(data)
         {
-           var width = rwidth($element[0],true);
+           var width = rwidth($menu[0],true);
            elementWidth = width;
            if (data.bFont == true)
                cacheData();
@@ -85,6 +92,7 @@
           return fx((typeof rect.width !== "undefined") ? rect.width:(rect.right - rect.left));
         }
 
+        init(el);
         return plugin;
    }
 return lib;

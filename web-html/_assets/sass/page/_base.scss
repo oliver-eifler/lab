@@ -15,6 +15,7 @@ html,body {
   padding:0;
   border:0;
   height:100%;
+  background-repeat: no-repeat;
 }
 /*
 html {
@@ -28,17 +29,13 @@ background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 */
 body {
-  background:#fff;
+  background:$page-background;
   font-size:100%;
   line-height:1em;
   width:100%;
   position:relative;
   max-width: px2em(1920);
   min-width: 320px;
-  &.nsc {
-    overflow:hidden;
-  }
-
 }
 /*CLEARFIX*/
 .cf {
@@ -119,6 +116,7 @@ a:focus,a:visited:focus,button:focus,input:focus {
 [fwb] {
   position:relative;
   &:before {
+    z-index:-2;
   	content: "";
 	position: absolute;
 	top: 0;
@@ -126,7 +124,7 @@ a:focus,a:visited:focus,button:focus,input:focus {
 	left: -9999px;
 	right: 0;
     color: red;
-	//border-left: 9999px solid;
+	//border-left: 9999px solid red;
 	box-shadow: 9999px 0 0;
   }
 }

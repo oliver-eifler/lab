@@ -46,9 +46,6 @@ $menu-hover: $header-link-hover !default;
   font-size: px2em($header-font);
   font-family:$header-font-family;
   display:block;
-  position:fixed;
-  left:0;
-  top:0;
   z-index:100;
   min-height:px2em($header-height);
   margin:0;
@@ -67,9 +64,26 @@ $menu-hover: $header-link-hover !default;
   ul {
     list-style: none;
   }
+  &[olli] {
+    position:fixed;
+    left:0;
+    top:0;
+  }
+
   &[fwb]:before {
   color: $header-background;
+ }
+  &[fwb]:after {
+   content: "";
+   position: absolute;
+	height: 1px;
+	bottom: 0;
+	left: -9999px;
+	right: 0;
+	border-bottom: 1px solid;
+	box-shadow: 9999px 0 0;
   }
+
 }
 .header-cell {
   @include inline-block(middle,center);
@@ -100,10 +114,19 @@ $menu-hover: $header-link-hover !default;
   background:$header-background;
   padding:0;
   &[fwb]:before {
-  z-index:-1;
-  color: $header-background;
+    color: $header-background;
   }
-}
+  &[fwb]:after {
+   content: "";
+   position: absolute;
+	height: 1px;
+	bottom: 0;
+	left: -9999px;
+	right: 0;
+	border-bottom: 1px solid;
+	box-shadow: 9999px 0 0;
+  }
+ }
 .header-bar.hidden {display:none;}
 
 /*.header*/.logo-hamburger[aria-hidden=true] {display:none;}

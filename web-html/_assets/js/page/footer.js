@@ -46,6 +46,7 @@
         plugin.init = function()
         {
             $footer = $('footer');
+            $footer.attr('olli','true');
             return plugin;
         }
         plugin.resize = function(data)
@@ -54,7 +55,6 @@
            footerWidth = width;
            if (data.bFont == true)
                cacheData();
-
             return plugin;
         }
         function rwidth(e,down)

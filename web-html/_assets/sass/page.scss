@@ -48,8 +48,8 @@ $header-search-font: 24 !default;
 $header-background: #0099cc;
 $header-color: text-contrast($header-background);
 
-
-
+$footer-background: #34495E;
+$page-background: $footer-background;
 @import 'page/normalize';
 //@import 'olli/holygrail';
 /* Base Layout */

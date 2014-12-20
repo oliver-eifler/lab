@@ -22,7 +22,7 @@ $content-color: #000;//text-contrast($footer-background);
   color:$content-color;
   background: $content-background;
   padding: 1.5em 0.5em;
-  position:relative;
+  line-height:1.5;
   &[fwb]:before {
   color: $content-background;
   }
@@ -37,3 +37,20 @@ $content-color: #000;//text-contrast($footer-background);
   {
     margin-top: 0;
   }
+.content h1 {
+  background: #aaa;
+  position:relative;
+  display:block;
+  &:before {
+  	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    color: #aaa;
+    border-radius:4px;
+	box-shadow: -4em 0 0,4em 0 0;
+  }
+
+}

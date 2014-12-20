@@ -55,8 +55,8 @@ function menu()
 function sidemenu()
 {
   $html = "";
-  $html.=  "<div id='sidemenu' class='sidemenu hidden' toggle='#sidemenu'>";
-  $html.=  "<div class='sidemenu-content'>";
+  $html.=  "<div class='sidemenu-overlay hidden' toggle='#sidemenu'>";
+  $html.=  "<div id='sidemenu' class='sidemenu'>";
   $html.=    "<ul>";
   $html.=      "<li><a href='#'>Link1</a></li>";
   $html.=      "<li><button menu-open='m1'>Submenu1</button>";
@@ -168,7 +168,6 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <div id='spacer'></div>
     <div id='content' role="main" class='page-row page-row-expanded content' fwb='true'>
     <article>
         <h1>Ollis Seite</h1>
@@ -185,7 +184,7 @@ header("Content-Type: text/html; charset=utf-8");
     </article>
     </div>
 
-<footer class='footer page-row' fbw='fwb'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli</li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<footer class='footer page-row' fwb='true'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli</li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
 <?php echo sidemenu();?>
 <script src="_assets/js/components/jquery.2.1.3.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>

@@ -27,7 +27,7 @@ $sidemenu-space: 4 !default; //.25em
 $sidemenu-font: $sidemenu-height/2 !default;
 $sidemenu-font-family: sans-serif !default; //1em
 //sidemenu overlay
-.sidemenu {
+.sidemenu-overlay {
   display:block; //always hidden
   position:fixed;
   top:0;
@@ -45,14 +45,14 @@ $sidemenu-font-family: sans-serif !default; //1em
 
 
 
-.sidemenu-content {
+.sidemenu {
   display: inline-block;
   position:relative;
   color:$sidemenu-color;
   background: $sidemenu-background;
   min-height:100%;
   max-width:75%;
-  transform: translateX(0%);
+  transform: translateX(-100%);
 
   a,button {
 

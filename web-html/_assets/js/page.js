@@ -21,9 +21,10 @@
     lib.ver = '0.0.1';
     lib.vars = lib.vars||{};
     //PRIVAT
-    var header = null,
-        footer = null,
-        sidemenu = null;;
+    var header = null,$header = null,
+        footer = null,$footer = null,
+        sidemenu = null,$sidemenu = null,
+        $content = null;
 
     lib.init = function()
     {
@@ -53,9 +54,18 @@
             }
            });
 
-        header = olli.page.header().init();
-        footer = olli.page.footer().init();
-        sidemenu = olli.page.sidemenu().init();
+        header = lib.header().init();
+        footer = lib.footer().init();
+        sidemenu = lib.sidemenu($('#sidemenu'));
+        $content = $('#content');
+        $footer = $('footer');
+        /*Background for overlay*/
+        var fcol = $footer.css("backgroundColor");
+        var ccol = $content.css("backgroundColor");
+        var gradient = 'linear-gradient(to right,'+ccol+','+ccol+')';
+        $('html').css("backgroundColor",fcol);
+        $('html').css("backgroundImage",gradient);
+
         resize();
         WebFont.load({
             custom: {
@@ -91,10 +101,52 @@
         $('body').css({'paddingTop':header.getHeight()});
         //resize content
         page = olli.clientHeight() -  header.getHeight() - footer.getHeight();
-        $('#content').css({'minHeight':page});
+        $content.css({'minHeight':page});
+
+        var scrollTop = parseInt($content.css('marginTop'));
+        if (scrollTop != 0)
+        {
+            var rect = $('footer')[0].getBoundingClientRect();
+            if (rect.bottom < olli.clientHeight())
+            {
+                scrollTop += (olli.clientHeight() - rect.bottom);
+                if (scrollTop <=0)
+                    $content.css({'marginTop':scrollTop});
+            }
+        }
+        //Gradient
+        var stop = $content[0].getBoundingClientRect().bottom;
+        /*
+        var fcol = $footer.css("backgroundColor");
+        var ccol = $content.css("backgroundColor");
+        var gradient = 'linear-gradient(to right,'+ccol+','+ccol+')';
+        $('html').css("backgroundColor",fcol);
+        $('html').css("backgroundImage",gradient);
+        */
+        $('html').css("backgroundSize","100% "+stop+"px");
+
 
     }
-
+    /* used by other page-elements */
+    var scroll_disabled = false;
+    lib.enableScroll = function(bDisable)
+    {
+       if (scroll_disabled == false)
+           return;
+       var scrollTop = parseInt($content.css('marginTop'));
+       $content.css({'marginTop':0});
+       $('html,body').css({'overflow-y':''}).scrollTop(-scrollTop);
+       scroll_disabled = false;
+    }
+    lib.disableScroll = function(bDisable)
+    {
+       if (scroll_disabled == true)
+           return;
+       var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
+       $('html,body').css({'overflow-y':'hidden'});
+       $content.css({'marginTop':-scrollTop});
+       scroll_disabled = true;
+    }
 return lib;
 }));
 /*GLOBAL*/

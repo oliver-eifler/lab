@@ -58,6 +58,7 @@
         plugin.init = function()
         {
             $header = $('header');
+            $header.attr('olli','true');
             $x = $('#hcx');
             $a = $('#hc0');
             $b = $('#hc1');

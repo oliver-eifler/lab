@@ -21,6 +21,7 @@
     "velocity": "~1.1.0",
     "normalize.css": "~3.0.2",
     "jquery1.x": "jquery#1",
-    "jquery": "jquery#latest"
+    "jquery": "jquery#latest",
+    "fastclick": "~1.0.3"
   }
 }
