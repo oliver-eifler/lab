@@ -168,10 +168,14 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <div id='content' role="main" class='page-row page-row-expanded content' fwb='true'>
+    <div id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
     <article>
+     <section class='hgroup'>
         <h1>Ollis Seite</h1>
-        <h2>for internal use only...</h2>
+        <div class='grid'>
+        <div class='big'>for internal use only...</div><div>„<em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em>“</div>
+        </div>
+     </section>
 <?php
         for ($i=0;$i<1;$i++)
         {

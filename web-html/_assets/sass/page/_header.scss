@@ -44,15 +44,16 @@ $menu-hover: $header-link-hover !default;
   background:$header-background;
   color: $header-color;
   font-size: px2em($header-font);
+  line-height:1em;
   font-family:$header-font-family;
   display:block;
   z-index:100;
-  min-height:px2em($header-height);
+  min-height:px2em($header-height,$header-font);
   margin:0;
   padding:0;
 
   width:100%;
-  max-width: px2em(1920);
+  max-width: px2em(1920,$header-font);
   min-width: 320px;
 
   a,button {
@@ -99,7 +100,7 @@ $menu-hover: $header-link-hover !default;
 }
 
 .header-cell.space {
-      padding:px2em($header-item-space);
+      padding:px2em($header-item-space,$header-font);
 }
 .header-bar {
   display:flex;
@@ -135,7 +136,7 @@ $menu-hover: $header-link-hover !default;
 /*.header*/a.header-logo {
   $_f: $header-height - 2*$header-item-space;
   @include inline-block(middle,center);
-  font-size:px2em($_f);
+  font-size:px2em($_f,$header-font);
   padding: px2em(($header-height - $_f)/2,$_f) px2em(2*$header-item-space,$_f);
   border-radius: px2em($header-item-space*2,$_f);
   color: #ffff00;
@@ -166,14 +167,14 @@ $menu-hover: $header-link-hover !default;
   li {
     @include inline-block(middle);
     padding:0;
-    margin:px2em($header-item-space);
+    margin:px2em($header-item-space,$header-font);
     overflow: visible;
     }
   li[aria-hidden=true] {display:none;}
 }
 /* HEADER SEARCH MODULE*/
 .header-cell-search {
-  padding: px2em($header-item-space);
+  padding: px2em($header-item-space,$header-font);
   .tool-search {
     color: $header-search-link;
     border-radius:0;
@@ -186,13 +187,13 @@ $menu-hover: $header-link-hover !default;
   }
 
   form {
-    border-radius: px2em($header-item-space);
+    border-radius: px2em($header-item-space,$header-font);
     overflow:hidden;
   }
   input {
     $_f : $header-search-font;
     font-family: $header-font-family;
-    font-size: px2em($_f);
+    font-size: px2em($_f,$header-font);
     width: px2em(4*($header-item-size + 2*$header-item-space),$_f);
     padding:  px2em($header-item-space,$_f) px2em(2*$header-item-space,$_f);
     border: none;
@@ -214,7 +215,7 @@ $menu-hover: $header-link-hover !default;
 
 .tool {
     $_f : $header-item-size - 4*$header-item-space;
-    font-size: px2em($_f);
+    font-size: px2em($_f,$header-font);
     @include inline-block(middle,center);
     border: none;
     border-radius: px2em($header-item-space,$_f);
@@ -242,7 +243,7 @@ $bar-link-hover: #FFF;
     color: $bar-background;
   }
   .header-tools {
-    padding:0 0 0 px2em(4*$header-item-space);
+    padding:0 0 0 px2em(4*$header-item-space,$header-font);
     width:100%;
     text-align:right;
     flex: 1 1 auto;
@@ -275,7 +276,7 @@ $bar-link-hover: #FFF;
     display:flex;
     align-items:center;
     height:100%;
-    padding: 0 px2em($header-item-space) 0 px2em(5*$header-item-space);
+    padding: 0 px2em($header-item-space,$header-font) 0 px2em(5*$header-item-space,$header-font);
     background: $bar-background;
     color: $bar-color;
   }
@@ -283,7 +284,7 @@ $bar-link-hover: #FFF;
     flex: 1 1 auto;
     $_f : $header-search-font;
     font-family: $header-font-family;
-    font-size: px2em($_f);
+    font-size: px2em($_f,$header-font);
     padding: px2em($header-item-space,$_f) px2em($header-item-space,$_f);
     border: none;
     background: $bar-background;

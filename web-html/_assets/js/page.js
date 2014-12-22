@@ -69,7 +69,7 @@
         resize();
         WebFont.load({
             custom: {
-                families: ['ollicon','roboto_condensed','droid_serif:n4,n7,i4,i7']
+                families: ['ollicon','roboto_condensed:n4,n7,i4,i7']
             },
             fontactive: function(familyName, fvd) {console.log("font: "+familyName+":"+fvd+" loaded..");onFontResize();}
         });

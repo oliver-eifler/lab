@@ -1,0 +1,94 @@
+/**
+* page/_typografie.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/*
+border: 1px solid red 	        box-shadow: inset 0 0 0 -1px red
+border-top: 1px solid red 	    box-shadow: inset 0 1px 0 0 red
+border-right: 1px solid red 	box-shadow: inset -1px 0 0 red
+border-bottom: 1px solid red 	box-shadow: inset 0 -1px 0 0 red
+border-left: 1px solid red 	    box-shadow: inset 1px 0 0 red
+*/
+//#8E44AD, #5535B8, #E74C3C, #34495E, #3498DB, #2ECC71
+@mixin fontSize($size:$base-font,$line:1.5,$base:$base-line-size) {
+    $_fs: $size;
+    $_fh: $_fs*$line;
+    $_lh: $base;
+    @while $_lh < $_fh {
+      $_lh: ($_lh + $base);
+    }
+    font-size: px2em($_fs);
+    line-height: px2em($_lh,$_fs);
+}
+
+
+.content[grid] {
+  background-image:
+  linear-gradient(to top, #eee 1px, transparent 1px);
+  background-size: 100% px2em($base-line-size);
+}
+
+.content * {
+  margin:0;
+}
+
+.content * + * {
+  margin-top: ($base-line-size * 1px);
+}
+.hgroup *,.hgroup * + * {
+  margin-top:0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  //font-family: 'roboto_condensed',sans-serif;
+  margin:0;
+}
+p {
+  margin:0;
+}
+h1,.h1 {
+  @include fontSize($base-font*2);
+}
+h2,.h2 {
+  @include fontSize($base-font*1.5);
+}
+h3,.h3 {
+  @include fontSize($base-font*1.25);
+}
+h4,.h4 {
+  @include fontSize($base-font*1.1);
+}
+h5,h6 {
+  $_f: $base-font;
+  font-size: px2em($_f);
+  line-height: px2em($base-line-size,$_f);
+  //margin-bottom: px2em($line-size,$_f);
+}
+.big {
+  @include fontSize($base-font*1.5,1);
+  font-weight: bold;
+}
+.inset {
+  display:inline-block;
+  float:left;
+  margin:0 1em 0 0;
+  line-height: 1;
+}
+.grid {
+  display:flex;
+  align-items: top;
+  & * {
+    margin:0;
+    padding:0;
+  }
+  & * + * {
+    padding-left: .5em;
+  }
+
+}

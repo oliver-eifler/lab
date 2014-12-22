@@ -37,7 +37,7 @@ $submenu-hover-background: $submenu-color !default;
 user-select: none;
 -ms-touch-action: none;
 font-family: $menu-font-family;
-font-size: px2em($menu-font);
+font-size: px2em($menu-font,$header-font);
 line-height: 1;//px2em($menu-height,$menu-font);
 }
 $_s : px2em($menu-space,$menu-font);

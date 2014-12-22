@@ -8,60 +8,72 @@
 * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
 * @license http://www.opensource.org/licenses/mit-license.php MIT License
 **/
-/* SANS SERIF HEADER/MENU*/
+@mixin font-face($family,$file,$weight:normal,$style:normal) {
+    $filepath: "../fonts/" + $file;
+    @font-face {
+        font-family: "#{$family}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype')/*, url($filepath + ".svg#" + $style-name + "") format('svg')*/;
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+/* roboto */
+$n: "roboto_condensed";
+$f:"RobotoCondensed";
+@include font-face($n,$f + "-Regular");
+@include font-face($n,$f + "-Bold",bold,normal);
+@include font-face($n,$f + "-Italic",normal,italic);
+@include font-face($n,$f + "-BoldItalic",bold,italic);
+/*
+
+
+
+
 @font-face {
-    font-family: 'roboto_condensed';
-    src: url('../fonts/robotocondensed-webfont.woff') format('woff'),
-         url('../fonts/robotocondensed-webfont.ttf') format('truetype');
+    font-family: 'roboto_condensed'; //'roboto_condensedregular'
+    src: url('../fonts/RobotoCondensed-Regular.eot');
+    src: url('../fonts/RobotoCondensed-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Regular.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Regular.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Regular.svg#roboto_condensedregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
-/* SERIF */
 @font-face {
-    font-family: 'droid_serif'; //'droid_serifregular'
-    src: url('../fonts/DroidSerif-webfont.eot');
-    src: url('../fonts/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/DroidSerif-webfont.woff') format('woff'),
-         url('../fonts/DroidSerif-webfont.ttf') format('truetype'),
-         url('../fonts/DroidSerif-webfont.svg#droid_serifregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'droid_serif';//'droid_serifbold'
-    src: url('../fonts/DroidSerif-Bold-webfont.eot');
-    src: url('../fonts/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/DroidSerif-Bold-webfont.woff') format('woff'),
-         url('../fonts/DroidSerif-Bold-webfont.ttf') format('truetype'),
-         url('../fonts/DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
+    font-family: 'roboto_condensed';//'roboto_condensedbold'
+    src: url('../fonts/RobotoCondensed-Bold.eot');
+    src: url('../fonts/RobotoCondensed-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Bold.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Bold.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Bold.svg#roboto_condensedbold') format('svg');
     font-weight: bold;
     font-style: normal;
 
 }
 @font-face {
-    font-family: 'droid_serif';//'droid_serifitalic'
-    src: url('../fonts/DroidSerif-Italic-webfont.eot');
-    src: url('../fonts/DroidSerif-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/DroidSerif-Italic-webfont.woff') format('woff'),
-         url('../fonts/DroidSerif-Italic-webfont.ttf') format('truetype'),
-         url('../fonts/DroidSerif-Italic-webfont.svg#droid_serifitalic') format('svg');
+    font-family: 'roboto_condensed';//'roboto_condenseditalic'
+    src: url('../fonts/RobotoCondensed-Italic.eot');
+    src: url('../fonts/RobotoCondensed-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Italic.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Italic.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Italic.svg#roboto_condenseditalic') format('svg');
     font-weight: normal;
     font-style: italic;
 
 }
 @font-face {
-    font-family: 'droid_serif'; //'droid_serifbold_italic'
-    src: url('../fonts/DroidSerif-BoldItalic-webfont.eot');
-    src: url('../fonts/DroidSerif-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/DroidSerif-BoldItalic-webfont.woff') format('woff'),
-         url('../fonts/DroidSerif-BoldItalic-webfont.ttf') format('truetype'),
-         url('../fonts/DroidSerif-BoldItalic-webfont.svg#droid_serifbold_italic') format('svg');
+    font-family: 'roboto_condensed'; //'roboto_condensedbold_italic'
+    src: url('../fonts/RobotoCondensed-BoldItalic.eot');
+    src: url('../fonts/RobotoCondensed-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-BoldItalic.woff') format('woff'),
+         url('../fonts/RobotoCondensed-BoldItalic.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-BoldItalic.svg#roboto_condensedbold_italic') format('svg');
     font-weight: bold;
     font-style: italic;
 
 }
-
+*/
 
 

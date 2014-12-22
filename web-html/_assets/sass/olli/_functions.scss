@@ -88,7 +88,7 @@
 }
 @function px2em (
   $pixels,
-  $base: 16
+  $base: $base-font
 ) {
 
   // $base could be in em or px (no unit = px).

@@ -34,11 +34,16 @@ $rebeccapurple: #663399;
   z-index: map-get($zindex, header);
 }
 */
-$header-font-family: 'roboto_condensed',sans-serif;
-$menu-font-family: 'roboto_condensed',sans-serif;
-$sidemenu-font-family: 'roboto_condensed',sans-serif;
-$text-font-family: 'droid_serif',serif;
-$icon-font-family: 'ollicon',sans-seric;
+
+$base-font: 18;
+$base-line-size: $base-font*1.5;;
+$base-font-family: 'roboto_condensed', Helvetica, Arial, sans-serif;
+
+$header-font-family: $base-font-family;
+$menu-font-family:  $base-font-family;
+$sidemenu-font-family:  $base-font-family;
+$footer-font-family:  $base-font-family;
+$icon-font-family: 'ollicon',sans-serif;
 
 $header-height: 64 !default; //Hamburger & Logo
 $header-item-size: 48 !default;
@@ -50,10 +55,13 @@ $header-color: text-contrast($header-background);
 
 $footer-background: #34495E;
 $page-background: $footer-background;
+
 @import 'page/normalize';
 //@import 'olli/holygrail';
 /* Base Layout */
 @import 'page/base';
+@import 'page/typografie';
+
 @import 'page/icons';
 @import 'page/fonts';
 @import 'page/header';

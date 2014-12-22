@@ -30,8 +30,10 @@ background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
 */
 body {
   background:$page-background;
-  font-size:100%;
-  line-height:1em;
+  font-family: $base-font-family;
+  line-height:px2em($base-line-size);
+  font-size: px2em($base-font,16);
+
   width:100%;
   position:relative;
   max-width: px2em(1920);

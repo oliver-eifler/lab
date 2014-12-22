@@ -18,24 +18,22 @@ border-left: 1px solid red 	    box-shadow: inset 1px 0 0 red
 //#8E44AD, #5535B8, #E74C3C, #34495E, #3498DB, #2ECC71
 $content-background: #FFF;
 $content-color: #000;//text-contrast($footer-background);
+
 .content {
   color:$content-color;
   background: $content-background;
-  padding: 1.5em 0.5em;
-  line-height:1.5;
+  padding: px2em($base-line-size) 0.5em;
   &[fwb]:before {
   color: $content-background;
   }
+
 }
+
 .content article
   {
     width:100%;
     max-width:41em;
     margin: 0 auto;
-  }
-.content section + section
-  {
-    margin-top: 0;
   }
 .content h1 {
   background: #aaa;
