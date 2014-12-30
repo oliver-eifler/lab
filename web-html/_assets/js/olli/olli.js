@@ -453,6 +453,53 @@ lib.getScrollbarVisible = function()
 	        lib._curHeight = _nHeight;
 		}
 	);
+/* attr stuff */
+ var olliAttr = "data-";
+ var hasAttr = (!window.Element || typeof Element.hasAttribute !== 'function') ?
+    function(el,attr)
+    {
+      return (el.attributes!==undefined && el.attributes[attr]!==undefined);
+    }
+    :function(el,attr)
+    {
+      return el.hasAttribute(attr);
+    }
+ lib.getBoolAttr = function(el,attr)
+ {
+    return hasAttr(el,olliAttr+attr);
+ }
+ lib.setBoolAttr = function(el,attr,value)
+ {
+    var name = olliAttr+attr;
+    if (value != hasAttr(el,name))
+    {
+        if (value)
+            el.setAttribute(name,attr);
+        else
+            el.removeAttribute(name);
+    }
+    return hasAttr(el,olliAttr+attr);
+ }
+ lib.toggleBoolAttr=function(el,attr)
+ {
+   return olli.setBoolAttr(el,attr,!olli.getBoolAttr(el,attr));
+ }
+ lib.hide = function(el)
+ {
+    lib.setBoolAttr(el,"hide",true);
+
+ }
+ lib.show = function(el)
+ {
+    lib.setBoolAttr(el,"hide",false);
+ }
+
+
+
+
+
+
+
 
 return lib;
 }));

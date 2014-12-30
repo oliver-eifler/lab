@@ -1,4 +1,4 @@
-/** MODULE (olli.page.footer)
+/** MODULE (olli.page.content)
 * not reuseable
 **/
 
@@ -19,40 +19,39 @@
     }
 }(this, function (lib,olli,$) {
 
-    lib.footer = function(element)
+    lib.content = function(element)
     {
         //options.dummy = true;
         if (element.olliHook === undefined)
-            element.olliHook = new footer(element);
+            element.olliHook = new content(element);
         return element.olliHook;
     };
-    lib.footer.obj = null;
-    lib.footer.ver="0.0.1";
-    /* footer STUFF */
-    var footer = function(el)
+    lib.content.ver="0.0.1";
+    /* content STUFF */
+    var content = function(el)
     {
         var plugin = this,
-            $footer = null,
-            footerWidth = 0,footerHeight = 0;
+            $content = null,
+            contentWidth = 0,contentHeight = 0;
 
         function cacheData()
         {
-            footerHeight = $footer.outerHeight();
+            contentHeight = $content.outerHeight();
         }
 
-        plugin.getWidth = function() {return footerWidth;}
-        plugin.getHeight = function() {return footerHeight;}
+        plugin.getWidth = function() {return contentWidth;}
+        plugin.getHeight = function() {return contentHeight;}
 
         function init(element)
         {
-            $footer = $(element);
-            $footer.attr('olli','true');
+            $content = $(element);
+            $content.attr('olli','true');
             return plugin;
         }
         plugin.resize = function(data)
         {
-           var width = rwidth($footer[0],true);
-           footerWidth = width;
+           var width = rwidth($content[0],true);
+           contentWidth = width;
            if (data.bFont == true)
                cacheData();
             return plugin;

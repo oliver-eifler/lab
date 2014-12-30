@@ -7,19 +7,19 @@ $faker->realTextInit('_assets/text/anhalter.txt');
 function pageheader()
 {
   $html = "";
-  $html.= "<header class='header page-row text-center' fwb='true'>";
-  $html.=   "<div id='hcx' class='header-cell hidden'>".hamburger()."</div>";
+  $html.= "<header id='header' class='widget header page-row text-center' fwb='true'>";
+  $html.=   "<div id='hcx' class='header-cell' data-hide='true'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
   $html.=   "<div id='hc1' class='header-cell'>".menu()."</div>";
   $html.=   "<div id='hc2' class='header-cell'>".tools()."</div>";
   $html.=   "<div id='hc3' class='header-cell header-cell-search'>".searchbar()."</div>";
-  $html.=   "<div id='contact' class='header-cell space hidden'><button toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
-  $html.=   "<div id='search'  class='header-cell space hidden'><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
-  $html.=   "<div id='contactbar' class='header-bar header-bar-contact hidden' fwb='true'>";
-  $html.=      "<button toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
+  $html.=   "<div id='contact' class='header-cell space' data-hide='true'><button data-toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
+  $html.=   "<div id='search'  class='header-cell space' data-hide='true'><button data-toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
+  $html.=   "<div id='contactbar' class='header-bar header-bar-contact' data-hide='true' fwb='true'>";
+  $html.=      "<button data-toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
   $html.=   "</div>";
-  $html.=   "<div id='searchbar' class='header-bar header-bar-search hidden' fwb='true'>";
-  $html.=      "<button toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
+  $html.=   "<div id='searchbar' class='header-bar header-bar-search' data-hide='true' fwb='true'>";
+  $html.=      "<button data-toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
   $html.=   "</div>";
   $html.= "</header>";
   return $html;
@@ -55,21 +55,22 @@ function menu()
 function sidemenu()
 {
   $html = "";
-  $html.=  "<div class='sidemenu-overlay hidden' toggle='#sidemenu'>";
-  $html.=  "<div id='sidemenu' class='sidemenu'>";
-  $html.=    "<ul>";
+  $html.=  "<div class='widget page-overlay' data-hide='true'>";
+  $html.=  "<div id='sidepanel' class='sidepanel'>";
+  $html.=    "<div class='sidepanel-bar'>";
+  $html.=      "<button class='tool tool-back'><i>&lt;</i></button><div class='title'><i>Lab</i> Menu</div>";
+  $html.=    "</div>";
+  $html.=    "<ul class='sidepanel-menu'>";
   $html.=      "<li><a href='#'>Link1</a></li>";
-  $html.=      "<li><button menu-open='m1'>Submenu1</button>";
-  $html.=        "<ul id='m1'>";
-  $html.=          "<li><button  menu-close='m1'>Back</button></li>";
+  $html.=      "<li><button data-toggle='#spanel1'>Submenu1</button>";
+  $html.=        "<ul id='spanel1'>";
   $html.=          "<li><a href='#'>Sub1</a></li>";
   $html.=          "<li><a href='#'>Sub2</a></li>";
   $html.=          "<li><a href='#'>Sub3 ganz furchtbar lang</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
-  $html.=      "<li><button  menu-open='m2'>Submenu2</button>";
-  $html.=        "<ul id='m2'>";
-  $html.=          "<li><button menu-close='m2'>Back</button></li>";
+  $html.=      "<li><button data-toggle='#spanel2'>Submenu2</button>";
+  $html.=        "<ul id='spanel2'>";
   $html.=          "<li><a href='#'>Sub1</a></li>";
   $html.=          "<li><a href='#'>Sub2</a></li>";
   $html.=          "<li><a href='#'>Sub3</a></li>";
@@ -79,9 +80,8 @@ function sidemenu()
   $html.=      "</li>";
   $html.=      "<li><a href='#'>Link4</a></li>";
   $html.=      "<li><a href='#'>Link5</a></li>";
-  $html.=      "<li><button  menu-open='m3'>Extra...</button>";
-  $html.=        "<ul id='m3'>";
-  $html.=          "<li><button menu-close='m3'>Back</button></li>";
+  $html.=      "<li><button data-toggle='#spanel3'>Extra...</button>";
+  $html.=        "<ul id='spanel3'>";
   $html.=          "<li><a href='#'>Sub1</a></li>";
   $html.=          "<li><a href='#'>Sub2</a></li>";
   $html.=          "<li><a href='#'>Sub3</a></li>";
@@ -94,6 +94,7 @@ function sidemenu()
   $html.=          "<li><a href='#'>xSub5</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
+  $html.=      "<li><a href='#'>Link6</a></li>";
   $html.=    "</ul>";
   $html.=  "</div>";
   $html.=  "</div>";
@@ -110,7 +111,7 @@ function logo()
 function hamburger()
 {
   $html = "";
-  $html.= "<button class='tool tool-hamburger' toggle='#sidemenu'>";
+  $html.= "<button class='tool tool-hamburger' data-toggle='#sidepanel'>";
   $html.= "<i>menU</i>";
   $html.= "</button>";
   return $html;
@@ -128,8 +129,11 @@ function tools()
 {
   $html = "";
   $html.= "<ul class='header-tools'>";
+  // <<< Debug
   $html.= "<li>".hamburger()."</li>";
-  $html.= "<li><button toggle='#searchbar' class='tool tool-search'><i>S</i></button></li>";
+  $html.= "<li><button data-toggle='#searchbar' class='tool tool-search'><i>S</i></button></li>";
+  $html.= "<li><button data-toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></li>";
+  // >>> Debug
   $html.= "<li><a href='#' class='tool'><i>eMail</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>gitHub</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>Googleplus</i></a></li>";
@@ -168,13 +172,22 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <div id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
+    <main id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
     <article>
      <section class='hgroup'>
         <h1>Ollis Seite</h1>
         <div class='grid'>
-        <div class='big'>for internal use only...</div><div>„<em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em>“</div>
+           <div class='big'>for internal use only...</div><div>„<em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em>“</div>
         </div>
+     </section>
+     <section>
+     <h2>Color Table</h2>
+     <div class='test test-1'></div>
+     <div class='test test-2'></div>
+     <div class='test test-3'></div>
+     <div class='test test-4'></div>
+     <div class='test test-5'></div>
+     <div class='test test-6'></div>
      </section>
 <?php
         for ($i=0;$i<1;$i++)
@@ -186,10 +199,11 @@ header("Content-Type: text/html; charset=utf-8");
 ?>
 
     </article>
-    </div>
+    </main>
 
-<footer class='footer page-row' fwb='true'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli</li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+<footer id='footer' class='widget footer page-row' fwb='true'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
 <?php echo sidemenu();?>
+<script src="_assets/js/components/fastclick.js"></script>
 <script src="_assets/js/components/jquery.2.1.3.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
 <script src="_assets/js/components/velocity.1.1.0.js"></script>
@@ -197,6 +211,7 @@ header("Content-Type: text/html; charset=utf-8");
 <script src="_assets/js/page/header.js"></script>
 <script src="_assets/js/page/footer.js"></script>
 <script src="_assets/js/page/sidemenu.js"></script>
+<script src="_assets/js/page/content.js"></script>
 <script src="_assets/js/page.js"></script>
 <script>
   if (checkBrowser())

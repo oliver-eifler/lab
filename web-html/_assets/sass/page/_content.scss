@@ -52,3 +52,17 @@ $content-color: #000;//text-contrast($footer-background);
   }
 
 }
+// Palettes TEST
+// Change a value to see the palette adjusted
+.test-1 { @include draw-palette($header-background) }
+.test-2 { @include draw-palette($footer-background) }
+.test-3 { @include draw-palette($sidemenu-background) }
+.test-4 { @include draw-palette(gold) }
+.test-5 { @include draw-palette(#888888) }
+.test-6 { @include draw-palette(#008800) }
+// Demo styles
+.test {
+  margin-top:0;
+  height: px2rem(2*$base-line-size);
+}
+

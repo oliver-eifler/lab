@@ -18,6 +18,7 @@ $legacy-support-for-mozilla : false;
 //@import "compass/reset";
 @import 'olli/functions';
 @import 'olli/breakpoints';
+@import 'olli/color';
 
 /*config*/
 $zindex: (
@@ -36,13 +37,14 @@ $rebeccapurple: #663399;
 */
 
 $base-font: 18;
-$base-line-size: $base-font*1.5;;
-$base-font-family: 'roboto_condensed', Helvetica, Arial, sans-serif;
+$base-line-size: $base-font*1.5;
+$base-font-family: 'roboto condensed', Helvetica, Arial, sans-serif;
+$widget-font-family: $base-font-family;
 
-$header-font-family: $base-font-family;
-$menu-font-family:  $base-font-family;
-$sidemenu-font-family:  $base-font-family;
-$footer-font-family:  $base-font-family;
+$header-font-family: $widget-font-family;
+$menu-font-family:  $widget-font-family;
+$sidemenu-font-family:  $widget-font-family;
+$footer-font-family:  $widget-font-family;
 $icon-font-family: 'ollicon',sans-serif;
 
 $header-height: 64 !default; //Hamburger & Logo
@@ -60,7 +62,7 @@ $page-background: $footer-background;
 //@import 'olli/holygrail';
 /* Base Layout */
 @import 'page/base';
-@import 'page/typografie';
+@import 'page/typography';
 
 @import 'page/icons';
 @import 'page/fonts';

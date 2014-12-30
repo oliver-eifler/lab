@@ -19,16 +19,13 @@
     }
 }
 /* roboto */
-$n: "roboto_condensed";
+$n: "roboto condensed";
 $f:"RobotoCondensed";
 @include font-face($n,$f + "-Regular");
 @include font-face($n,$f + "-Bold",bold,normal);
 @include font-face($n,$f + "-Italic",normal,italic);
 @include font-face($n,$f + "-BoldItalic",bold,italic);
 /*
-
-
-
 
 @font-face {
     font-family: 'roboto_condensed'; //'roboto_condensedregular'

@@ -1,0 +1,204 @@
+
+/**
+ * Function defining the difference between 2 colors
+ *
+ * @param {Color} $a - first color
+ * @param {Color} $b - second color
+ *
+ * @return {Map}  The color operations to do in order to find $b from $a where keys are the color functions to apply and values are the values to pass to these functions
+ */
+@function color-diff($a, $b) {
+  $sat: saturation($a) - saturation($b);
+  $lig:  lightness($a) -  lightness($b);
+  $fn-sat: if($sat > 0, 'desaturate', 'saturate');
+  $fn-lig: if($lig > 0, 'darken', 'lighten');
+
+  @return (
+    adjust-hue: -(hue($a) - hue($b)),
+    #{$fn-sat}: abs($sat),
+    #{$fn-lig}: abs($lig)
+  );
+}
+
+/**
+ * Compute the diff for each color from the initial palette
+ *
+ * @param {Map} $palette - palette
+ *
+ * @requires {function} color-diff
+ *
+ * @return {List} list of diffs
+ */
+@function palette-diff($palette) {
+  $base: map-get($palette, base);
+  $colors: map-get($palette, colors);
+
+  $diffs: ();
+
+  @each $color in $colors {
+    $diffs: append($diffs, color-diff($base, $color));
+  }
+
+  @return $diffs;
+}
+
+/**
+ * Initial palette used to define the diff between the base color and each color from the palette. There can be as many colors as one wants.
+ *
+ * @Link https://ton.twitter.com/i/ton/data/dm/487926326314418176/487926326322823168/8M2k8xOp.png Initial color palette
+ *
+* @type Map
+@color-primary:   #AA3939;	/Main Primary color/
+@color-primary-1: #FFAAAA;
+@color-primary-2: #EE8F8F;
+@color-primary-3: #CC5F5F;
+@color-primary-4: #AA3939;	/Main Primary color/
+@color-primary-5: #881B1B;
+@color-primary-6: #660707;
+@color-primary-7: #550000;
+*/
+$base-palette: (
+  base: #AA3939,
+  colors: #FFAAAA #EE8F8F #CC5F5F #AA3939 #881B1B #660707 #550000
+) !default;
+
+/**
+ * Palette diffs
+ * Same length as colors key from map-palette
+ *
+ * @type List
+ */
+$palette-diffs: palette-diff($base-palette);
+
+/**
+ * Apply differences returned from `color-diff` function to a color in order to retrieve the second color
+ *
+ * @param {Color} $color - color to transform
+ * @param {Map} $diff - diff map
+ *
+ * @return {Color} transformed color
+ */
+@function apply-diff($color, $diff) {
+  // We call the $key (function),
+  // passing the $color and the $value as parameters
+  // e.g. `call(adjust-hue, #BADA55, 42)`
+  @each $key, $value in $diff {
+    $color: call($key, $color, $value);
+  }
+
+  @return $color;
+}
+
+/**
+ * Create a palette from a base color
+ *
+ * @param {Color} $base-color - base color for the palette
+ *
+ * @requires {function} palette-diff
+ * @requires {function} apply-diff
+ * @requires {variable} $base-palette
+ *
+ * @return {List} list of colors
+ */
+@function create-palette($base-color) {
+  $colors: ();
+  $_g: if(red($base-color)==green($base-color) and red($base-color)==blue($base-color),1,0);
+  @if $_g == 1
+  {
+    $base-color: change-color($base-color,$blue:0,$green:0);
+  }
+
+  @each $diff in $palette-diffs {
+    $colors: append($colors, apply-diff($base-color, $diff));
+  }
+
+  @if $_g == 1
+  {
+    @for $i from 1 through length($colors) {
+      $color: nth($colors, $i);
+      $colors: set-nth($colors, $i,grayscale($color));
+    }
+  }
+  @return $colors;
+}
+
+/**
+ * Create a list of colors from the base color
+ * then turn in into a map with explicit keys
+ *
+ * @param {Color} $base-color - base color for the palette
+ *
+ * @requires {function} create-palette
+ *
+ * @return {Map}
+ */
+@function palette($base-color) {
+  $colors: create-palette($base-color);
+  $keys: 'lightest' 'lighter' 'light' 'base' 'dark' 'darker' 'darkest';
+  $palette: ();
+
+  @for $i from 1 through min(length($colors), length($keys)) {
+    $palette: map-merge($palette, (nth($keys, $i): nth($colors, $i)));
+  }
+
+  @return $palette;
+}
+
+/**
+ * Create and apply a palette
+ *
+ * @param {Color} $base-color - base color
+ *
+ * @requires {function} create-palette
+ */
+@mixin draw-palette($base-color) {
+  $palette: create-palette($base-color);
+  $length: length($palette);
+  $color-stops: append((), nth($palette, 1), comma);
+  $stop-size: 100 / $length;
+
+  @for $i from 1 through $length {
+    $color: nth($palette, $i);
+
+    @if $i > 1 {
+      $color-stops: append($color-stops, $color $stop-size * ($i - 1) * 1%);
+    }
+
+    $color-stops: append($color-stops, $color $stop-size * $i * 1%);
+  }
+
+  background: nth($palette, ceil($length / 2));
+  background: linear-gradient(to right, $color-stops);
+}
+@function savemapget($list,$key) {
+  @if not map-has-key($list, $key) {
+    @warn "`#{inspect($list)}` doesn't seem to have a key named `#{key}`.";
+  }
+  @return map-get($list,$key);
+}
+
+@function lightest($palette) {@return savemapget($palette,'lightest');}
+@function lighter($palette) {@return savemapget($palette,'lighter');}
+@function light($palette) {@return savemapget($palette,'light');}
+@function darkest($palette) {@return savemapget($palette,'darkest');}
+@function darker($palette) {@return savemapget($palette,'darker');}
+@function dark($palette) {@return savemapget($palette,'dark');}
+@function base($palette) {@return savemapget($palette,'base');}
+
+/*color theme functions */
+@mixin widget-color($widget-color,$type:'base')
+{
+$pal: palette($widget-color);
+$_background: savemapget($pal,$type);
+$_color: text-contrast($_background);
+$_link: contrast($_background);
+$_link-hover-background: lighter($pal);
+$_link-hover: text-contrast($_link-hover-background);
+  color: $_color;
+  background: $_background;
+  a,button,.tool {
+    color: $_link;
+    &:link,&:visited,&:active  {color: $_link;text-decoration:none}
+    &:hover,&:focus {color:$_link-hover;background:$_link-hover-background;text-decoration:none}
+  }
+}

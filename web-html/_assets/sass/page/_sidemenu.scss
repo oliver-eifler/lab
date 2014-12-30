@@ -16,18 +16,18 @@ border-bottom: 1px solid red 	box-shadow: inset 0 -1px 0 0 red
 border-left: 1px solid red 	    box-shadow: inset 1px 0 0 red
 */
 //#8E44AD, #5535B8, #E74C3C, #34495E, #3498DB, #2ECC71
+$panel-font: 16 !default;
 $sidemenu-background: #643771 !default;
-$sidemenu-color: text-contrast($sidemenu-background) !default;
-$sidemenu-link: $sidemenu-color !default;
-$sidemenu-link-hover: $sidemenu-background !default;
-$sidemenu-link-hover-background: $sidemenu-color !default;
 
 $sidemenu-height: 48 !default;
 $sidemenu-space: 4 !default; //.25em
 $sidemenu-font: $sidemenu-height/2 !default;
 $sidemenu-font-family: sans-serif !default; //1em
 //sidemenu overlay
-.sidemenu-overlay {
+.page-overlay {
+  font-size:px2em($panel-font);
+  line-height: 1;
+
   display:block; //always hidden
   position:fixed;
   top:0;
@@ -36,8 +36,8 @@ $sidemenu-font-family: sans-serif !default; //1em
   height:100%;
   overflow:auto;
   z-index:1000;
-  background:rgba(0,0,0,.5);
-  &.hidden {
+  background:rgba(#000,.75);
+  &[data-hide] {
     z-index:-1;
     display:none;
   }
@@ -45,64 +45,123 @@ $sidemenu-font-family: sans-serif !default; //1em
 
 
 
-.sidemenu {
+.sidepanel {
   display: inline-block;
   position:relative;
-  color:$sidemenu-color;
-  background: $sidemenu-background;
   min-height:100%;
+  width:20em;
   max-width:75%;
   transform: translateX(-100%);
+  //box-shadow:.5em 0 .5em $sidemenu-background;
+  ul,li {
+    list-style: none;
+    padding:0;
+    margin:0;
+  }
+  @include widget-color($sidemenu-background);
 
+  .title {
+    $_f : $header-item-size - 4*$header-item-space;
+    font-size: px2em($_f,$panel-font);
+    padding:0 px2em($header-item-space,$panel-font)
+  }
+
+}
+.sidepanel-bar {
+  display: flex;
+  align-items:center;
+  min-height:px2em($header-height,$panel-font);
+  position:relative;
+  @include widget-color($sidemenu-background,"dark");
+  &:after {
+    content:"";
+    position:absolute;
+    left:0;right:0;
+    bottom:0;height:1px;
+    border-bottom:1px solid;
+    opacity:.5;
+  }
+
+  .tool {
+    flex: 0 0 1;
+  }
+
+}
+
+//min-height: px2em($header-height,$_f);
+
+.sidepanel-menu
+{
+  $_f : $sidemenu-font;
+  $_s : px2em($sidemenu-space,$panel-font);
+  $_w : px2em($_f,$_f);
+  $_h : px2em(round(($sidemenu-height - $_f)/2),$_f);
+
+  display:block;
+  position:relative;
   a,button {
-
-    $_f : $sidemenu-font;
-    $_s : px2em($sidemenu-space,$_f);
-    $_w : px2em($_f+$sidemenu-space,$_f);
-    $_h : px2em(round(($sidemenu-height - $_f)/2),$_f);
-
-
-    color: $sidemenu-link;
     text-decoration:none;
     display:block;
+    width:100%;
     font-family: $sidemenu-font-family;
-    font-size: px2em($_f);
-    line-height:1;//px2em($sidemenu-height,$sidemenu-font);
+    font-size: px2em($_f,$panel-font);
+    line-height:1;
     padding: $_h $_w;
-    &:link,&:visited,&:active  {color: $sidemenu-link;text-decoration:none}
-    &:hover,&:focus {color:$sidemenu-link-hover;background:$sidemenu-link-hover-background;text-decoration:none}
   }
   button {
-    width:100%;
     position:relative;
-    &[menu-open]:after,&[menu-close]:after {
+    &:before {
 	  font-family: 'ollicon';
 	  //speak: none;
 	  font-style: normal;
 	  font-weight: normal;
 	  font-variant: normal;
 	  text-transform: none;
-	  line-height: 1;
+      line-height: 1;
 	  /* Better Font Rendering =========== */
 	  -webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
-      position:absolute;top:50%;transform:translateY(-50%);
-      z-index:100;
-    }
-    &[menu-open]:after {
       content: ">";
-      right: $_s;
+      transform: rotate(0deg);
+      transition: transform .5s linear;
+      display:inline-block;
     }
-    &[menu-close]:after {
-      content: "<";
-      left: $_s;
+    &[data-open]:before {
+      transform: rotate(-270deg);
     }
-
   }
 
-  ul {
-    list-style: none;
-    padding:0;
-    margin:0;
-  }
+  li > ul {
+    display:none;
+    position:relative;
+    a,button {
+    padding-left: 2*$_w;
+    }
+    &:before {
+      position:absolute;
+      content: "";
+      z-index:-1;
+      height:100%;
+      left: $_w;
+      right:$_w;
+      border-bottom:1px solid;
+      opacity:.5;
+    }
+
+    /*
+    &:before,&:after {
+      position:absolute;
+      content: "";
+      z-index:-1;
+      height:1px;
+      left: $_w;
+      right:$_w;
+      border-bottom:1px solid;
+    }
+    &:after {
+      bottom:0;
+    }
+    */
+ }
+
 }

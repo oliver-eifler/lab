@@ -19,17 +19,16 @@
     }
 }(this, function (lib,olli,$) {
 
-    lib.header = function()
+    lib.header = function(element)
     {
-        //options.dummy = true;
-        if (lib.header.obj === null)
-            lib.header.obj = new header();
-        return lib.header.obj;
+        if (element.olliHook === undefined)
+            element.olliHook = new header(element);
+        return element.olliHook;
+
     };
-    lib.header.obj = null;
     lib.header.ver="0.0.1";
     /* HEADER STUFF */
-    var header = function()
+    var header = function(el)
     {
         var plugin = this,
             _oldzoom = 1.0,
@@ -55,9 +54,9 @@
         plugin.getWidth = function() {return headerWidth;}
         plugin.getHeight = function() {return headerHeight;}
 
-        plugin.init = function()
+        function init(element)
         {
-            $header = $('header');
+            $header = $(element);
             $header.attr('olli','true');
             $x = $('#hcx');
             $a = $('#hc0');
@@ -65,18 +64,6 @@
             $c0 = $('#hc2');$c1 = $('#contact');
             $d0 = $('#hc3');$d1 = $('#search');
             $header.removeClass('text-center').addClass("noflow");
-            /*
-            $header.on('click.toggle','button[toggle]',function(e) {
-                var $this = $(this),id = $this.attr('toggle');
-                if (id !== undefined)
-                {
-                    var $id = $(id);
-                    $id.toggleClass("hidden");
-                    if (!$id.hasClass("hidden"))
-                        $id.find('input:first').focus();
-                }
-                });
-            */
             return plugin;
 
         }
@@ -106,13 +93,20 @@
 
                 if (aw + bw + c0w + d0w <= width)
                 {
-                  $x.addClass("hidden");
-                  $b.removeClass("hidden").css({'left':aw});
+                  //$x.addClass("hidden");
+                  //$b.removeClass("hidden").css({'left':aw});
+                  olli.hide($x[0]);
+                  olli.show($b[0]);
+                  $b.css({'left':aw});
                 }
                 else
                 {
-                  $x.removeClass("hidden");
-                  $b.addClass("hidden").css({'left':0});
+                  //$x.removeClass("hidden");
+                  //$b.addClass("hidden").css({'left':0});
+
+                  olli.show($x[0]);
+                  olli.hide($b[0]);
+                  $b.css({'left':0});
                   left = xw;
                 }
                 //Logo Left
@@ -121,29 +115,29 @@
 
              if (left+aw+c0w+d0w <=width)
                 {
-                  $d1.addClass("hidden").css({'right':0});
-                  $d0.removeClass("hidden").css({'right':0});
+                  olli.hide($d1[0]);$d1/*.addClass("hidden")*/.css({'right':0});
+                  olli.show($d0[0]);$d0/*.removeClass("hidden")*/.css({'right':0});
                   $d =$d0;
                   dw = d0w;
                 }
                 else
                 {
-                  $d0.addClass("hidden").css({'right':0});
-                  $d1.removeClass("hidden").css({'right':0});
+                  olli.hide($d0[0]);$d0/*.addClass("hidden")*/.css({'right':0});
+                  olli.show($d1[0]);$d1/*.removeClass("hidden")*/.css({'right':0});
                   $d =$d1;
                   dw = d1w;
                 }
                 if (left+aw+c0w+dw <=width)
                 {
-                  $c1.addClass("hidden").css({'right':0});
-                  $c0.removeClass("hidden").css({'right':dw});
+                  olli.hide($c1[0]);$c1/*.addClass("hidden")*/.css({'right':0});
+                  olli.show($c0[0]);$c0/*.removeClass("hidden")*/.css({'right':dw});
                   $c =$c0;
                   cw = c0w;
                 }
                 else
                 {
-                  $c0.addClass("hidden").css({'right':0});
-                  $c1.removeClass("hidden").css({'right':dw});
+                  olli.hide($c0[0]);$c0/*.addClass("hidden")*/.css({'right':0});
+                  olli.show($c1[0]);$c1/*.removeClass("hidden")*/.css({'right':dw});
                   $c =$c1;
                   $cx = $c0;
                   cw = c1w;
@@ -158,8 +152,7 @@
                //return ((typeof rect.width !== "undefined") ? rect.width:(rect.right - rect.left));
                return fx((typeof rect.width !== "undefined") ? rect.width:(rect.right - rect.left));
             }
-
-        return plugin;
+        return init(el);
         }
 return lib;
 }));

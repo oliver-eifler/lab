@@ -19,19 +19,19 @@
     }
 }(this, function (lib,olli,$) {
 
-    lib.sidemenu = function($element)
+    lib.sidepanel = function(element)
     {
         //options.dummy = true;
-        if ($element[0].olliHook === undefined)
-            new sidemenu($element[0]);
-        return $element[0].olliHook;
+        if (element.olliHook === undefined)
+            element.olliHook = new sidepanel(element);
+        return element.olliHook;
     };
-    lib.sidemenu.ver="0.0.1";
-    /* sidemenu STUFF */
-    var sidemenu = function(el)
+    lib.sidepanel.ver="0.0.1";
+    /* sidepanel STUFF */
+    var sidepanel = function(el)
     {
         var plugin = this,
-            $menu = null,
+            $panel = null,
             $overlay = null,
             elementWidth = 0,elementHeight = 0;
 
@@ -45,40 +45,64 @@
         var bodypos,htmlpos;
         function init(element)
         {
-            $menu = $(element);
-            $overlay = $menu.parent();
-            $menu.attr('olli','true');
-            $menu[0].olliHook = plugin;
+            $panel = $(element);
+            $overlay = $panel.parent();
+            $panel.attr('olli','true');
             $overlay.attr('olli','true');
+              //Overwrite body data-toggle event
+              $panel.on('click.panel',false);
+              $panel.on('click.panel','button[data-toggle]',function(e) {
+              var $this = $(this),id = $this.attr('data-toggle'),$id=$(id);
+              $this.blur();
+              if (id !== undefined)
+              {
+                var open = olli.getBoolAttr($id[0],"open");
+                $id.velocity((!open) ?"slideDown":"slideUp", { duration: 500 });
+                olli.toggleBoolAttr($this[0],"open");
+                olli.toggleBoolAttr($id[0],"open");
+              }
+              return false;
+           });
+           $panel.find('.tool-back').on('click.panel',plugin.toggle);
             return plugin;
+        }
+        function olliToggle()
+        {
+
+
+
+
+
         }
         plugin.toggle = function()
         {
-           var v_options,v_anim,visible = !$overlay.hasClass('hidden');
+           var v_options,v_anim,visible = !olli.getBoolAttr($overlay[0],"hide");
 
             if (visible)
             {
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  complete:function(){$menu.scrollTop(0);$overlay.addClass('hidden');lib.enableScroll();}
+                  complete:function(){$panel.scrollTop(0);olli.setBoolAttr($overlay[0],"hide",true);lib.enableScroll();}
                 };
                 v_anim = {translateX: ["-100%","0%"]};
+                $overlay[0].removeAttribute("data-toggle");
            }
             else
             {
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  begin:function(){lib.disableScroll();$menu.scrollTop(0);$overlay.removeClass('hidden');}
+                  begin:function(){lib.disableScroll();$panel.scrollTop(0);olli.setBoolAttr($overlay[0],"hide",false);}
                 };
                 v_anim = {translateX: ["0%","-100%"]};
             }
-            $menu.velocity(v_anim,v_options);
+            $panel.velocity(v_anim,v_options);
+            $overlay[0].setAttribute("data-toggle","#"+$panel[0].getAttribute('id'));
         }
         plugin.resize = function(data)
         {
-           var width = rwidth($menu[0],true);
+           var width = rwidth($panel[0],true);
            elementWidth = width;
            if (data.bFont == true)
                cacheData();
@@ -92,8 +116,7 @@
           return fx((typeof rect.width !== "undefined") ? rect.width:(rect.right - rect.left));
         }
 
-        init(el);
-        return plugin;
+        return init(el);
    }
 return lib;
 }));

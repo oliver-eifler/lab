@@ -23,8 +23,8 @@
     //PRIVAT
     var header = null,$header = null,
         footer = null,$footer = null,
-        sidemenu = null,$sidemenu = null,
-        $content = null;
+        sidepanel = null,$sidepanel = null,
+        content=null,$content = null;
 
     lib.init = function()
     {
@@ -33,10 +33,11 @@
     function onReady()
     {
         /*indicate that anything is now under control of olli */
-        $('body').addClass('olli').attr('olli','true').
+        FastClick.attach(document.body);
+        $('body').addClass('olli').attr('olli','true')
         /*INIT Toggle Buttons (show/hide)*/
-        on('click.toggle','*[toggle]',function(e) {
-           var $this = $(this),id = $this.attr('toggle');
+        .on('click.toggle','*[data-toggle]',function(e) {
+           var $this = $(this),id = $this.attr('data-toggle');
            $this.blur();
            if (id !== undefined)
            {
@@ -47,18 +48,21 @@
               }
               else
               {
-                $id.toggleClass("hidden");
-                if (!$id.hasClass("hidden"))
+                if (!olli.toggleBoolAttr($id[0],"hide"))
                   $id.find('input:first').focus();
               }
             }
            });
 
-        header = lib.header().init();
-        footer = lib.footer().init();
-        sidemenu = lib.sidemenu($('#sidemenu'));
         $content = $('#content');
-        $footer = $('footer');
+        $header = $('#header');
+        $sidepanel = $('#sidepanel');
+        $footer = $('#footer');
+
+        header = lib.header($header[0]);
+        footer = lib.footer($footer[0]);
+        sidepanel = lib.sidepanel($sidepanel[0]);
+        content = lib.content($content[0]);
         /*Background for overlay*/
         var fcol = $footer.css("backgroundColor");
         var ccol = $content.css("backgroundColor");
@@ -69,7 +73,7 @@
         resize();
         WebFont.load({
             custom: {
-                families: ['ollicon','roboto_condensed:n4,n7,i4,i7']
+                families: ['ollicon','roboto condensed:n4,n7,i4,i7']
             },
             fontactive: function(familyName, fvd) {console.log("font: "+familyName+":"+fvd+" loaded..");onFontResize();}
         });

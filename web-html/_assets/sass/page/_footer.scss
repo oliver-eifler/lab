@@ -12,16 +12,13 @@
 $footer-font: 16 !default;//1em
 $footer-font-family: sans-serif !default; //1em
 $footer-background: #34495E !default;
-$footer-color: mix(#FFFFFF,$footer-background,50%);
-$footer-color: text-contrast($footer-background);
 $footer-item-space: 4 !default; //.25em
-footer {
+.footer {
   font-size: px2em($footer-font);
   line-height:1em;
   font-family:$footer-font-family;
+  @include widget-color($footer-background);
 
-  background:$footer-background;
-  color:$footer-color;
   &[fwb]:before {
   color: $footer-background;
   }
