@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'ollicon';
-	src:url('../fonts/ollicon.eot?a0006');
-	src:url('../fonts/ollicon.eot?#iefixa0006') format('embedded-opentype'),
-		url('../fonts/ollicon.woff?a0006') format('woff'),
-		url('../fonts/ollicon.ttf?a0006') format('truetype'),
-		url('../fonts/ollicon.svg?a0006#ollicon') format('svg');
+	src:url('../fonts/ollicon.eot?a0007');
+	src:url('../fonts/ollicon.eot?#iefixa0007') format('embedded-opentype'),
+		url('../fonts/ollicon.woff?a0007') format('woff'),
+		url('../fonts/ollicon.ttf?a0007') format('truetype'),
+		url('../fonts/ollicon.svg?a0007#ollicon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -25,19 +25,19 @@ i,.icon {
   speak:none;
 }
 .icon-small {
-  font-size: .75em;
+  font-size: 62.5%;
 }
 
 .icon-menu:before {
 	content: "\e600";
 }
-.icon-invader:before {
+.icon-grid:before {
 	content: "\e601";
 }
-.icon-cool:before {
+.icon-Invader:before {
 	content: "\e602";
 }
-.icon-grid:before {
+.icon-cool:before {
 	content: "\e603";
 }
 .icon-share:before {
@@ -45,4 +45,7 @@ i,.icon {
 }
 .icon-contact:before {
 	content: "\e605";
+}
+.icon-spinner1:before {
+	content: "\e606";
 }

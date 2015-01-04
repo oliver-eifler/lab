@@ -17,63 +17,68 @@ $header-item-size: 48 !default;
 $header-item-space: 4 !default; //.25em
 
 $header-background: #0099cc !default;
-$header-color: darken($header-background,25%) !default;
+$pal: palette($header-background);
+$contact: #FF8825;
+
+$colors-normal: getColors($header-background);
+$colors-logo: map-merge($colors-normal, (link:#FFFF00));
+$colors-contact: getColors($contact);
+$colors-search: getColors(#FFFFFF,true);
+/*
+$header-color: text-contrast($header-background) !default;
 $header-hilight: #FFF !default;
 $header-link: $header-color !default;
 $header-link-hover: #FFF !default;
-
+*/
 $header-search-size: 48 !default;
 $header-search-font: 24 !default;
-$header-search-background: #ffffff;
-$header-search-color: #000;
-$header-search-hilight: #FFF;
-$header-search-link: $header-search-color;
-$header-search-link-hover: #FFF;
+$header-search-background: savemapget($colors-search,'background');
+$header-search-color: savemapget($colors-search,'color');
+$header-search-link: savemapget($colors-search,'color');
 
 $menu-font-family: $header-font-family !default; //1em
 $menu-height: $header-item-size !default;
 $menu-space: $header-item-space !default;
-$menu-background: $header-background !default;
-$menu-color: $header-color !default;
-$menu-hover: $header-link-hover !default;
+$menu-background: savemapget($colors-normal,'background');
+$menu-color: savemapget($colors-normal,'color');
+$menu-hover: savemapget($colors-normal,'link-hover');
 
 /** DDMENU */
 @import 'page/ddmenu';
 /*#header#*/
-.header {
-  background:$header-background;
-  color: $header-color;
-  font-size: px2em($header-font);
-  line-height:1;
-
-  font-family:$header-font-family;
-  display:block;
+#header-wrapper {
   z-index:100;
-  min-height:px2em($header-height,$header-font);
-  margin:0;
-  padding:0;
-
-  width:100%;
-  max-width: px2em(1920,$header-font);
-  min-width: 320px;
-
-  a,button {
-    color: $header-link;
-    text-decoration:none;
-    &:link,&:visited,&:active  {color: $header-link;text-decoration:none}
-    &:hover,&:focus {color:$header-link-hover;text-decoration:none}
-  }
-  ul {
-    list-style: none;
-  }
   &[olli] {
     position:fixed;
     left:0;
     top:0;
   }
+}
+
+.header {
+  font-size: px2em($header-font);
+  line-height:1;
+  font-family:$header-font-family;
+  max-width: px2em($page-width,$header-font);
+  margin:0 auto;
+  position:relative;
+  display:block;
+  min-height:px2em($header-height,$header-font);
+  padding:0;
+
+
+ @include setWidgetColors($colors-normal);
+  ul {
+    list-style: none;
+  }
+  text-align:center;
+  &[olli] {
+    text-align:left;
+  }
 
   &[fwb]:before {
-  color: $header-background;
+  color: savemapget($colors-normal,'background');
+  background-color: savemapget($colors-normal,'background');
  }
   &[fwb]:after {
    content: "";
@@ -85,12 +90,26 @@ $menu-hover: $header-link-hover !default;
 	border-bottom: 1px solid;
 	box-shadow: 9999px 0 0;
   }
+  .tool-logo {
+    $_f : $header-height - 2*$header-item-space;
+    display:table-cell;
+    //font-size: ($_f)*1px;
+    font-size: px2em($_f,$header-font);
+    border-radius: px2em(2*$header-item-space,$_f);
+    padding: 0 px2em(2*$header-item-space,$_f);
+    color: savemapget($colors-logo,'link');
+    text-shadow:px2em($header-item-space,$_f) px2em($header-item-space,$_f) px2em($header-item-space,$_f) rgba(0,0,0,0.4);
+    height:px2em($header-height,$_f);
+    &:link,&:visited,&:active  {color: savemapget($colors-logo,'link');}
+
+  }
 
 }
 .header-cell {
   @include inline-block(middle,center);
   margin:0;
   padding:0;
+  z-index:10; /* zwecks header-border */
   border:none;
 }
 .header-cell[data-hide] {position:absolute;z-index:-1;visibility:hidden;}
@@ -108,15 +127,14 @@ $menu-hover: $header-link-hover !default;
   align-items:center;
   position:absolute;
   width:100%;
-  //height:100%;//px2em($header-height);
   top:0px;
   bottom:0px;
   z-index:100;
-  color:$header-color;
-  background:$header-background;
   padding:0;
+  @include setWidgetColors($colors-normal);
   &[fwb]:before {
-    color: $header-background;
+  color: savemapget($colors-normal,'background');
+  background-color: savemapget($colors-normal,'background');
   }
   &[fwb]:after {
    content: "";
@@ -130,36 +148,6 @@ $menu-hover: $header-link-hover !default;
   }
  }
 .header-bar[data-hide] {display:none;}
-
-/*.header*/.logo-hamburger[aria-hidden=true] {display:none;}
-
-/* HEADR LOGO */
-/*.header*/a.header-logo {
-  $_f: $header-height - 2*$header-item-space;
-  @include inline-block(middle,center);
-  font-size:px2em($_f,$header-font);
-  padding: px2em(($header-height - $_f)/2,$_f) px2em(2*$header-item-space,$_f);
-  border-radius: px2em($header-item-space*2,$_f);
-  color: #ffff00;
-  text-shadow:px2em($header-item-space,$_f) px2em($header-item-space,$_f) px2em($header-item-space,$_f) rgba(0,0,0,0.4);
-  max-height:px2em($header-height,$_f);
-
-
-  &:link,&:visited,&:active  {color: #ffff00;}
-  &:hover,&:focus {color:$header-link-hover;background:$header-color;}
-  .logo-lab,
-  .logo-text {
-    @include inline-block(middle,center);
-  }
-  .logo-lab {
-  }
-  .logo-text {
-  }
-  em {
-    position:absolute;
-    left:-9999px;
-  }
-}
 
 /*.header*/.header-tools {
   @include inline-block(middle,center);
@@ -196,8 +184,8 @@ $menu-hover: $header-link-hover !default;
     $_f : $header-search-font;
     font-family: $header-font-family;
     font-size: px2em($_f,$header-font);
+    line-height:1.5;
     width: px2em(4*($header-item-size + 2*$header-item-space),$_f);
-    padding:  px2em($header-item-space,$_f) px2em(2*$header-item-space,$_f);
     padding:  0 px2em(2*$header-item-space,$_f);
     border: none;
     &::-webkit-input-placeholder {color: mix($header-search-color,$header-search-background,50%);opacity:1;}
@@ -206,73 +194,36 @@ $menu-hover: $header-link-hover !default;
     &:-ms-input-placeholder {color: mix($header-search-color,$header-search-background,50%);opacity:1;}
   }
   input:focus {
-    background:none;
     &::-webkit-input-placeholder {opacity:0;}
     &::-moz-placeholder {opacity:0;}
     &:-moz-placeholder {opacity:0;}
     &:-ms-input-placeholder {opacity:0;}
   }
-  input:focus ~ .tool-search {}
-
 }
 
-.tool {
-    $_f : $header-item-size - 4*$header-item-space;
-    font-size: px2em($_f,$header-font);
-    @include inline-block(middle,center);
-    border: none;
-    border-radius: px2em($header-item-space,$_f);
-    padding: px2em(2*$header-item-space,$_f) px2em(2*$header-item-space,$_f);
-    margin:0;
-    color: $header-color;
-    &:hover,&:focus {background: $header-color;}
-    em {
-      position:absolute;
-      left:-9999px;
-    }
-  }
-
-$bar-color: #582800;
-$bar-background: #ff7400;
-$bar-color: text-contrast($bar-background);
-
-$bar-hilight: #FFF;
-$bar-link: $bar-color;
-$bar-link-hover: #FFF;
 .header-bar-contact {
-  background: $bar-background;
-  color: $bar-color;
+ @include setWidgetColors($colors-contact);
   &[fwb]:before {
-    color: $bar-background;
-  }
+  color: savemapget($colors-contact,'background');
+  background-color: savemapget($colors-contact,'background');
+ }
   .header-tools {
     padding:0 0 0 px2em(4*$header-item-space,$header-font);
     width:100%;
     text-align:right;
     flex: 1 1 auto;
   }
-
-  .tool {
-    color: $bar-link;
-    &:link,&:visited,&:active  {color: $bar-link;}
-    &:hover,&:focus {color:$bar-link-hover;background:$bar-color}
-  }
 }
-$bar-background: #ffffff;
-$bar-color: #000;
-$bar-hilight: #FFF;
-$bar-link: $bar-color;
-$bar-link-hover: #FFF;
+
 .header-bar-search {
-  background: $bar-background;
-  color: $bar-color;
+$bar-background: savemapget($colors-search,'background');
+$bar-color: savemapget($colors-search,'color');
+
+ @include setWidgetColors($colors-search);
+
   &[fwb]:before {
-    color: $bar-background;
-  }
-  .tool {
-    color: $bar-link;
-    &:link,&:visited,&:active  {color: $bar-link;}
-    &:hover,&:focus {color:$bar-link-hover;background:$bar-color}
+  color: savemapget($colors-search,'background');
+  background-color: savemapget($colors-search,'background');
   }
   form {
     flex: 1 1 auto;

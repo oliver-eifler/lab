@@ -29,17 +29,20 @@ border-left: 1px solid red 	    box-shadow: inset 1px 0 0 red
 }
 
 
-.content[grid] {
+section[grid] {
   background-image:
   linear-gradient(to top, #eee 1px, transparent 1px);
   background-size: 100% px2rem($base-line-size);
 }
-
-.content * {
+p {
   margin:0;
 }
 
-.content * + * {
+section * {
+  margin:0;
+}
+
+section * + * {
   margin-top: ($base-line-size * 1px);
   margin-top: px2rem($base-line-size);
 }
@@ -48,6 +51,12 @@ border-left: 1px solid red 	    box-shadow: inset 1px 0 0 red
 }
 .no-gap {
   margin-top:0;
+}
+.large {
+  $_f : (3*$base-line-size) / 1.2;
+  font-size: ($_f)*1px;
+  font-size: px2rem($_f);
+  line-height: 1.2;
 }
 
 h1,.h1 {

@@ -58,6 +58,7 @@
         {
             $header = $(element);
             $header.attr('olli','true');
+            $header.parent().attr('olli','true');
             $x = $('#hcx');
             $a = $('#hc0');
             $b = $('#hc1');

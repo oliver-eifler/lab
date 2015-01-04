@@ -59,7 +59,7 @@
 */
 $base-palette: (
   base: #AA3939,
-  colors: #FFAAAA #EE8F8F #CC5F5F #AA3939 #881B1B #660707 #550000
+  colors: #FFAAAA #EE8F8F #CC5F5F #AA3939 #881B1B #660707 #550000 adjust-hue(#AA3939, 180deg)
 ) !default;
 
 /**
@@ -134,7 +134,7 @@ $palette-diffs: palette-diff($base-palette);
  */
 @function palette($base-color) {
   $colors: create-palette($base-color);
-  $keys: 'lightest' 'lighter' 'light' 'base' 'dark' 'darker' 'darkest';
+  $keys: 'lightest' 'lighter' 'light' 'base' 'dark' 'darker' 'darkest' 'alternate';
   $palette: ();
 
   @for $i from 1 through min(length($colors), length($keys)) {
@@ -186,6 +186,68 @@ $palette-diffs: palette-diff($base-palette);
 @function base($palette) {@return savemapget($palette,'base');}
 
 /*color theme functions */
+@function getPanelColors($palette,$type:'base') /*5 color theme for sidemenu */
+{
+  $_background: savemapget($palette,$type);
+  $_color: text-contrast($_background);
+  $_link: contrast($_background);
+  $_link-hover-background: lighter($palette);
+  $_link-hover: text-contrast($_link-hover-background);
+
+  $colors:(
+    background: $_background,
+    color: $_color,
+    link: $_link,
+    link-hover: $_link-hover,
+    link-hover-background: $_link-hover-background
+  );
+  @return $colors;
+}
+@function getBarColors($palette,$type:'base') /*2 color theme for header & Footer */
+{
+  $_background: savemapget($palette,$type);
+  $_color: text-contrast($_background);
+  $_link: $_color;
+  $_link-hover-background: $_color;
+  $_link-hover: contrast($_link-hover-background);
+
+  $colors:(
+    background: $_background,
+    color: $_color,
+    link: $_link,
+    link-hover: $_link-hover,
+    link-hover-background: $_link-hover-background
+  );
+  @return $colors;
+}
+
+@function getColors($color,$hc:false) /*High Contrast colors theme for search-boxes */
+{
+  $_background: $color;
+  $_color: if($hc,contrast($_background),text-contrast($_background));
+  $_link: $_color;
+  $_link-hover-background: $_color;
+  $_link-hover: contrast($_link-hover-background);
+
+  $colors:(
+    background: $_background,
+    color: $_color,
+    link: $_link,
+    link-hover: $_link-hover,
+    link-hover-background: $_link-hover-background
+  );
+  @return $colors;
+}
+@mixin setWidgetColors($colors)
+{
+  color: savemapget($colors,'color');
+  background: savemapget($colors,'background');
+  a,button,.tool {
+    color: savemapget($colors,'link');
+    &:link,&:visited,&:active  {color: savemapget($colors,'link');text-decoration:none}
+    &:hover,&:focus {color:savemapget($colors,'link-hover');background:savemapget($colors,'link-hover-background');text-decoration:none}
+  }
+}
 @mixin widget-color($widget-color,$type:'base')
 {
 $pal: palette($widget-color);

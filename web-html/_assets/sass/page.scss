@@ -39,7 +39,19 @@ $rebeccapurple: #663399;
 $base-font: 18;
 $base-line-size: $base-font*1.5;
 $base-font-family: 'roboto condensed', Helvetica, Arial, sans-serif;
+$page-width:1920;
+
 $widget-font-family: $base-font-family;
+$widget-font: 16;
+$widget-item-size: 48;
+$widget-item-space: 4; //.25em
+
+$widget-background: #ff0000;
+$widget-color: text-contrast($widget-background);
+$widget-link: $widget-color;
+$widget-link-hover-background: $widget-color;
+$widget-link-hover: contrast($widget-link-hover-background);
+
 
 $header-font-family: $widget-font-family;
 $menu-font-family:  $widget-font-family;

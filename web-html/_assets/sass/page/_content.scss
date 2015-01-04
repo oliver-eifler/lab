@@ -22,19 +22,60 @@ $content-color: #000;//text-contrast($footer-background);
 .content {
   color:$content-color;
   background: $content-background;
-  padding: px2em($base-line-size) 0.5em;
   &[fwb]:before {
   color: $content-background;
   }
+}
+.hero,.hero50 {
+  height:100%;
+  width:100%;
+  display:table;
+  background:#000;//url(../img/welpe.jpg) no-repeat center center fixed;
+  background-size:cover;
+  color:#fff;
 
+  article {
+  }
+}
+.hero50 {
+  height:50%;
+}
+.hero-wrapper {
+  display:table-cell;
+  vertical-align:middle;
 }
 
-.content article
-  {
+section {
+  padding: ($base-line-size)*1px 0;
+  padding: px2rem($base-line-size) 0;
+}
+
+section article
+{
     width:100%;
     max-width:41em;
     margin: 0 auto;
+    padding:0 .5em;
+}
+
+ul.vlist {
+  list-style: none;
+  @include inline-block(middle,center);
+  li {
+    @include inline-block(middle,center);
   }
+}
+.content .tool {
+  $_f : (2*$base-line-size) / 1.5;
+  font-size: ($_f)*1px;
+  font-size: px2rem($_f);
+  line-height: 1.5;
+  width: (2*$base-line-size)*1px;
+  width: px2rem(2*$base-line-size);
+  padding:0;
+  text-align:center;
+}
+
 .content h1 {
   background: #aaa;
   position:relative;
@@ -65,4 +106,47 @@ $content-color: #000;//text-contrast($footer-background);
   margin-top:0;
   height: px2rem(2*$base-line-size);
 }
+/* HERO Headers */
+.welpe {
+  background:url(../img/welpe.jpg) no-repeat center center fixed;
+  background-size:auto 100%; //Old IE
+  background-size:cover;
+  color:#ff0;
+  text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000,2px -2px 0px #000000,
+                -2px 0px 0px #000000, 2px 0px 0px #000000,
+                -2px 2px 0px #000000, 0px 2px 0px #000000,2px 2px 0px #000000;
+  h1 {
+   margin-bottom: (4*$base-line-size * 1px);
+   margin-bottom: px2rem(4*$base-line-size);
+  }
 
+  .tool {
+    $_f : (4*$base-line-size) / 1.5;
+    font-size: ($_f)*1px;
+    font-size: px2rem($_f);
+    line-height: 1.5;
+    width: (4*$base-line-size)*1px;
+    width: px2rem(4*$base-line-size);
+    padding:0;
+    text-align:center;
+    color: $header-background;
+    text-decoration:none;
+    &:link,&:visited,&:active  {color: $header-background;text-decoration:none}
+    &:hover,&:focus {color:#fff;background:none;text-decoration:none}
+    em {
+      position:absolute;
+      left:-9999px;
+    }
+
+
+  }
+}
+.pult {
+  background:url(../img/pult.jpg) no-repeat center center fixed;
+  background-size:auto 100%; //Old IE
+  background-size:cover;
+  color:#fff;
+  text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000,2px -2px 0px #000000,
+                -2px 0px 0px #000000, 2px 0px 0px #000000,
+                -2px 2px 0px #000000, 0px 2px 0px #000000,2px 2px 0px #000000;
+}

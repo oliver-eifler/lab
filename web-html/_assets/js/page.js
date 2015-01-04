@@ -24,7 +24,8 @@
     var header = null,$header = null,
         footer = null,$footer = null,
         sidepanel = null,$sidepanel = null,
-        content=null,$content = null;
+        content=null,$content = null,
+        $gap = null;
 
     lib.init = function()
     {
@@ -54,6 +55,7 @@
             }
            });
 
+        $gap = $('#gap');
         $content = $('#content');
         $header = $('#header');
         $sidepanel = $('#sidepanel');
@@ -64,6 +66,7 @@
         sidepanel = lib.sidepanel($sidepanel[0]);
         content = lib.content($content[0]);
         /*Background for overlay*/
+
         var fcol = $footer.css("backgroundColor");
         var ccol = $content.css("backgroundColor");
         var gradient = 'linear-gradient(to right,'+ccol+','+ccol+')';
@@ -97,7 +100,7 @@
             opt.xwidth = 320;
 
         }
-        $('body,header').css({'width':opt.xwidth});
+        $('body,#header-wrapper').css({'width':opt.xwidth});
 
 
         header.resize(opt);
@@ -107,7 +110,7 @@
         page = olli.clientHeight() -  header.getHeight() - footer.getHeight();
         $content.css({'minHeight':page});
 
-        var scrollTop = parseInt($content.css('marginTop'));
+        var scrollTop = parseInt($gap.css('marginTop'));
         if (scrollTop != 0)
         {
             var rect = $('footer')[0].getBoundingClientRect();
@@ -115,20 +118,12 @@
             {
                 scrollTop += (olli.clientHeight() - rect.bottom);
                 if (scrollTop <=0)
-                    $content.css({'marginTop':scrollTop});
+                    $gap.css({'marginTop':scrollTop});
             }
         }
         //Gradient
-        var stop = $content[0].getBoundingClientRect().bottom;
-        /*
-        var fcol = $footer.css("backgroundColor");
-        var ccol = $content.css("backgroundColor");
-        var gradient = 'linear-gradient(to right,'+ccol+','+ccol+')';
-        $('html').css("backgroundColor",fcol);
-        $('html').css("backgroundImage",gradient);
-        */
+        var stop = $footer[0].getBoundingClientRect().top-1;
         $('html').css("backgroundSize","100% "+stop+"px");
-
 
     }
     /* used by other page-elements */
@@ -137,8 +132,8 @@
     {
        if (scroll_disabled == false)
            return;
-       var scrollTop = parseInt($content.css('marginTop'));
-       $content.css({'marginTop':0});
+       var scrollTop = parseInt($gap.css('marginTop'));
+       $gap.css({'marginTop':0});
        $('html,body').css({'overflow-y':''}).scrollTop(-scrollTop);
        scroll_disabled = false;
     }
@@ -148,7 +143,7 @@
            return;
        var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
        $('html,body').css({'overflow-y':'hidden'});
-       $content.css({'marginTop':-scrollTop});
+       $gap.css({'marginTop':-scrollTop});
        scroll_disabled = true;
     }
 return lib;

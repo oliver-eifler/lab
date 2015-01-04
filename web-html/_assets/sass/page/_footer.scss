@@ -13,14 +13,20 @@ $footer-font: 16 !default;//1em
 $footer-font-family: sans-serif !default; //1em
 $footer-background: #34495E !default;
 $footer-item-space: 4 !default; //.25em
+
+/*Widget Colors*/
+$colors-normal: getBarColors(palette($footer-background));
+
 .footer {
   font-size: px2em($footer-font);
   line-height:1em;
   font-family:$footer-font-family;
-  @include widget-color($footer-background);
+  max-width: px2em($page-width,$footer-font);
+  margin: 0 auto;
 
+  @include setWidgetColors($colors-normal);
   &[fwb]:before {
-  color: $footer-background;
+  color: savemapget($colors-normal,'background');
   }
   ul {
     display:flex;

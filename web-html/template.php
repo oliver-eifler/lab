@@ -7,14 +7,15 @@ $faker->realTextInit('_assets/text/anhalter.txt');
 function pageheader()
 {
   $html = "";
-  $html.= "<header id='header' class='widget header page-row text-center' fwb='true'>";
+  $html.="<div id='header-wrapper'>";
+  $html.= "<header id='header' class='widget header' fwb='true'>";
   $html.=   "<div id='hcx' class='header-cell' data-hide='true'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
   $html.=   "<div id='hc1' class='header-cell'>".menu()."</div>";
   $html.=   "<div id='hc2' class='header-cell'>".tools()."</div>";
   $html.=   "<div id='hc3' class='header-cell header-cell-search'>".searchbar()."</div>";
-  $html.=   "<div id='contact' class='header-cell space' data-hide='true'><button data-toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></div>";
-  $html.=   "<div id='search'  class='header-cell space' data-hide='true'><button data-toggle='#searchbar' class='tool tool-search'><i>S</i></button></div>";
+  $html.=   "<div id='contact' class='header-cell space' data-hide='true'><button data-toggle='#contactbar' class='tool tool-contact'><i>Contact</i></button></div>";
+  $html.=   "<div id='search'  class='header-cell space' data-hide='true'><button data-toggle='#searchbar' class='tool tool-search'><i>Search</i></button></div>";
   $html.=   "<div id='contactbar' class='header-bar header-bar-contact' data-hide='true' fwb='true'>";
   $html.=      "<button data-toggle='#contactbar' class='tool tool-back'><i>&lt;</i></button>".tools();
   $html.=   "</div>";
@@ -22,6 +23,8 @@ function pageheader()
   $html.=      "<button data-toggle='#searchbar' class='tool tool-back'><i>&lt;</i></button>".searchbar();
   $html.=   "</div>";
   $html.= "</header>";
+  $html.="</div>";
+  $html.="<div id='gap'></div>";
   return $html;
 }
 function menu()
@@ -103,7 +106,7 @@ function sidemenu()
 function logo()
 {
   $html = "";
-  $html.= "<a class='header-logo' href='#' title='Ollis LAB'>";
+  $html.= "<a class='tool tool-logo' href='#' title='Ollis LAB'>";
   $html.=   "<i>Ollis lab</i>";
   $html.= "</a>";
   return $html;
@@ -129,11 +132,6 @@ function tools()
 {
   $html = "";
   $html.= "<ul class='header-tools'>";
-  // <<< Debug
-  $html.= "<li>".hamburger()."</li>";
-  $html.= "<li><button data-toggle='#searchbar' class='tool tool-search'><i>S</i></button></li>";
-  $html.= "<li><button data-toggle='#contactbar' class='tool tool-contact'><i class='icon-contact'></i></button></li>";
-  // >>> Debug
   $html.= "<li><a href='#' class='tool'><i>eMail</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>gitHub</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>Googleplus</i></a></li>";
@@ -172,15 +170,22 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <main id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
-    <article>
-     <section class='hgroup'>
-        <h1>Ollis Seite</h1>
-        <div class='grid'>
-           <div class='big'>for internal use only...</div><div>„<em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em>“</div>
-        </div>
-     </section>
-     <section>
+    <section class='hero50 pult'><div class='hero-wrapper'>
+     <article>
+      <h1 class='text-center large'>Ollis Seite</h1>
+      <div class='hgroup grid'>
+           <div class='big'>for internal use only...</div>
+           <div><em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em></div>
+      </div>
+      </article></div>
+    </section>
+    <section id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
+      <article>
+       <ul class='hgroup vlist'>
+         <li><?php echo hamburger();?></li>
+         <li><button data-toggle='#searchbar' class='tool tool-search'><i>Search</i></button></li>
+         <li><button data-toggle='#contactbar' class='tool tool-contact'><i>Contact</i></button></li>
+       </ul>
      <h2>Color Table</h2>
      <div class='test test-1'></div>
      <div class='test test-2'></div>
@@ -188,8 +193,7 @@ header("Content-Type: text/html; charset=utf-8");
      <div class='test test-4'></div>
      <div class='test test-5'></div>
      <div class='test test-6'></div>
-     </section>
-<?php
+     <?php
         for ($i=0;$i<1;$i++)
         {
             echo "<h2>".$faker->catchPhrase."</h2>";
@@ -197,11 +201,21 @@ header("Content-Type: text/html; charset=utf-8");
                 echo "<p>".$faker->realText($faker->numberBetween(200,1200),2)."</p>";
         }
 ?>
-
-    </article>
-    </main>
-
-<footer id='footer' class='widget footer page-row' fwb='true'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
+     </article>
+    </section>
+    <section class='hero welpe'><div class='hero-wrapper'>
+     <article class='text-center'>
+       <h1>C'mon ... Contact me</h1>
+       <ul class='hgroup vlist'>
+        <li><a href='#' class='tool'><i>eMail</i></a></li>
+        <li><a href='#' class='tool'><i>gitHub</i></a></li>
+        <li><a href='#' class='tool'><i>Googleplus</i></a></li>
+        <li><a href='#' class='tool'><i>Facebook</i></a></li>
+        <li><a href='#' class='tool'><i>Twitter</i></a></li>
+      </ul>
+      </article>
+    </div></section>
+<footer id='footer' class='widget footer page-row'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
 <?php echo sidemenu();?>
 <script src="_assets/js/components/fastclick.js"></script>
 <script src="_assets/js/components/jquery.2.1.3.js"></script>

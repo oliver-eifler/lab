@@ -23,6 +23,12 @@ $sidemenu-height: 48 !default;
 $sidemenu-space: 4 !default; //.25em
 $sidemenu-font: $sidemenu-height/2 !default;
 $sidemenu-font-family: sans-serif !default; //1em
+
+/*Widget Colors*/
+$colors-normal: getPanelColors(palette($sidemenu-background));
+$colors-extra: getPanelColors(palette($sidemenu-background),$type:'dark');
+
+
 //sidemenu overlay
 .page-overlay {
   font-size:px2em($panel-font);
@@ -58,7 +64,8 @@ $sidemenu-font-family: sans-serif !default; //1em
     padding:0;
     margin:0;
   }
-  @include widget-color($sidemenu-background);
+  //@include widget-color($sidemenu-background);
+  @include setWidgetColors($colors-normal);
 
   .title {
     $_f : $header-item-size - 4*$header-item-space;
@@ -72,7 +79,8 @@ $sidemenu-font-family: sans-serif !default; //1em
   align-items:center;
   min-height:px2em($header-height,$panel-font);
   position:relative;
-  @include widget-color($sidemenu-background,"dark");
+  //@include widget-color($sidemenu-background,"dark");
+  @include setWidgetColors($colors-extra);
   &:after {
     content:"";
     position:absolute;
