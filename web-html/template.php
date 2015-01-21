@@ -7,7 +7,7 @@ $faker->realTextInit('_assets/text/anhalter.txt');
 function pageheader()
 {
   $html = "";
-  $html.="<div id='header-wrapper'>";
+  $html.="<div id='header-wrapper' class='page-row'>";
   $html.= "<header id='header' class='widget header' fwb='true'>";
   $html.=   "<div id='hcx' class='header-cell' data-hide='true'>".hamburger()."</div>";
   $html.=   "<div id='hc0' class='header-cell'>".logo()."</div>";
@@ -32,81 +32,99 @@ function menu()
   $html = "";
   $html.=  "<nav class='mainmenu menu'>";
   $html.=    "<ul>";
-  $html.=      "<li style='z-index:100'><a href='#'>Link1</a></li>";
-  $html.=      "<li style='z-index:99' class='hassub'><a href='template2.html'>Link2<i class='icon-small' aria-hidden='true'>+</i></a><b aria-haspopup='true'  aria-controls='m1' ></b>";
+  $html.=      "<li style='z-index:100'><a href='test.html' data-ajax='true'>Link1</a></li>";
+  $html.=      "<li style='z-index:99' class='hassub'><a href='template2.html' data-ajax='true'>Link2<i class='icon-small' aria-hidden='true'>+</i></a><b aria-haspopup='true'  aria-controls='m1' ></b>";
   $html.=        "<ul id='m1'>";
-  $html.=          "<li><a href='#'>Sub1</a></li>";
-  $html.=          "<li><a href='#'>Sub2</a></li>";
-  $html.=          "<li><a href='#'>Sub3 ganz furchtbar lang</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub3 ganz furchtbar lang</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
-  $html.=      "<li style='z-index:98' class='hassub'><a href='template3.html'>Link3<i class='icon-small' aria-hidden='true'>+</i></a><b aria-haspopup='true'  aria-controls='m2' ></b>";
+  $html.=      "<li style='z-index:98' class='hassub'><a href='template3.html' data-ajax='true'>Link3<i class='icon-small' aria-hidden='true'>+</i></a><b aria-haspopup='true'  aria-controls='m2' ></b>";
   $html.=        "<ul id='m2'>";
-  $html.=          "<li><a href='#'>Sub1</a></li>";
-  $html.=          "<li><a href='#'>Sub2</a></li>";
-  $html.=          "<li><a href='#'>Sub3</a></li>";
-  $html.=          "<li><a href='#'>Sub4</a></li>";
-  $html.=          "<li><a href='#'>Sub5</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub3</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub4</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub5</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
-  $html.=      "<li style='z-index:97'><a href='#'>Link4</a></li>";
-  $html.=      "<li style='z-index:96'><a href='#'>Link5</a></li>";
+  $html.=      "<li style='z-index:97'><a href='#' data-ajax='true'>Link4</a></li>";
+  $html.=      "<li style='z-index:96'><a href='#' data-ajax='true'>Link5</a></li>";
   $html.=    "</ul>";
   $html.=  "</nav>";
   return $html;
 }
-function sidemenu()
+function sidepanel()
 {
   $html = "";
-  $html.=  "<div class='widget page-overlay' data-hide='true'>";
   $html.=  "<div id='sidepanel' class='sidepanel'>";
   $html.=    "<div class='sidepanel-bar'>";
   $html.=      "<button class='tool tool-back'><i>&lt;</i></button><div class='title'><i>Lab</i> Menu</div>";
   $html.=    "</div>";
   $html.=    "<ul class='sidepanel-menu'>";
-  $html.=      "<li><a href='#'>Link1</a></li>";
+  $html.=      "<li><a href='test.html' data-ajax='true'>Link1</a></li>";
   $html.=      "<li><button data-toggle='#spanel1'>Submenu1</button>";
   $html.=        "<ul id='spanel1'>";
-  $html.=          "<li><a href='#'>Sub1</a></li>";
-  $html.=          "<li><a href='#'>Sub2</a></li>";
-  $html.=          "<li><a href='#'>Sub3 ganz furchtbar lang</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub3 ganz furchtbar lang</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
   $html.=      "<li><button data-toggle='#spanel2'>Submenu2</button>";
   $html.=        "<ul id='spanel2'>";
-  $html.=          "<li><a href='#'>Sub1</a></li>";
-  $html.=          "<li><a href='#'>Sub2</a></li>";
-  $html.=          "<li><a href='#'>Sub3</a></li>";
-  $html.=          "<li><a href='#'>Sub4</a></li>";
-  $html.=          "<li><a href='#'>Sub5</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub3</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub4</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub5</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
-  $html.=      "<li><a href='#'>Link4</a></li>";
-  $html.=      "<li><a href='#'>Link5</a></li>";
+  $html.=      "<li><a href='#' data-ajax='true'>Link4</a></li>";
+  $html.=      "<li><a href='#' data-ajax='true'>Link5</a></li>";
   $html.=      "<li><button data-toggle='#spanel3'>Extra...</button>";
   $html.=        "<ul id='spanel3'>";
-  $html.=          "<li><a href='#'>Sub1</a></li>";
-  $html.=          "<li><a href='#'>Sub2</a></li>";
-  $html.=          "<li><a href='#'>Sub3</a></li>";
-  $html.=          "<li><a href='#'>Sub4</a></li>";
-  $html.=          "<li><a href='#'>Sub5</a></li>";
-  $html.=          "<li><a href='#'>xSub1</a></li>";
-  $html.=          "<li><a href='#'>xSub2</a></li>";
-  $html.=          "<li><a href='#'>xSub3</a></li>";
-  $html.=          "<li><a href='#'>xSub4</a></li>";
-  $html.=          "<li><a href='#'>xSub5</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub3</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub4</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>Sub5</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>xSub1</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>xSub2</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>xSub3</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>xSub4</a></li>";
+  $html.=          "<li><a href='#' data-ajax='true'>xSub5</a></li>";
   $html.=        "</ul>";
   $html.=      "</li>";
-  $html.=      "<li><a href='#'>Link6</a></li>";
+  $html.=      "<li><a href='#' data-ajax='true'>Link6</a></li>";
   $html.=    "</ul>";
   $html.=  "</div>";
+  return $html;
+}
+function modal()
+{
+  $html = "";
+  $html.=  "<div id='modal' class='widget modal' >";
+  $html.=    "<div class='modal-info'>Loading Page</div>";
+  $html.=    "<div class='modal-loader'><i class='icon-loader icon-spin'></i></div>";
+  $html.=    "<button class='modal-close'><i>X</i></button>";
   $html.=  "</div>";
+  return $html;
+
+}
+function overlay()
+{
+  $html = "";
+  $html.="<div id='overlay' class='widget overlay' data-hide='true'>";
+  $html.=  sidepanel();
+  $html.=  modal();
+  $html.="</div>";
   return $html;
 }
 function logo()
 {
   $html = "";
-  $html.= "<a class='tool tool-logo' href='#' title='Ollis LAB'>";
+  $html.= "<a class='tool tool-logo' href='#' title='Ollis LAB' data-ajax='true'>";
   $html.=   "<i>Ollis lab</i>";
   $html.= "</a>";
   return $html;
@@ -132,7 +150,7 @@ function tools()
 {
   $html = "";
   $html.= "<ul class='header-tools'>";
-  $html.= "<li><a href='#' class='tool'><i>eMail</i></a></li>";
+  $html.= "<li><a href='#' class='tool' data-ajax='true'><i>eMail</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>gitHub</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>Googleplus</i></a></li>";
   $html.= "<li><a href='#' class='tool'><i>Facebook</i></a></li>";
@@ -140,6 +158,23 @@ function tools()
   //$html.= "  <li class='header-tools-search'>".searchbox(false)."</li>";
   //$html.= "  <li class='header-tools-search'>".searchbox(false)."</li>";
   $html.= "</ul>";
+  return $html;
+}
+function footer()
+{
+  $fromYear = 2014;
+  $thisYear = (int)date('Y');
+  $Year = $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');
+  $html ="";
+  $html.= "<footer id='footer' class='widget footer page-row'>";
+  $html.=   "<ul>";
+  $html.=     "<li>".hamburger()."</li>";
+  $html.=     "<li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li>";
+  $html.=     "<li><em><i class='icon-invader'></i> for internal use only</em></li>";
+  $html.=     "<li>&copy; ".$Year." by Oliver Jean Eifler</li>";
+  $html.=   "</ul>";
+  $html.= "</footer>";
+
   return $html;
 }
 header("Content-Type: text/html; charset=utf-8");
@@ -170,21 +205,22 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <section class='hero50 pult'><div class='hero-wrapper'>
+    <section class='page-row hero50 pult'><div class='hero-wrapper'>
      <article>
       <h1 class='text-center large'>Ollis Seite</h1>
       <div class='hgroup grid'>
-           <div class='big'>for internal use only...</div>
+           <div class='big'><i class='icon-invader icon-spin'></i> for internal use only...</div>
            <div><em>Natürlich bin ich verrückt, aber das heißt nicht, dass ich falsch liege. Ich bin verrückt aber nicht krank.</em></div>
       </div>
       </article></div>
     </section>
-    <section id='content' role="main" class='page-row page-row-expanded content' fwb='true' grid='true'>
+    <section id='content' role="main" class='page-row content' fwb='true' grid='true'>
       <article>
        <ul class='hgroup vlist'>
          <li><?php echo hamburger();?></li>
          <li><button data-toggle='#searchbar' class='tool tool-search'><i>Search</i></button></li>
          <li><button data-toggle='#contactbar' class='tool tool-contact'><i>Contact</i></button></li>
+         <li><button class='tool tool-close'><i>X</i></button></li>
        </ul>
      <h2>Color Table</h2>
      <div class='test test-1'></div>
@@ -203,7 +239,7 @@ header("Content-Type: text/html; charset=utf-8");
 ?>
      </article>
     </section>
-    <section class='hero welpe'><div class='hero-wrapper'>
+    <section class='hero welpe page-row'><div class='hero-wrapper'>
      <article class='text-center'>
        <h1>C'mon ... Contact me</h1>
        <ul class='hgroup vlist'>
@@ -215,13 +251,16 @@ header("Content-Type: text/html; charset=utf-8");
       </ul>
       </article>
     </div></section>
-<footer id='footer' class='widget footer page-row'><ul><li><?php echo hamburger();?></li><li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li><li><em><i class='icon-invader'></i> for internal use only</em></li><li>&copy; 2014 by Oliver Jean Eifler</li></ul></footer>
-<?php echo sidemenu();?>
+<?php echo footer();?>
+<?php echo overlay();?>
 <script src="_assets/js/components/fastclick.js"></script>
 <script src="_assets/js/components/jquery.2.1.3.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
 <script src="_assets/js/components/velocity.1.1.0.js"></script>
 <script src="_assets/js/olli/olli.js"></script>
+<script src="_assets/js/page/overlay.js"></script>
+<script src="_assets/js/page/modal.js"></script>
+
 <script src="_assets/js/page/header.js"></script>
 <script src="_assets/js/page/footer.js"></script>
 <script src="_assets/js/page/sidemenu.js"></script>

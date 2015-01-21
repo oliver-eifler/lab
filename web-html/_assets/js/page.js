@@ -23,9 +23,11 @@
     //PRIVAT
     var header = null,$header = null,
         footer = null,$footer = null,
+        modal = null,$modal = null,
         sidepanel = null,$sidepanel = null,
         content=null,$content = null,
-        $gap = null;
+        $gap = null,
+        $rows = null;
 
     lib.init = function()
     {
@@ -53,6 +55,12 @@
                   $id.find('input:first').focus();
               }
             }
+           })
+         /*INIT ajax links */
+        .on('click.ajax','a[data-ajax]',function(e) {
+           var $this = $(this);
+           lib.ajaxload();
+           e.preventDefault();
            });
 
         $gap = $('#gap');
@@ -60,18 +68,14 @@
         $header = $('#header');
         $sidepanel = $('#sidepanel');
         $footer = $('#footer');
+        $modal = $('#modal');
+        $rows = $('.page-row');
 
         header = lib.header($header[0]);
         footer = lib.footer($footer[0]);
         sidepanel = lib.sidepanel($sidepanel[0]);
         content = lib.content($content[0]);
-        /*Background for overlay*/
-
-        var fcol = $footer.css("backgroundColor");
-        var ccol = $content.css("backgroundColor");
-        var gradient = 'linear-gradient(to right,'+ccol+','+ccol+')';
-        $('html').css("backgroundColor",fcol);
-        $('html').css("backgroundImage",gradient);
+        modal = lib.modal($modal[0]);
 
         resize();
         WebFont.load({
@@ -100,7 +104,7 @@
             opt.xwidth = 320;
 
         }
-        $('body,#header-wrapper').css({'width':opt.xwidth});
+        $rows.css({'width':opt.xwidth});
 
 
         header.resize(opt);
@@ -113,7 +117,7 @@
         var scrollTop = parseInt($gap.css('marginTop'));
         if (scrollTop != 0)
         {
-            var rect = $('footer')[0].getBoundingClientRect();
+            var rect = $footer[0].getBoundingClientRect();
             if (rect.bottom < olli.clientHeight())
             {
                 scrollTop += (olli.clientHeight() - rect.bottom);
@@ -121,10 +125,6 @@
                     $gap.css({'marginTop':scrollTop});
             }
         }
-        //Gradient
-        var stop = $footer[0].getBoundingClientRect().top-1;
-        $('html').css("backgroundSize","100% "+stop+"px");
-
     }
     /* used by other page-elements */
     var scroll_disabled = false;
@@ -145,6 +145,11 @@
        $('html,body').css({'overflow-y':'hidden'});
        $gap.css({'marginTop':-scrollTop});
        scroll_disabled = true;
+    }
+    lib.ajaxload = function()
+    {
+      console.log("AJAX Loading");
+      modal.show();
     }
 return lib;
 }));

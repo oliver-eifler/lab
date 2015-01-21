@@ -32,12 +32,12 @@
     {
         var plugin = this,
             $panel = null,
-            $overlay = null,
+            $overlay = null,overlay = null,
             elementWidth = 0,elementHeight = 0;
 
         function cacheData()
         {
-            elementHeight = $menu.outerHeight();
+            elementHeight = $panel.outerHeight();
         }
 
         plugin.getWidth = function() {return elementWidth;}
@@ -47,8 +47,9 @@
         {
             $panel = $(element);
             $overlay = $panel.parent();
+            overlay = lib.overlay($overlay);
+
             $panel.attr('olli','true');
-            $overlay.attr('olli','true');
               //Overwrite body data-toggle event
               $panel.on('click.panel',false);
               $panel.on('click.panel','button[data-toggle]',function(e) {
@@ -64,17 +65,22 @@
               return false;
            });
            $panel.find('.tool-back').on('click.panel',plugin.toggle);
+
+           $panel.on('click.panellink','a',function(e) {
+             var $this = $(this);
+             if (olli.getBoolAttr(this,"ajax"))
+             {
+                lib.ajaxload();
+                e.preventDefault();
+             }
+
+
+             plugin.toggle();
+           });
             return plugin;
         }
-        function olliToggle()
-        {
 
-
-
-
-
-        }
-        plugin.toggle = function()
+        plugin.onOverlayClick = plugin.toggle = function()
         {
            var v_options,v_anim,visible = !olli.getBoolAttr($overlay[0],"hide");
 
@@ -83,22 +89,22 @@
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  complete:function(){$panel.scrollTop(0);olli.setBoolAttr($overlay[0],"hide",true);lib.enableScroll();}
+                  complete:function(){$panel.scrollTop(0);overlay.remove("#"+$panel[0].getAttribute('id'));}
                 };
                 v_anim = {translateX: ["-100%","0%"]};
-                $overlay[0].removeAttribute("data-toggle");
+                //$overlay[0].removeAttribute("data-toggle");
            }
             else
             {
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  begin:function(){lib.disableScroll();$panel.scrollTop(0);olli.setBoolAttr($overlay[0],"hide",false);}
+                  begin:function(){$panel.scrollTop(0);overlay.add("#"+$panel[0].getAttribute('id'));}
                 };
                 v_anim = {translateX: ["0%","-100%"]};
+                //$overlay[0].setAttribute("data-toggle","#"+$panel[0].getAttribute('id'));
             }
             $panel.velocity(v_anim,v_options);
-            $overlay[0].setAttribute("data-toggle","#"+$panel[0].getAttribute('id'));
         }
         plugin.resize = function(data)
         {

@@ -29,27 +29,6 @@ $colors-normal: getPanelColors(palette($sidemenu-background));
 $colors-extra: getPanelColors(palette($sidemenu-background),$type:'dark');
 
 
-//sidemenu overlay
-.page-overlay {
-  font-size:px2em($panel-font);
-  line-height: 1;
-
-  display:block; //always hidden
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  overflow:auto;
-  z-index:1000;
-  background:rgba(#000,.75);
-  &[data-hide] {
-    z-index:-1;
-    display:none;
-  }
-}
-
-
 
 .sidepanel {
   display: inline-block;

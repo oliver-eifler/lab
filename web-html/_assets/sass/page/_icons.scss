@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'ollicon';
-	src:url('../fonts/ollicon.eot?a0007');
-	src:url('../fonts/ollicon.eot?#iefixa0007') format('embedded-opentype'),
-		url('../fonts/ollicon.woff?a0007') format('woff'),
-		url('../fonts/ollicon.ttf?a0007') format('truetype'),
-		url('../fonts/ollicon.svg?a0007#ollicon') format('svg');
+	src:url('../fonts/ollicon.eot?a0008');
+	src:url('../fonts/ollicon.eot?#iefixa0008') format('embedded-opentype'),
+		url('../fonts/ollicon.woff?a0008') format('woff'),
+		url('../fonts/ollicon.ttf?a0008') format('truetype'),
+		url('../fonts/ollicon.svg?a0008#ollicon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -34,7 +34,7 @@ i,.icon {
 .icon-grid:before {
 	content: "\e601";
 }
-.icon-Invader:before {
+.icon-invader:before {
 	content: "\e602";
 }
 .icon-cool:before {
@@ -46,6 +46,14 @@ i,.icon {
 .icon-contact:before {
 	content: "\e605";
 }
-.icon-spinner1:before {
+.icon-loader:before {
 	content: "\e606";
+}
+.icon-spin {
+display:inline-block;
+ animation: a-icon-spin 2s infinite linear;
+}
+@keyframes a-icon-spin {
+    0% {transform: rotate(0deg);}
+  100% {transform: rotate(359deg);}
 }
