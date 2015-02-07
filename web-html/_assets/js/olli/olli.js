@@ -334,7 +334,10 @@ lib.getScrollbarVisible = function()
     else if(xDef(w.innerWidth,w.innerHeight,d.height))
     {
         v=w.innerWidth;
-        if(d.height>w.innerHeight) v-=sz.v;
+        if(d.height>w.innerHeight) {
+          v-=sz.v;
+          sbAlways = false;
+        }
     }
     if (sbAlways === true)
     {
@@ -353,7 +356,10 @@ lib.getScrollbarVisible = function()
     {v=d.body.clientHeight;}
   else if(xDef(w.innerWidth,w.innerHeight,d.width)) {
     v=w.innerHeight;
-    if(d.width>w.innerWidth) v-=sz.h;
+    if(d.width>w.innerWidth) {
+      v-=sz.h;
+      sbAlways = false;
+    }
   }
     if (sbAlways === true)
     {
@@ -453,6 +459,15 @@ lib.getScrollbarVisible = function()
 	        lib._curHeight = _nHeight;
 		}
 	);
+
+  lib.getWindowScrollTop = function()
+  {
+   var win = window;
+   var doc = win.document;
+   return win.pageYOffset || doc.compatMode === "CSS1Compat" && doc.documentElement.scrollTop || doc.body.scrollTop || 0;
+  };
+
+
 /* attr stuff */
  var olliAttr = "data-";
  var hasAttr = (!window.Element || typeof Element.hasAttribute !== 'function') ?
@@ -493,12 +508,6 @@ lib.getScrollbarVisible = function()
  {
     lib.setBoolAttr(el,"hide",false);
  }
-
-
-
-
-
-
 
 
 return lib;

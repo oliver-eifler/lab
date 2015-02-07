@@ -21,7 +21,10 @@
 
     lib.header = function(element)
     {
-        if (element.olliHook === undefined)
+         if (element instanceof jQuery)
+            element = element[0];
+
+       if (element.olliHook === undefined)
             element.olliHook = new header(element);
         return element.olliHook;
 

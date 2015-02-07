@@ -104,10 +104,10 @@ function sidepanel()
 function modal()
 {
   $html = "";
-  $html.=  "<div id='modal' class='widget modal' >";
-  $html.=    "<div class='modal-info'>Loading Page</div>";
-  $html.=    "<div class='modal-loader'><i class='icon-loader icon-spin'></i></div>";
-  $html.=    "<button class='modal-close'><i>X</i></button>";
+  $html.=  "<div id='modal' class='widget modal' data-hide='true'>";
+  $html.=    "<div class='modal-section modal-text'><h1>This is a Dialog?</h1>Something wonderfull has happed<br>this page is still alive</div>";
+  $html.=    "<div class='modal-section modal-loader'></div>";
+  $html.=    "<div class='modal-section modal-devider modal-buttons'><button class='button button-flat'>cancel</button><button class='button button-flat'>stop</button></div>";
   $html.=  "</div>";
   return $html;
 
@@ -115,10 +115,10 @@ function modal()
 function overlay()
 {
   $html = "";
-  $html.="<div id='overlay' class='widget overlay' data-hide='true'>";
+  $html.="<div id='overlay' class='widget overlay' data-hide='true'><div class='page-row'>";
   $html.=  sidepanel();
   $html.=  modal();
-  $html.="</div>";
+  $html.="</div></div>";
   return $html;
 }
 function logo()
@@ -167,12 +167,14 @@ function footer()
   $Year = $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');
   $html ="";
   $html.= "<footer id='footer' class='widget footer page-row'>";
+  $html.= "<div class='footer-wrapper'>";
   $html.=   "<ul>";
   $html.=     "<li>".hamburger()."</li>";
   $html.=     "<li><i class='icon-cool'></i> Made with care by Olli<br><small>Not recommended for or tested with IE < 10</small></li>";
   $html.=     "<li><em><i class='icon-invader'></i> for internal use only</em></li>";
   $html.=     "<li>&copy; ".$Year." by Oliver Jean Eifler</li>";
   $html.=   "</ul>";
+  $html.= "</div>";
   $html.= "</footer>";
 
   return $html;
@@ -194,7 +196,7 @@ header("Content-Type: text/html; charset=utf-8");
   <meta name='format-detection' content='telephone=no'/>
   <title>Olli's Lab</title>
   <script src="_assets/js/kickstart/html5shiv.js"></script>
-  <script src="_assets/js/components/webfontloader.1.5.10.js"></script>
+  <script src="_assets/js/components/webfontloader.1.5.13.js"></script>
   <script src="_assets/js/esential/modernizr-custom.js"></script>
   <link rel="stylesheet" type="text/css" href="css/page.css">
   <style type="text/css">
@@ -205,7 +207,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 <body class='page'>
 <?php echo pageheader();?>
-    <section class='page-row hero50 pult'><div class='hero-wrapper'>
+    <section class='hero50 pult page-row'><div class='hero-wrapper'>
      <article>
       <h1 class='text-center large'>Ollis Seite</h1>
       <div class='hgroup grid'>
@@ -220,7 +222,7 @@ header("Content-Type: text/html; charset=utf-8");
          <li><?php echo hamburger();?></li>
          <li><button data-toggle='#searchbar' class='tool tool-search'><i>Search</i></button></li>
          <li><button data-toggle='#contactbar' class='tool tool-contact'><i>Contact</i></button></li>
-         <li><button class='tool tool-close'><i>X</i></button></li>
+         <li><button id='modal-test' class='tool tool-close'><i>X</i></button></li>
        </ul>
      <h2>Color Table</h2>
      <div class='test test-1'></div>
@@ -256,7 +258,7 @@ header("Content-Type: text/html; charset=utf-8");
 <script src="_assets/js/components/fastclick.js"></script>
 <script src="_assets/js/components/jquery.2.1.3.js"></script>
 <script src="_assets/js/jquery/jquery.onfontresize.js"></script>
-<script src="_assets/js/components/velocity.1.1.0.js"></script>
+<script src="_assets/js/components/velocity.1.2.1.js"></script>
 <script src="_assets/js/olli/olli.js"></script>
 <script src="_assets/js/page/overlay.js"></script>
 <script src="_assets/js/page/modal.js"></script>

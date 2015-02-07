@@ -22,6 +22,9 @@
     lib.content = function(element)
     {
         //options.dummy = true;
+        if (element instanceof jQuery)
+            element = element[0];
+
         if (element.olliHook === undefined)
             element.olliHook = new content(element);
         return element.olliHook;

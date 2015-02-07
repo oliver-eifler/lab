@@ -22,7 +22,10 @@
     lib.sidepanel = function(element)
     {
         //options.dummy = true;
-        if (element.olliHook === undefined)
+         if (element instanceof jQuery)
+            element = element[0];
+
+       if (element.olliHook === undefined)
             element.olliHook = new sidepanel(element);
         return element.olliHook;
     };
@@ -46,10 +49,12 @@
         function init(element)
         {
             $panel = $(element);
-            $overlay = $panel.parent();
-            overlay = lib.overlay($overlay);
+            $overlay = $('#overlay');
+            overlay = lib.overlay($overlay[0]);
 
             $panel.attr('olli','true');
+            olli.setBoolAttr($panel[0],"hide",true);
+
               //Overwrite body data-toggle event
               $panel.on('click.panel',false);
               $panel.on('click.panel','button[data-toggle]',function(e) {
@@ -70,7 +75,7 @@
              var $this = $(this);
              if (olli.getBoolAttr(this,"ajax"))
              {
-                lib.ajaxload();
+                lib.ajaxload(this);
                 e.preventDefault();
              }
 
@@ -89,7 +94,7 @@
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  complete:function(){$panel.scrollTop(0);overlay.remove("#"+$panel[0].getAttribute('id'));}
+                  complete:function(){$panel.scrollTop(0);olli.setBoolAttr($panel[0],"hide",true);overlay.remove("#"+$panel[0].getAttribute('id'));}
                 };
                 v_anim = {translateX: ["-100%","0%"]};
                 //$overlay[0].removeAttribute("data-toggle");
@@ -99,7 +104,7 @@
                 v_options = {
                   duration:250,
                   easing: "linear",
-                  begin:function(){$panel.scrollTop(0);overlay.add("#"+$panel[0].getAttribute('id'));}
+                  begin:function(){olli.setBoolAttr($panel[0],"hide",false);$panel.scrollTop(0);overlay.add("#"+$panel[0].getAttribute('id'));}
                 };
                 v_anim = {translateX: ["0%","-100%"]};
                 //$overlay[0].setAttribute("data-toggle","#"+$panel[0].getAttribute('id'));

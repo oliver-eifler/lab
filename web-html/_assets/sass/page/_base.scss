@@ -14,8 +14,11 @@ html,body {
   margin:0;
   padding:0;
   border:0;
-  height:100%;
   background-repeat: no-repeat;
+  .no-scroll {
+    overflow-y: hidden;
+  }
+
 }
 /*
 html {
@@ -43,6 +46,10 @@ body {
   position:relative;
   min-width: 320px;
 }
+html,body,main {
+  height:100%;
+}
+
 /*CLEARFIX*/
 .cf {
     *zoom: 1;

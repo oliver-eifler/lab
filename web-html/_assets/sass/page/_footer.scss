@@ -21,10 +21,16 @@ $colors-normal: getBarColors(palette($footer-background));
   font-size: px2em($footer-font);
   line-height:1em;
   font-family:$footer-font-family;
-  max-width: px2em($page-width,$footer-font);
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 
   @include setWidgetColors($colors-normal);
+  & .footer-wrapper {
+    max-width: px2em($page-width,$footer-font);
+    margin:0 auto;
+  }
+
+
   &[fwb]:before {
   color: savemapget($colors-normal,'background');
   }
@@ -33,8 +39,8 @@ $colors-normal: getBarColors(palette($footer-background));
     align-items:center;
     justify-content:space-between;
     list-style:none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
 
   li {

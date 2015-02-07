@@ -56,6 +56,7 @@ $widget-link-hover: contrast($widget-link-hover-background);
 $header-font-family: $widget-font-family;
 $menu-font-family:  $widget-font-family;
 $sidemenu-font-family:  $widget-font-family;
+$modal-font-family:  $widget-font-family;
 $footer-font-family:  $widget-font-family;
 $icon-font-family: 'ollicon',sans-serif;
 
@@ -81,6 +82,7 @@ $page-background: $footer-background;
 @import 'page/header';
 @import 'page/footer';
 @import 'page/overlay';
+@import 'page/modal';
 
 @import 'page/sidemenu';
 @import 'page/content';

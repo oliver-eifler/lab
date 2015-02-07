@@ -21,7 +21,9 @@
 
     lib.modal = function(element)
     {
-        //options.dummy = true;
+        if (element instanceof jQuery)
+            element = element[0];
+
         if (element.olliHook === undefined)
             element.olliHook = new modal(element);
         return element.olliHook;
@@ -32,8 +34,18 @@
     {
         var plugin = this,
             $modal = null,
+            $text = null,
+            $loader = null,
+            $buttons = null,
             $overlay = null,overlay = null,
-            elementWidth = 0,elementHeight = 0;
+            elementWidth = 0,elementHeight = 0,
+            curOptions = null;
+        plugin.defaults = {
+          overlayClick:true,
+          buttonsClick:true,
+          loader:false,header:'Guru Meditations',text:'Somthing wonderfull has happend, your browser is still alive',
+          buttons:[{cls:'',label:'proceed',id:'ok'}]
+        };
 
         function cacheData()
         {
@@ -45,29 +57,90 @@
         function init(element)
         {
             $modal = $(element);
-            $overlay = $modal.parent();
-            overlay = lib.overlay($overlay);
-
+            $overlay = $('#overlay');
+            overlay = lib.overlay($overlay[0]);
+            $text = $modal.find('.modal-text');
+            $loader = $modal.find('.modal-loader');
+            $buttons = $modal.find('.modal-buttons');
             $modal.attr('olli','true');
-            $modal.on('click.modal',false); //do nothing at the moment
+            olli.setBoolAttr($loader[0],"hide",true);
+            olli.setBoolAttr($buttons[0],"hide",true);
+            curOptions = plugin.defaults;
+
+
+
+
+
+            $modal.on('click.modal',clickModal);
 
             return plugin;
         }
         plugin.onOverlayClick = function()
         {
-           //do nothing ;)
+          console.log("modal overlay clicked");
+           if (typeof curOptions.overlayClick !== 'function' ? curOptions.overlayClick : curOptions.overlayClick())
+             plugin.hide();
         }
         plugin.isVisible = function()
         {
             return !olli.getBoolAttr($modal[0],"hide");
         }
+        function clickModal(e)
+        {
+            var e = e || window.event;
+            var target = e.target || e.srcElement;
+            var btns = this.querySelectorAll('button');
+            [].forEach.call(btns, function(btn) {
+                if (target == btn)
+                {
+                    var id = $(target).attr('id');
+                    console.log("modal "+id+" clicked");
+                    if (typeof curOptions.buttonsClick !== 'function'?curOptions.buttonsClick:curOptions.buttonsClick(target,id))
+                        plugin.hide();
+                }
+            });
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        }
+        function addButtons(buttons)
+        {
+            var html='';
+            if (Array.isArray(buttons))
+            {
+              buttons.forEach(function(btn,idx) {
+                if (typeof btn.label === 'string')
+                {
+                    html += "<button id='modalbtn_"+((typeof btn.id==='string')?btn.id:idx)+"'";
+                    html += " class='button button-flat'>"+btn.label+"</button>";
+                }
+              });
+            }
+            $buttons.html(html);
+            olli.setBoolAttr($buttons[0],"hide",html._isBlank());
+        }
 
+        plugin.open = function(name,options)
+        {
+            var opts = curOptions = $.extend({},plugin.defaults,options);
+            var html = '';
+            if (typeof opts.header === 'string' && !opts.header._isBlank())
+                html += '<h1>'+opts.header+'</h1>';
+            if (typeof opts.text === 'string' && !opts.text._isBlank())
+                html += opts.text;
+            $text.html(html);
+            olli.setBoolAttr($loader[0],"hide",!opts.loader);
+
+            addButtons(opts.buttons);
+
+            plugin.show();
+        }
 
         plugin.show = function()
         {
             overlay.add("#"+$modal[0].getAttribute('id'));
             olli.setBoolAttr($modal[0],"hide",false);
-            setTimeout(plugin.hide,5000);
+            //setTimeout(plugin.hide,5000);
         }
         plugin.hide = function()
         {

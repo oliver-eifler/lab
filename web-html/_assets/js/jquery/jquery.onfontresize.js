@@ -10,9 +10,9 @@
  * "fontresize" event is triggered on the document object
  * subscribe to event using: $(document).bind("fontresize", function (event, data) {});
  * "data" contains the current size of 1 em unit (in pixels)
- * 
+ *
  */
- 
+
 jQuery.onFontResize = (function ($) {
 	// initialize
 	$(document).ready(function () {

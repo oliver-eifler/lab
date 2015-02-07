@@ -59,9 +59,22 @@
          /*INIT ajax links */
         .on('click.ajax','a[data-ajax]',function(e) {
            var $this = $(this);
-           lib.ajaxload();
+           lib.ajaxload(this);
            e.preventDefault();
            });
+        $('#modal-test').on('click',function(e){
+                modal.open('test',{
+                  header:'test dialog',
+                  text: 'was weiss den ich!<br>Was solls...',
+                  loader:true,
+                  overlayClick:false,
+                  buttonsClick:function(btn,id){console.log("modal buttons "+id);return true;},
+                  buttons:[
+                    {label:'cancel<div>bla</div>'},
+                    {label:'weiter',id:'ok'}
+                  ]
+                });
+        });
 
         $gap = $('#gap');
         $content = $('#content');
@@ -98,6 +111,8 @@
     function resize(options)
     {
         var opt = $.extend({},{bFont:true,width:olli._curWidth,height:olli._curHeight,owidth:olli._oldWidth,oheight:olli._oldHeight,xwidth:olli.clientWidth(true)},options);
+        var clientHeight = olli.clientHeight();
+
         if (opt.width < 320)
         {
             opt.width = 320;
@@ -111,20 +126,31 @@
         footer.resize(opt);
         $('body').css({'paddingTop':header.getHeight()});
         //resize content
-        page = olli.clientHeight() -  header.getHeight() - footer.getHeight();
+        page = clientHeight -  header.getHeight() - footer.getHeight();
         $content.css({'minHeight':page});
 
-        var scrollTop = parseInt($gap.css('marginTop'));
-        if (scrollTop != 0)
+        if (scroll_disabled)
         {
+            var scrollTop = parseInt($gap.css('marginTop'));
+            var rect = $footer[0].getBoundingClientRect();
+            if (rect.bottom < clientHeight)
+            {
+                scrollTop += (clientHeight - rect.bottom);
+                $gap.css({'marginTop':scrollTop});
+            }
+        }
+        /*
+        if (scroll_disabled)
+        {
+            var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
             var rect = $footer[0].getBoundingClientRect();
             if (rect.bottom < olli.clientHeight())
             {
-                scrollTop += (olli.clientHeight() - rect.bottom);
-                if (scrollTop <=0)
-                    $gap.css({'marginTop':scrollTop});
+                window.scrollBy(0,olli.clientHeight()-rect.bottom);
             }
         }
+        */
+
     }
     /* used by other page-elements */
     var scroll_disabled = false;
@@ -134,23 +160,37 @@
            return;
        var scrollTop = parseInt($gap.css('marginTop'));
        $gap.css({'marginTop':0});
-       $('html,body').css({'overflow-y':''}).scrollTop(-scrollTop);
+       $('html,body').removeClass('no-scroll').scrollTop(-scrollTop);
        scroll_disabled = false;
+       resize();
     }
     lib.disableScroll = function(bDisable)
     {
        if (scroll_disabled == true)
            return;
-       var scrollTop = ($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
-       $('html,body').css({'overflow-y':'hidden'});
+       var scrollTop = olli.getWindowScrollTop();//($('body').scrollTop()) ? $('body').scrollTop() : $('html').scrollTop(); // Works for Chrome, Firefox, IE...
+       $('html,body').addClass('no-scroll').scrollTop(0);//css({'overflow-y':'hidden'});
        $gap.css({'marginTop':-scrollTop});
        scroll_disabled = true;
+       resize();
     }
-    lib.ajaxload = function()
+    lib.ajaxload = function(element)
     {
-      console.log("AJAX Loading");
-      modal.show();
-    }
+        $link = $(element);
+
+
+
+      modal.open('ajaxpage',{
+        header:false,
+        text: 'Loading Page:<br>'+$link.text(),
+        loader:true,
+        overlayClick:false,
+        buttonsClick:function(btn,id){return true;},
+        buttons:[
+          {label:'cancel',id:'cancel'}
+        ]
+      });
+}
 return lib;
 }));
 /*GLOBAL*/

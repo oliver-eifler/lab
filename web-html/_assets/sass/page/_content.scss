@@ -105,10 +105,16 @@ ul.vlist {
   height: px2rem(2*$base-line-size);
 }
 /* HERO Headers */
+.no-scroll .welpe,
+.no-scroll .pult {
+  background:#000;
+}
+
 .welpe {
   background:url(../img/welpe.jpg) no-repeat center center fixed;
   background-size:auto 100%; //Old IE
   background-size:cover;
+
   color:#ff0;
   text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000,2px -2px 0px #000000,
                 -2px 0px 0px #000000, 2px 0px 0px #000000,

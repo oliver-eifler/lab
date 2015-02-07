@@ -51,6 +51,10 @@ $colors-extra: getPanelColors(palette($sidemenu-background),$type:'dark');
     font-size: px2em($_f,$panel-font);
     padding:0 px2em($header-item-space,$panel-font)
   }
+  &[data-hide] {
+    display:none;
+  }
+
 
 }
 .sidepanel-bar {
